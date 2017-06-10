@@ -1,0 +1,31 @@
+[alias]
+	co = checkout
+	qs = status
+	cp = cherry-pick
+	cm = commit
+	rb = rebase
+	dft = difftool --no-prompt
+	ql = log -9 --oneline --decorate
+	dfh = difftool --no-prompt HEAD^
+[core]
+	editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+[user]
+	name = Girish Jayantilal Jain
+[difftool "meld"]
+	path = C:\\Program Files (x86)\\Meld\\Meld.exe
+[mergetool "meld"]
+	cmd = 'C:\\Program Files (x86)\\Meld\\Meld.exe' --diff \"$BASE\" \"$LOCAL\" \"$REMOTE\" --output \"$MERGED\"
+[difftool "codecompare"]
+	cmd = 'C:\\Program Files\\Devart\\Code Compare\\codecompare.exe' -W \"$LOCAL\" \"$REMOTE\" 
+	renames = true
+[diff]
+	tool = codecompare
+	guitool = codecompare
+[mergetool "codecompare"]
+	cmd = 'C:\\Program Files\\Devart\\Code Compare\\codemerge.exe' -MF \"$LOCAL\" -TF \"$REMOTE\" -BF \"$BASE\" -RF \"$MERGED\" 
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[merge]
+	tool = codecompare
+	guitool = codecompare
