@@ -1,3 +1,5 @@
+git config --global alias.gl git pull origin master --rebase
+
 git config --global diff.tool p4merge
 git config --global diff.guitool p4merge
 
