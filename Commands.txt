@@ -1,3 +1,5 @@
+git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+
 git config --global alias.gl git pull origin master --rebase
 
 git config --global diff.tool p4merge
