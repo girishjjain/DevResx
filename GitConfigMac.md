@@ -1,7 +1,7 @@
 ## Mac OS Environment Setup for Git
 
 * Install Visual Studio Code 
-* Add Code to your PATH variable 
+* Add Code to your PATH variable, refer "Launching from the Command Line" https://code.visualstudio.com/docs/setup/mac
 * Install P4
 
 ### Execute below commands to setup git environment 
