@@ -18,5 +18,11 @@ git config --global alias.dft 'difftool --no-prompt'
 git config --global alias.ql 'log -9 --oneline --decorate'
 git config --global alias.dfh 'difftool --no-prompt HEAD^'
 git config --global alias.br branch
-git config --global diff.tool p4mergetool
+git config --global diff.tool p4merge
+git config --global diff.guitool p4merge
+git config --global merge.tool p4merge
+git config --global merge.guitool p4merge
+git config --global difftool.p4merge.cmd '/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE'
+git config --global mergetool.keepBackup false
+git config --global mergetool.p4mergetool.cmd "/Applications/p4merge.app/Contents/Resources/launchp4merge \$PWD/\$BASE \$PWD/\$REMOTE \$PWD/\$LOCAL \$PWD/\$MERGED"
 ```
