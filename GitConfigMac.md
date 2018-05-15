@@ -1,10 +1,10 @@
-##Mac OS Environment Setup for Git
+## Mac OS Environment Setup for Git
 
 * Install Visual Studio Code 
 * Add Code to your PATH variable 
 * Install P4
 
-###Execute below commands to setup git environment 
+### Execute below commands to setup git environment 
 
 ```
 git config --global core.editor "code --wait" 
