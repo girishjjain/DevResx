@@ -14,4 +14,9 @@ git config --global alias.qs status
 git config --global alias.cp cherry-pick
 git config --global alias.cm commit
 git config --global alias.rb rebase
+git config --global alias.dft 'difftool --no-prompt'
+git config --global alias.ql 'log -9 --oneline --decorate'
+git config --global alias.dfh 'difftool --no-prompt HEAD^'
+git config --global alias.br branch
+git config --global diff.tool p4mergetool
 ```
