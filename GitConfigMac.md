@@ -7,6 +7,7 @@
 ### Execute below commands to setup git environment 
 
 ```
+git config --global user.name "Girish Jayantilal Jain"
 git config --global core.editor "code --wait" 
 git config --global alias.gl 'git pull origin master --rebase'
 git config --global alias.co checkout
