@@ -9,15 +9,15 @@
 ```
 git config --global user.name "Girish Jayantilal Jain"
 git config --global core.editor "code --wait" 
-git config --global alias.gl 'pull origin master --rebase'
+git config --global alias.gl "pull origin master --rebase"
 git config --global alias.co checkout
 git config --global alias.qs status
 git config --global alias.cp cherry-pick
 git config --global alias.cm commit
 git config --global alias.rb rebase
-git config --global alias.dft 'difftool --no-prompt'
-git config --global alias.ql 'log -9 --oneline --decorate'
-git config --global alias.dfh 'difftool --no-prompt HEAD^'
+git config --global alias.dft "difftool --no-prompt"
+git config --global alias.ql "log -9 --oneline --decorate"
+git config --global alias.dfh "difftool --no-prompt HEAD^"
 git config --global alias.br branch
 git config --global alias.pl "log --graph --pretty=format:'%C(dim green)%h%Creset %Cgreen(%cr) -%C(magenta)%d%Creset %C(cyan)%s%Creset %C(yellow)<%an>%Creset' --abbrev-commit -10"
 git config --global diff.tool p4merge
