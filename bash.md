@@ -15,6 +15,7 @@
 ```
 ls -R // Lists whole directory recursively
 cp -R // Copies everthing in the subdirectories recursively
+open . // Opens current working directory in Finder
 ```
 
 
