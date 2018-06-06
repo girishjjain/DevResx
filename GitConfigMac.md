@@ -27,4 +27,5 @@ git config --global merge.guitool p4merge
 git config --global difftool.p4merge.cmd '/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE'
 git config --global mergetool.keepBackup false
 git config --global mergetool.p4mergetool.cmd "/Applications/p4merge.app/Contents/Resources/launchp4merge \$PWD/\$BASE \$PWD/\$REMOTE \$PWD/\$LOCAL \$PWD/\$MERGED"
+git config --global alias.ddft 'difftool --tool meld --dir-diff'
 ```
