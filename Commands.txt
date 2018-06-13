@@ -1,3 +1,7 @@
+git config http.proxy http://proxy.server.com:88
+git config https.proxy http://proxy.server.com:88
+
+
 git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
 
 git config --global alias.gl git pull origin master --rebase
