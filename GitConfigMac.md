@@ -3,11 +3,13 @@
 * Install Visual Studio Code 
 * Add Code to your PATH variable, refer "Launching from the Command Line" https://code.visualstudio.com/docs/setup/mac
 * Install P4
+* Install meld for directory diff from: https://yousseb.github.io/meld/
 
 ### Execute below commands to setup git environment 
 
 ```
 git config --global user.name "Girish Jayantilal Jain"
+git config --global user.email girish.jain@domain.com
 git config --global core.editor "code --wait" 
 git config --global alias.gl "pull origin master --rebase"
 git config --global alias.co checkout
@@ -27,5 +29,7 @@ git config --global merge.guitool p4merge
 git config --global difftool.p4merge.cmd '/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE'
 git config --global mergetool.keepBackup false
 git config --global mergetool.p4mergetool.cmd "/Applications/p4merge.app/Contents/Resources/launchp4merge \$PWD/\$BASE \$PWD/\$REMOTE \$PWD/\$LOCAL \$PWD/\$MERGED"
+git config --global difftool.meld.cmd 'open -W -a Meld --args "$LOCAL" "$REMOTE"'
+git config --global difftool.meld.trustExitCode true
 git config --global alias.ddft 'difftool --tool meld --dir-diff'
 ```
