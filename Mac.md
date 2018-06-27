@@ -1,7 +1,6 @@
 # Mac OS Notes
 
-### Notes
-* To open a file/folder using keyboard use Command + Down Arrow Key shortcut
+### NotesMacOSX
 * To "maximize" a window (not full screen) - 
 https://apple.stackexchange.com/questions/139884/make-the-green-full-screen-window-icon-on-yosemite-maximize-windows
 
@@ -9,5 +8,11 @@ https://apple.stackexchange.com/questions/139884/make-the-green-full-screen-wind
 To setup environment variables, use below command:
 ```
 defaults write ~/.MacOSX/environment proxy "http://http-proxy.health.ge.com:88/"
-defaults write ~/.MacOSX/environment https_proxy "http://http-proxy.health.ge.com:88/"
+defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 ```
+
+### Keyboard Shortcuts
+* Cmd + Down Arrow - To open a file/folder in Finder
+* Cmd + Down Arrow - To move cursor to end of document/editor
+* Cmd + Up Arrow - To move cursor to start of document/editor
+
