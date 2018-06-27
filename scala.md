@@ -28,12 +28,17 @@
 
 
 ### In Scala
-* Semicolon are optional
-* Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2
-* What we treat as primitives in Java are objects in Scala
+* semicolon are optional
+* depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2
+* You can drop both the dot and the parentheses if a method takes either zero or one parameter. If a method takes more than one parameter, you must use the parentheses, but the dot is still optional.
+* primitives in Java are objects in Scala
 * if statement yields a value 
-* there is no explicit return, the last expression becomes return value 
-* if a method does not take any parameters and cause side effects then parenthesis after method name can be ommitted 
+* there is no need for explicit return (it's optional), the last expression becomes return value 
+
+
+### Variable arguments
+* To indicate that a parameter can take variable number of arguments, use an asterisk after the last parameter's type.
+* To pass an array to a method that takes variable number of parameters, you can use array explode notation (_*), for e.g. max(numbers: _*)
 
 
 ### Strings
@@ -47,8 +52,11 @@
 
 
 ### Scala REPL
+* The ```scala``` command can run in two modes, as an interactive shell or in batch mode. If we don't provide any arguments, the scala command brings up the interactive shell. However, if we provide a file name then it runs the code in it within a stand-alone JVM. You could provide a script file or a compiler-generated .class file.
 * To load an existing class in Scala REPL use :load FileName.scala  
 * To enter paste mode use :paste and then press ^D to exit from paste mode 
+* You can view the bytecode generated during the execution of the scala command using the -savecompiled option before the file name and the tool will save it to a JAR file
+
 
 
 ### Companion (Singleton) Objects 
