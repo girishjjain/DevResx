@@ -23,6 +23,12 @@ less is a terminal pager command, lets you read content as pages instead of term
 * within less use n key to continue searching forward 
 * Refer [here](https://en.wikipedia.org/wiki/Less_(Unix)) for detailed less commands 
 
+##### ssh
+ssh command starts SSSH client that establishes secure SSH connection to a remote SSH server. It provides secure encrypted connection between two hosts over an insecure network. Refer [here](https://www.ssh.com/ssh/command/) for more details. Usage:
+* ssh remotesshserver.com
+* ssh user@remotesshserver.com
+* ssh -p 2222 user@remotesshserveripaddress
+
 
 
 ### Bash wildcards 
