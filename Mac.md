@@ -16,3 +16,5 @@ defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 * Cmd + Down Arrow - To move cursor to end of document/editor
 * Cmd + Up Arrow - To move cursor to start of document/editor
 
+### Commands
+* ```brew list``` - to get list of all installed Homebrew packages
