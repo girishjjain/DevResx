@@ -17,6 +17,12 @@ ls -R // Lists whole directory recursively
 cp -R // Copies everthing in the subdirectories recursively
 open . // Opens current working directory in Finder
 ```
+##### less
+less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
+* less -p <pattern> to search for a string pattern
+* within less use n key to continue searching forward 
+* Refer [here](https://en.wikipedia.org/wiki/Less_(Unix)) for detailed less commands 
+
 
 
 ### Bash wildcards 
