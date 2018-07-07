@@ -18,3 +18,4 @@ defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 
 ### Commands
 * ```brew list``` - to get list of all installed Homebrew packages
+* ```brew update``` - to update Homebrew itself

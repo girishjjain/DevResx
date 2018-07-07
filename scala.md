@@ -34,11 +34,22 @@
 * primitives in Java are objects in Scala
 * if statement yields a value 
 * there is no need for explicit return (it's optional), the last expression becomes return value 
+* In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits.
+* method parameters are vals (immutable) and not vars 
+* classes can’t have static members, instead, Scala has Singleton objects
+* Scala implicitly imports members of packages java.lang and scala, as well as members of a singleton object named Predef, into every Scala source file
+* a function value is an object. Function types are classes that can be inherited by subclasses 
+
 
 
 ### Variable arguments
 * To indicate that a parameter can take variable number of arguments, use an asterisk after the last parameter's type.
 * To pass an array to a method that takes variable number of parameters, you can use array explode notation (_*), for e.g. max(numbers: _*)
+
+### Return Types
+* In Java, the type of the value returned from a method is its return type. In Scala, that same concept is called result type. 
+* A result type of ```Unit``` indicates the function returns no interesting value. Scala’s ```Unit``` type is similar to Java’s void type. 
+
 
 
 ### Strings
@@ -57,7 +68,15 @@
 * To enter paste mode use :paste and then press ^D to exit from paste mode 
 * You can view the bytecode generated during the execution of the scala command using the -savecompiled option before the file name and the tool will save it to a JAR file
 
-
+### SBT (Scala Build Tool)
+* ```sbt``` is Scala build tool
+* sbt minus any arguments starts sbt shell
+* sbt shell has command prompt so you can run commands like ```compile``` and ```run```
+* To run sbt command in watch mode, where one or more source file changes triggers command to run, prefix command with ~ for e.g.
+```
+~testOnly
+sbt ~testOnly
+```
 
 ### Companion (Singleton) Objects 
 * Characteristics
@@ -76,6 +95,7 @@
 
 
 ### Traits  
+* Traits are like interfaces in Java, but they can also have method implementations, and even fields.
 * Fundamental units of code reuse in Scala 
 * App is a trait provided by Scala library which by default provides a method called main, so when a singleton object extends App they get access to main method, that serves as entry point to program 
 
