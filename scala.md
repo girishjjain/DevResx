@@ -8,7 +8,7 @@
 
 ### Functions
 * Pure functions evaluate to same result for a given set of inputs. 
-* Impure functions do not evaluate to same output for given set of inputs 
+* Impure functions do not always evaluate to same output for given set of inputs 
 
   
 ### Referential Transparency
@@ -17,6 +17,7 @@
 
   
 ### Higher-Order Functions
+* Functions that take functions as parameters
 * Higher-order functions provide a way to abstract the parts that do not change and take the part that change as a function argument, they provide a way to maximize code reusability. 
 
 
@@ -28,19 +29,32 @@
 
 
 ### In Scala
-* semicolon are optional
-* depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2
-* You can drop both the dot and the parentheses if a method takes either zero or one parameter. If a method takes more than one parameter, you must use the parentheses, but the dot is still optional.
 * primitives in Java are objects in Scala
-* if statement yields a value 
-* there is no need for explicit return (it's optional), the last expression becomes return value 
 * In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits.
-* method parameters are vals (immutable) and not vars 
 * classes can’t have static members, instead, Scala has Singleton objects
 * Scala implicitly imports members of packages java.lang and scala, as well as members of a singleton object named Predef, into every Scala source file
-* a function value is an object. Function types are classes that can be inherited by subclasses 
+* constructors other than primary constructor are called auxiliary constructors and very auxiliary constructor must invoke another constructor of the same class as its first action. Also, only primary constructor can invoke a superclass constructor.
+* while and do-while constructs are called “loops”, not expressions, and their result type is Unit 
+* if statement yields a value 
+* assignment results in Unit value
 
 
+### Syntax, In Scala:
+* Semicolon are optional
+* Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2
+* You can drop both the dot and the parentheses if a method takes either zero or one parameter. If a method takes more than one parameter, you must use the parentheses, but the dot is still optional.
+* The convention is that you include parentheses if method has side effects, such as println(), but leave them off if method has no side effects, such as toLowerCase on a String 
+* There is no need for explicit return (it's optional), the last expression becomes return value 
+* Any method invocation, in which you are passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses 
+
+
+### Functions
+* In Scala, method parameters are vals (immutable) and not vars 
+* A function literal is compiled into a class that when instantiated at runtime is a *function value*. 
+* A function value is an object. Function types are classes that can be inherited by subclasses 
+* You can define functions inside a function. Just like local variables, such local functions are visible only in their enclosing blocks. 
+* Local functions can access parameters of their enclosing function
+* A curried function is applied to multiple argument lists, instead of just one. 
 
 ### Variable arguments
 * To indicate that a parameter can take variable number of arguments, use an asterisk after the last parameter's type.
@@ -60,6 +74,7 @@
 ### Operators
 * Scala doesn't have any operators, but only methods. Statement c1 + c2 results in a call to the + method on c1 with c2 as an argument to the method call - that's c1.+(c2).
 * Scala doesn't define precedence on operators; it defines precedence on methods. The first character of methods is used to define precedence on methods.
+* Operators (methods) are ususally left associative i.e. o1 op o2 is same as o1.op(o2), unless they end with : in which case, they are right associative. 
 
 
 ### Scala REPL

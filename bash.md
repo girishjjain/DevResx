@@ -26,10 +26,24 @@ less is a terminal pager command, lets you read content as pages instead of term
 
 ##### ssh
 ssh command starts SSSH client that establishes secure SSH connection to a remote SSH server. It provides secure encrypted connection between two hosts over an insecure network. Refer [here](https://www.ssh.com/ssh/command/) for more details. Usage:
-* ssh remotesshserver.com
-* ssh user@remotesshserver.com
-* ssh -p 2222 user@remotesshserveripaddress
+* `ssh remotesshserver.com`
+* `ssh user@remotesshserver.com`
+* `ssh -p 2222 user@remotesshserveripaddress`
 
+
+##### find 
+* find walks file hierarchy and prints each entry to terminal - you can use it to search for directories/files 
+    * `find .` to recursively walk file hierarchy from current directory
+    * `find /` to recursively walk file hierarchy from root directory
+     * `find ~` to recursively walk file hierarchy from user home directory
+     * `find . -type d` to recursively walk file hierarchy for *directories* from current directory
+     * `find . -type f` to recursively walk file hierarchy for *files* from current directory
+     * `find . -type f | grep fileName.ext` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match given file name
+     * `find . -type f | grep findStr` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
+     
+##### alias
+* alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
+    * `alias ls='ls -lah'` to setup a new alias for ls command that would show long listing, hidden files, and descriptive size
 
 
 ### Bash wildcards 
