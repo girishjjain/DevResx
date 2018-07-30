@@ -20,6 +20,9 @@
 * Functions that take functions as parameters
 * Higher-order functions provide a way to abstract the parts that do not change and take the part that change as a function argument, they provide a way to maximize code reusability. 
 
+### Currying
+* Functions that take their arguments one at a time are called curried functions
+
 
 ## Scala 
 

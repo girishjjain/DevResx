@@ -17,7 +17,9 @@ ls -R // Lists whole directory recursively
 cp -R // Copies everthing in the subdirectories recursively
 open . // Opens current working directory in Finder
 printenv // Prints all environment variables value
+rm -rf <dir-name> // Delete directory and its contents without prompting for confirmation
 ```
+
 ##### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
 * less -p <pattern> to search for a string pattern
