@@ -33,13 +33,14 @@
 
 ### In Scala
 * primitives in Java are objects in Scala
-* In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits.
+* In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits
 * classes can’t have static members, instead, Scala has Singleton objects
-* Scala implicitly imports members of packages java.lang and scala, as well as members of a singleton object named Predef, into every Scala source file
-* constructors other than primary constructor are called auxiliary constructors and very auxiliary constructor must invoke another constructor of the same class as its first action. Also, only primary constructor can invoke a superclass constructor.
+* Scala implicitly imports members of packages `java.lang` and `scala`, as well as members of a singleton object named `Predef`, into every Scala source file
+* constructors other than primary constructor are called auxiliary constructors and every auxiliary constructor must invoke another constructor of the same class as its first action. Also, only primary constructor can invoke a superclass constructor.
 * while and do-while constructs are called “loops”, not expressions, and their result type is Unit 
 * if statement yields a value 
 * assignment results in Unit value
+* you can define classes and singleton objects inside other classes and singleton objects  
 
 
 ### Syntax, In Scala:
@@ -49,7 +50,18 @@
 * The convention is that you include parentheses if method has side effects, such as println(), but leave them off if method has no side effects, such as toLowerCase on a String 
 * There is no need for explicit return (it's optional), the last expression becomes return value 
 * Any method invocation, in which you are passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses 
+* Imports in Scala can appear anywhere, not just at the beginning of a compilation unit. Also, they can refer to arbitrary values. For example, you can import all members of a parameter and subsequently refer to them directly without prefixing with parameter name (useful when we use objects as modules).
+* Unlike Java, no abstract modifier is necessary (or allowed) on method declarations. A method is abstract if it does not have an implementation (I.e. no equals sign or body)
+* Every member not labeled private or protected is public. There’s no explicit modifier for public
+* By convention, a var defined in class is interpreted by Scala as a pair of getter and setter methods. It chooses an arbitrary name for backing field. The getter for var x is named “x”, while it’s setter is namesd “x_”. You can override these default implementations of getter and setter methods by defining methods with the naming convention suggested above. There’s no separate syntax for getters and setters in Scala. 
 
+### Hierarchy
+* Every class inherits from a common superclass named Any
+* Just as Any is a superclass of every other class, Nothing is a subclass of every other class 
+* Type Nothing is at the very bottom of Scala’s class hierarchy; it is a subtype of every other type. However, there exists no values of this type whatsoever.
+* The root class Any has two subclasses: AnyVal and AnyRef. AnyVal is the parent class of every built-in value class in Scala. AnyRef is base class of all reference classes in Scala. On Java platform, AnyRef is just an alias for Object class.
+* Scala classes also inherit from a marker trait called ScalaObject.
+* Class Null is the type of null reference; it’s a subclass of every reference class. Null isn’t compatible with value types.
 
 ### Functions
 * In Scala, method parameters are vals (immutable) and not vars 
@@ -70,7 +82,7 @@
 
 
 ### Strings
-* Scala supports string interpolation, you can use s-interpolator which is leading s before double quotes. For a simple variable, prefix it with $ sign. For more complex expressions, place them in curly braces.
+* Scala supports string interpolation, you can use s-interpolator which is leading s before double quotes. For a simple variable expression, prefix it with $ sign. For more complex expressions, place them in curly braces.
 * To format the output, in addition to interpolating, use the f-interpolator.
 
 
@@ -107,19 +119,22 @@ sbt ~testOnly
 
 ### Case Classes  
 * Start with case modifier 
-* Scala compiler creates companion object and adds apply method 
-* All arguments in parameter list of case class are immutable  
+* Scala compiler creates companion object and adds apply method, which means we don’t have to use new keyword to create instance of case class 
+* All arguments in parameter list of case class are immutable and they implicitly get `val` prefix, so they are maintained as fields 
 * Scala compiler adds copy method to case class to make modified copies 
+* Compiler adds natural implementations of toString, hashCode, and equals to case class 
 
 
 ### Traits  
 * Traits are like interfaces in Java, but they can also have method implementations, and even fields.
 * Fundamental units of code reuse in Scala 
+* A class can mix in any number of traits
 * App is a trait provided by Scala library which by default provides a method called main, so when a singleton object extends App they get access to main method, that serves as entry point to program 
 
 
 ### Pattern Matching  
 * Pattern Matching is a mechanism for checking a value against a pattern
+* A pattern match includes a sequence of alternatives, each starting with the keyword case. Syntax: `selector match { alternatives }` 
 * A successful match can also deconstruct a value into its constituent parts. Its a more powerful version of switch statements and can also be used to simplify a series of if else statements. 
 * Structure of Pattern Match 
 ```
@@ -134,7 +149,24 @@ sbt ~testOnly
 * First match is applied/evaluated and rest are ignored 
 * When no match is found, Scala throws MatchError 
 * You can provide a default case to be executed when there is no match found, it is denoted using _ letter, remember to keep this as last case statement 
+* Wildcard pattern (_) matches every value, but it doesn’t introduce a variable name to refer to that value. 
+* Nil, a singleton object, is a pattern that matches only empty list  
+* Scala compiler uses a simple lexical rule to distinguish between a constant and variable identifiers in a pattern - a simple name starting with a lowercase letter is taken to be a pattern variable; all other references are taken to be constants. 
+* A sealed class cannot have any new subclasses added except the ones in the same file. This is very useful for pattern matching, because you only need to worry about the subclasses you already know about. You get better compiler support as well.
 
 
 ### Miscellaneous
+* Option type - Scala provides standard Option type for optional values. Compare it with get method of HashMap in Java where if a value is not found, it returns null but Scala returns Option[T]. It helps keep your code clean, more readable, and saves you from NullPointerException bugs. Scalia encourages use of Option to indicate optional value.
 * Apache Camel uses Scala for its DSL to create routing rules
+* Scalia treats arrays as nonvariant (rigid), so an Array[String] is not considered to conform to an Array[Any].
+* Scala supports four kinds of abstract members- vals, vars, methods, and types.
+* Use an abstract val when you don’t know the correct value in the class but you do know that the variable will have an unchangeable value in each instance of the class. 
+
+### Uniform access principle
+* Uniform access principle says that client code should not be affected by a decision to implement an attribute as a field or method. For example: 
+```
+“A”.length() vs 
+
+Array.length 
+```
+* Scala treats fields and methods more uniformly than Java. Although you can remove parentheses from a method invocation, remember convention is to use parentheses when invoking a method that causes side effects, for e.g. println method should always be invoked with parentheses as it doesn’t return a value but causes side effects - `println(“a”)`
