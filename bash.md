@@ -31,6 +31,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * `ssh remotesshserver.com`
 * `ssh user@remotesshserver.com`
 * `ssh -p 2222 user@remotesshserveripaddress`
+* `ssh fuzzle_dev@sftp-internal.rally-integration.werally.in -i ~/fuzzle_dev_id_rsa` - SSH to a host using given identity file containing privake key for user account specified
 
 
 ##### find 
@@ -40,8 +41,8 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
      * `find ~` to recursively walk file hierarchy from user home directory
      * `find . -type d` to recursively walk file hierarchy for *directories* from current directory
      * `find . -type f` to recursively walk file hierarchy for *files* from current directory
-     * `find . -type f | grep fileName.ext` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match given file name
-     * `find . -type f | grep findStr` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
+     * `find . -type f -name *partFileName.ext` to recursively walk file hierarchy for *files* from current directory to match given file name pattern
+     * `grep findStr $(find . -name *Parser.scala -type f)` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
      
 ##### alias
 * alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
