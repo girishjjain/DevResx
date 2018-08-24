@@ -101,7 +101,10 @@
 ### SBT (Scala Build Tool)
 * ```sbt``` is Scala build tool
 * sbt minus any arguments starts sbt shell
-* sbt shell has command prompt so you can run commands like ```compile``` and ```run```
+* sbt shell has command prompt so you can run commands like `compile` and `run`
+* To start console for current project, run `console` command
+* To see list of projects, run `projects` command
+* To set a project as current project, run `project <project-name>` command
 * To run sbt command in watch mode, where one or more source file changes triggers command to run, prefix command with ~ for e.g.
 ```
 ~testOnly
