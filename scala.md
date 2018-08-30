@@ -1,14 +1,27 @@
 # Overview
 * Scala is short for Scalable Language.
+* Scala is statically typed.
 * Scala is a blend of object-oriented and functional paradigm. Scala does not limit us to one programming style. We can program with objects, or in functional style, and also mix the two to get best of both worlds.
-* Expressions yield a value and don't cause any side effects whereas statements don't return a value and may cause side effects 
+* Scala is an object oriented language in pure form: every value is an object and every operation is a method call. For example, when you say `1 + 2` in Scala, you’re actually invoking a method named + defined in class Int (Scala doesn't have any operators but only methods, more on this later).
+* In addition to being a pure object oriented language, Scala is also a full blown functional language.
+* Scala goes further than all other well known languages in fusing object oriented and functional programming into a uniform language design. For instance, where other languages might have objects and functions as two different concepts, in Scala a function value **_is_** an object.
 * Scala compiles down to bytecode. We can extend Java classes from Scala classes, and vice versa. We can also use Java classes in Scala and Scala classes in Java.
 
 ## Functional Programming Overview
+* Functions are first class values:
+  * A function is a value of the same status as, say, an integer or a string
+  * You can pass functions as arguments to other functions, return them as results from functions, or store them in variables
+  * You can also define a function inside other function, just as you can define an integer value inside a function
+  * You can define functions without giving them a name, sprinkling your code with function literals as easily as you might write integer literal like 41
+* Immutable data structures are one of the cornerstones of functional programming. Scala libraries define many immutable data types such as lists, tuples, maps, and sets.
+* Core idea with immutability is that methods should not have any side effects. They should communicate with their environment only by taking arguments and returning results.
+* Functional languages encourage immutable data structures and referentially transparent methods.
+
 
 ### Functions
 * Pure functions evaluate to same result for a given set of inputs. 
 * Impure functions do not always evaluate to same output for given set of inputs 
+* Expressions yield a value and don't cause any side effects whereas statements don't return a value and may cause side effects 
 
   
 ### Referential Transparency
@@ -24,15 +37,19 @@
 * Functions that take their arguments one at a time are called curried functions
 
 
-## Scala 
+## Scala
 
 ### Scala variables 
-* var - assignment can change 
-* val - assignment can not change 
+* Scala has two kinds of variables
+  * var - assignment can change 
+  * val - assignment can not change
+* A val is similar to final variable in Java
+* When you define a variable with val, the variable can’t be reassigned, but the object to which it refers could potentially still be changed. For example, a val pointing to an array can't be reassigned but elements in the array can still be updated.
 
 
 ### In Scala
 * primitives in Java are objects in Scala
+* arrays are zero based, and you access an element by specifying an index in parentheses. For example, arr(0) and not arr[0], as in Java. Scala doesn’t introduce new syntax for accessing Array elements, you use parentheses (which is simply invocation of apply method) to access elements, just like calling a method on object.
 * In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits
 * classes can’t have static members, instead, Scala has Singleton objects
 * Scala implicitly imports members of packages `java.lang` and `scala`, as well as members of a singleton object named `Predef`, into every Scala source file
@@ -45,13 +62,51 @@
 
 ### Syntax, In Scala:
 * Semicolon are optional
+```
+    val numFive = 5
+    println(numFive)
+```
 * Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2
+```
+    val s1 = "Hi"
+    val s2 = "hi"
+
+    val result = s1 equals s2
+    println(result)
+```
 * You can drop both the dot and the parentheses if a method takes either zero or one parameter. If a method takes more than one parameter, you must use the parentheses, but the dot is still optional.
 * The convention is that you include parentheses if method has side effects, such as println(), but leave them off if method has no side effects, such as toLowerCase on a String 
-* There is no need for explicit return (it's optional), the last expression becomes return value 
-* Any method invocation, in which you are passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses 
+* There is no need for explicit return (it's optional), the last expression becomes return value
+```
+    def addOne(n1: Int) = {
+        n1 + 1
+    }
+
+    println(addOne(4))
+``` 
+* Any method invocation, in which you are passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses (useful when using currying technique to pass function literal for one of the argument)
+```
+    def addOne(n1: Int) = {
+        n1 + 1
+    }
+
+    println(addOne{4})
+```
 * Imports in Scala can appear anywhere, not just at the beginning of a compilation unit. Also, they can refer to arbitrary values. For example, you can import all members of a parameter and subsequently refer to them directly without prefixing with parameter name (useful when we use objects as modules).
-* Unlike Java, no abstract modifier is necessary (or allowed) on method declarations. A method is abstract if it does not have an implementation (I.e. no equals sign or body)
+```
+    def maxOfIntegers(n1: Int, n2: Int): Int = {
+        import scala.math._
+        max (n1, n2)
+    }
+
+    println(maxOfIntegers(1, 2))
+```
+* Unlike Java, no abstract modifier is necessary (or allowed) on method declarations. A method is abstract if it does not have an implementation (i.e. no equals sign or body)
+```
+    abstract class AbstractClass { 
+        def abstractMethod
+    }
+```
 * Every member not labeled private or protected is public. There’s no explicit modifier for public
 * By convention, a var defined in class is interpreted by Scala as a pair of getter and setter methods. It chooses an arbitrary name for backing field. The getter for var x is named “x”, while it’s setter is namesd “x_”. You can override these default implementations of getter and setter methods by defining methods with the naming convention suggested above. There’s no separate syntax for getters and setters in Scala. 
 
@@ -159,7 +214,7 @@ sbt ~testOnly
 
 
 ### Miscellaneous
-* Option type - Scala provides standard Option type for optional values. Compare it with get method of HashMap in Java where if a value is not found, it returns null but Scala returns Option[T]. It helps keep your code clean, more readable, and saves you from NullPointerException bugs. Scalia encourages use of Option to indicate optional value.
+* Option type - Scala provides standard `Option` type for optional values. Compare it with get method of `HashMap` in Java where if a value is not found, it returns null but Scala returns Option[T]. It helps keep your code clean, more readable, and saves you from NullPointerException bugs. Scalia encourages use of Option to indicate optional value.
 * Apache Camel uses Scala for its DSL to create routing rules
 * Scalia treats arrays as nonvariant (rigid), so an Array[String] is not considered to conform to an Array[Any].
 * Scala supports four kinds of abstract members- vals, vars, methods, and types.
