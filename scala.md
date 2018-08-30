@@ -66,12 +66,9 @@
     val numFive = 5
     println(numFive)
 ```
-* Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2
+* Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2, or:
 ```
-    val s1 = "Hi"
-    val s2 = "hi"
-
-    val result = s1 equals s2
+    val result = "Hi" equals "hi"
     println(result)
 ```
 * You can drop both the dot and the parentheses if a method takes either zero or one parameter. If a method takes more than one parameter, you must use the parentheses, but the dot is still optional.
@@ -107,7 +104,7 @@
         def abstractMethod
     }
 ```
-* Every member not labeled private or protected is public. There’s no explicit modifier for public
+* Every member not labeled private or protected is public. There’s no explicit modifier for public.
 * By convention, a var defined in class is interpreted by Scala as a pair of getter and setter methods. It chooses an arbitrary name for backing field. The getter for var x is named “x”, while it’s setter is namesd “x_”. You can override these default implementations of getter and setter methods by defining methods with the naming convention suggested above. There’s no separate syntax for getters and setters in Scala. 
 
 ### Hierarchy
@@ -132,7 +129,7 @@
 
 ### Return Types
 * In Java, the type of the value returned from a method is its return type. In Scala, that same concept is called result type. 
-* A result type of ```Unit``` indicates the function returns no interesting value. Scala’s ```Unit``` type is similar to Java’s void type. 
+* A result type of `Unit` indicates the function returns no interesting value. Scala’s `Unit` type is similar to Java’s `void` type. 
 
 
 
@@ -144,17 +141,17 @@
 ### Operators
 * Scala doesn't have any operators, but only methods. Statement c1 + c2 results in a call to the + method on c1 with c2 as an argument to the method call - that's c1.+(c2).
 * Scala doesn't define precedence on operators; it defines precedence on methods. The first character of methods is used to define precedence on methods.
-* Operators (methods) are ususally left associative i.e. o1 op o2 is same as o1.op(o2), unless they end with : in which case, they are right associative. 
+* Operators (methods) are ususally left associative i.e. o1 op o2 is same as o1.op(o2), unless they end with : in which case, they are right associative. For example: `val l = 1 :: Nil` the :: method (called "cons" operator) associates to the right. It is same as `val l = Nil.::(1)` (Nil is an instance of empty list).
 
 
 ### Scala REPL
-* The ```scala``` command can run in two modes, as an interactive shell or in batch mode. If we don't provide any arguments, the scala command brings up the interactive shell. However, if we provide a file name then it runs the code in it within a stand-alone JVM. You could provide a script file or a compiler-generated .class file.
+* The `scala` command can run in two modes, as an interactive shell or in batch mode. If we don't provide any arguments, the scala command brings up the interactive shell. However, if we provide a file name then it runs the code in it within a stand-alone JVM. You could provide a script file or a compiler-generated .class file.
 * To load an existing class in Scala REPL use :load FileName.scala  
 * To enter paste mode use :paste and then press ^D to exit from paste mode 
 * You can view the bytecode generated during the execution of the scala command using the -savecompiled option before the file name and the tool will save it to a JAR file
 
 ### SBT (Scala Build Tool)
-* ```sbt``` is Scala build tool
+* `sbt` is Scala build tool
 * sbt minus any arguments starts sbt shell
 * sbt shell has command prompt so you can run commands like `compile` and `run`
 * To start console for current project, run `console` command
