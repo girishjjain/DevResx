@@ -108,12 +108,13 @@
 * By convention, a var defined in class is interpreted by Scala as a pair of getter and setter methods. It chooses an arbitrary name for backing field. The getter for var x is named “x”, while it’s setter is namesd “x_”. You can override these default implementations of getter and setter methods by defining methods with the naming convention suggested above. There’s no separate syntax for getters and setters in Scala. 
 
 ### Hierarchy
-* Every class inherits from a common superclass named Any
-* Just as Any is a superclass of every other class, Nothing is a subclass of every other class 
-* Type Nothing is at the very bottom of Scala’s class hierarchy; it is a subtype of every other type. However, there exists no values of this type whatsoever.
-* The root class Any has two subclasses: AnyVal and AnyRef. AnyVal is the parent class of every built-in value class in Scala. AnyRef is base class of all reference classes in Scala. On Java platform, AnyRef is just an alias for Object class.
-* Scala classes also inherit from a marker trait called ScalaObject.
-* Class Null is the type of null reference; it’s a subclass of every reference class. Null isn’t compatible with value types.
+* Every class inherits from a common superclass named `Any`
+* Just as `Any` is a superclass of every other class, `Nothing` is a subclass of every other class 
+* Type `Nothing` is at the very bottom of Scala’s class hierarchy; it is a subtype of every other type. However, there exists no values of this type whatsoever.
+* The root class `Any` has two subclasses: `AnyVal` and `AnyRef`. `AnyVal` is the parent class of every built-in value class in Scala. `AnyRef` is base class of all reference classes in Scala. On Java platform, `AnyRef` is just an alias for `Object` class.
+* Scala classes also inherit from a marker trait called `ScalaObject`.
+* Class `Null` is the type of `null` reference; it’s a subclass of every reference class. Null isn’t compatible with value types.
+* `Null` is provided mostly for interoperability with other JVM languages and should almost never be used in Scala code.
 
 ### Functions
 * In Scala, method parameters are vals (immutable) and not vars 
