@@ -63,8 +63,8 @@
 ### Syntax, In Scala:
 * Semicolon are optional
 ```
-    val numFive = 5
-    println(numFive)
+    val five = 5
+    println(five)
 ```
 * Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2, or:
 ```
@@ -92,8 +92,8 @@
 * Imports in Scala can appear anywhere, not just at the beginning of a compilation unit. Also, they can refer to arbitrary values. For example, you can import all members of a parameter and subsequently refer to them directly without prefixing with parameter name (useful when we use objects as modules).
 ```
     def maxOfIntegers(n1: Int, n2: Int): Int = {
-        import scala.math._
-        max (n1, n2)
+        import scala.math._     // you can use import here
+        max (n1, n2)            // max works because of the earlier import
     }
 
     println(maxOfIntegers(1, 2))
@@ -143,7 +143,26 @@
 * Scala doesn't have any operators, but only methods. Statement c1 + c2 results in a call to the + method on c1 with c2 as an argument to the method call - that's c1.+(c2).
 * Scala doesn't define precedence on operators; it defines precedence on methods. The first character of methods is used to define precedence on methods.
 * Operators (methods) are ususally left associative i.e. o1 op o2 is same as o1.op(o2), unless they end with : in which case, they are right associative. For example: `val l = 1 :: Nil` the :: method (called "cons" operator) associates to the right. It is same as `val l = Nil.::(1)` (Nil is an instance of empty list).
+* Equality comparison using `==` works slightly different in Scala than Java. For value types, it would compare underlying values, as it does in Java. For referenece types, the implementation differs. In Java, `==` would alway do reference equality comparison i.e., whether two objects are referring to same instance, whereas in Scala, `==` is defined as a method in `AnyRef` class (so all reference types inherit this method) and it invokes `equals` method on underlying type. If a type doesn't override `equals` method then default implementation from `AnyRef` would be invoked, which does reference equality comparison. String For example:
+> Java
+```
+    import static java.lang.System.out;
 
+    public class Playground {
+        public static void main(String[] args) {
+            String s1 = "Hi";
+            String s2 = "Hi";
+            out.println(s1 == s2);                              // true because String literals are interned
+            out.println(new String("Hi") == new String("Hi"));  // false because they are separate instances
+        }
+    }    
+``` 
+> Scala
+```
+    new String("Hi") == new String("Hi")    // true (false in Java)
+```
+* It means you can use `==` consistently with value and reference types and don't have to worry about handling special cases, as in Java.
+* If you want reference equality comparison then use `eq`, for example, `o1 eq o2` or it opposite `ne`. 
 
 ### Scala REPL
 * The `scala` command can run in two modes, as an interactive shell or in batch mode. If we don't provide any arguments, the scala command brings up the interactive shell. However, if we provide a file name then it runs the code in it within a stand-alone JVM. You could provide a script file or a compiler-generated .class file.
