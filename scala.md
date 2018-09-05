@@ -8,7 +8,7 @@
 * Scala compiles down to bytecode. We can extend Java classes from Scala classes, and vice versa. We can also use Java classes in Scala and Scala classes in Java.
 
 ## Functional Programming Overview
-* Functions are first class values:
+* Functions are first class values, and that means:
   * A function is a value of the same status as, say, an integer or a string
   * You can pass functions as arguments to other functions, return them as results from functions, or store them in variables
   * You can also define a function inside other function, just as you can define an integer value inside a function
@@ -41,10 +41,10 @@
 
 ### Scala variables 
 * Scala has two kinds of variables
-  * var - assignment can change 
-  * val - assignment can not change
-* A val is similar to final variable in Java
-* When you define a variable with val, the variable can’t be reassigned, but the object to which it refers could potentially still be changed. For example, a val pointing to an array can't be reassigned but elements in the array can still be updated.
+  * `var` - assignment can change 
+  * `val` - assignment can not change
+* A `val` is similar to `final` variable in Java
+* When you define a variable with `val`, the variable can’t be reassigned, but the object to which it refers could potentially still be changed. For example, a `val` pointing to an array can't be reassigned but elements in the array can still be updated.
 
 
 ### In Scala
@@ -53,12 +53,12 @@
 * In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits
 * classes can’t have static members, instead, Scala has Singleton objects
 * Scala implicitly imports members of packages `java.lang` and `scala`, as well as members of a singleton object named `Predef`, into every Scala source file
-* constructors other than primary constructor are called auxiliary constructors and every auxiliary constructor must invoke another constructor of the same class as its first action. Also, only primary constructor can invoke a superclass constructor.
 * while and do-while constructs are called “loops”, not expressions, and their result type is Unit 
 * if statement yields a value 
 * assignment results in Unit value
 * you can define classes and singleton objects inside other classes and singleton objects  
-
+* you can name .scala file anything you want, unlike Java, which requires you to put a public class in a file named after the class
+* constants are named using camel case, for example, XOffset. This is unlike Java, which follows convention of naming constants with all upper case letters.
 
 ### Syntax, In Scala:
 * Semicolon are optional
@@ -105,6 +105,28 @@
     }
 ```
 * Every member not labeled private or protected is public. There’s no explicit modifier for public.
+* Classes and constructors - In Java, classes have constructors, which can take parameters, whereas in Scala, classes can take parameters directly. The Scala notation is more concise- there’s no need to define fields and write assignments that copy constructor parameters into fields. For example, below code defines a new class named `Employee` with the constructor that takes employee name (string) as an argument and a property getter method for same. Following examples are similar:
+> Scala
+```
+    class Employee(val name: String)
+```
+> Java
+ ```
+    class Employee {
+        private String name;
+        
+        public Employee(String name) {
+            this.name = name;
+        }
+        
+        public String getName() {
+            return this.name;
+        }
+    }    
+ ```
+* Constructors other than primary constructor are called auxiliary constructors and every auxiliary constructor must invoke another constructor of the same class as its first action. Auxiliary constructors start with `def this(...)`
+* Only primary constructor can invoke a superclass constructor.
+* Scala compiler will compile any code you place in the class body, which isn’t part of a field or a method definition, into the primary constructor.
 * By convention, a var defined in class is interpreted by Scala as a pair of getter and setter methods. It chooses an arbitrary name for backing field. The getter for var x is named “x”, while it’s setter is namesd “x_”. You can override these default implementations of getter and setter methods by defining methods with the naming convention suggested above. There’s no separate syntax for getters and setters in Scala. 
 
 ### Hierarchy
