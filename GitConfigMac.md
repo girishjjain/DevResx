@@ -32,4 +32,5 @@ git config --global mergetool.p4mergetool.cmd "/Applications/p4merge.app/Content
 git config --global difftool.meld.cmd 'open -W -a Meld --args "$LOCAL" "$REMOTE"'
 git config --global difftool.meld.trustExitCode true
 git config --global alias.ddft 'difftool --tool meld --dir-diff'
+git config --global difftool.intellij.cmd 'idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")'
 ```
