@@ -11,6 +11,13 @@
 * Absolute paths start with / (which is root)
 * Relative paths don't start with / and are resolved relative to current directory
 
+### Environment Variables
+* To list all environment variables use `printenv` 
+* To list all environment variables that contain given string `printenv | grep partString`
+* To display value of a specific environment variable `echo $envvarname`
+* To set an environment variable 
+  * `echo "export MY_ENV_VAR=\"new value\"" >> ~/.bash_profile && source ~/.bash_profile`
+
 ### Commands
 ```
 ls -R // Lists whole directory recursively
