@@ -43,14 +43,15 @@
 * Scala has two kinds of variables
   * `var` - assignment can change 
   * `val` - assignment can not change
-* A `val` is similar to `final` variable in Java
+* A `val` is similar to `final` variable in Java. 
 * When you define a variable with `val`, the variable can’t be reassigned, but the object to which it refers could potentially still be changed. For example, a `val` pointing to an array can't be reassigned but elements in the array can still be updated.
+* Look for opportunities to use vals. They can make your code both easier to read and easier to refactor.
 
 
 ### In Scala
 * primitives in Java are objects in Scala
 * arrays are zero based, and you access an element by specifying an index in parentheses. For example, arr(0) and not arr[0], as in Java. Scala doesn’t introduce new syntax for accessing Array elements, you use parentheses (which is simply invocation of apply method) to access elements, just like calling a method on object.
-* In Java, you “implement” interface, in Scala, you “extend” or “mix in” traits
+* In Java, you “implement” interface, in Scala, you “extend” or “mixin” traits
 * classes can’t have static members, instead, Scala has Singleton objects
 * Scala implicitly imports members of packages `java.lang` and `scala`, as well as members of a singleton object named `Predef`, into every Scala source file
 * while and do-while constructs are called “loops”, not expressions, and their result type is Unit 
@@ -81,6 +82,7 @@
 
     println(addOne(4))
 ``` 
+* Scala does not require you to catch checked exceptions, or declare them in a throws clause. You can declare a throws clause if you wish with the @throws annotation, but it is not required.
 * Any method invocation, in which you are passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses (useful when using currying technique to pass function literal for one of the argument)
 ```
     def addOne(n1: Int) = {
@@ -132,7 +134,7 @@
 ### Hierarchy
 * Every class inherits from a common superclass named `Any`
 * Just as `Any` is a superclass of every other class, `Nothing` is a subclass of every other class 
-* Type `Nothing` is at the very bottom of Scala’s class hierarchy; it is a subtype of every other type. However, there exists no values of this type whatsoever.
+* Type `Nothing` is at the very bottom of Scala’s class hierarchy; it is a subtype of every other type. However, there exists no values of this type whatsoever. Technically, an exception throw has type `Nothing`.
 * The root class `Any` has two subclasses: `AnyVal` and `AnyRef`. `AnyVal` is the parent class of every built-in value class in Scala. `AnyRef` is base class of all reference classes in Scala. On Java platform, `AnyRef` is just an alias for `Object` class.
 * Scala classes also inherit from a marker trait called `ScalaObject`.
 * Class `Null` is the type of `null` reference; it’s a subclass of every reference class. Null isn’t compatible with value types.
@@ -152,8 +154,7 @@
 
 ### Return Types
 * In Java, the type of the value returned from a method is its return type. In Scala, that same concept is called result type. 
-* A result type of `Unit` indicates the function returns no interesting value. Scala’s `Unit` type is similar to Java’s `void` type. 
-
+* A result type of `Unit` indicates the function returns no interesting value. Scala’s `Unit` type is similar to Java’s `void` type. There’s one value of type `Unit` that exists; it’s called unit value and is written `()`. The existence of `()` is how Scala’s `Unit` differs from Java’s void.
 
 
 ### Strings
@@ -165,9 +166,9 @@
 * Scala doesn't have any operators, but only methods. Statement c1 + c2 results in a call to the + method on c1 with c2 as an argument to the method call - that's c1.+(c2).
 * Scala doesn't define precedence on operators; it defines precedence on methods. The first character of methods is used to define precedence on methods.
 * Operators (methods) are ususally left associative i.e. o1 op o2 is same as o1.op(o2), unless they end with : in which case, they are right associative. For example: `val l = 1 :: Nil` the :: method (called "cons" operator) associates to the right. It is same as `val l = Nil.::(1)` (Nil is an instance of empty list).
-* Equality comparison using `==` works slightly different in Scala than Java. For value types, it would compare underlying values, as it does in Java. For referenece types, the implementation differs. In Java, `==` would alway do reference equality comparison i.e., whether two objects are referring to same instance, whereas in Scala, `==` is defined as a method in `AnyRef` class (so all reference types inherit this method) and it invokes `equals` method on underlying type. If a type doesn't override `equals` method then default implementation from `AnyRef` would be invoked, which does reference equality comparison. String For example:
+* Equality comparison using `==` works slightly different in Scala than Java. For value types, it would compare underlying values, as it does in Java. For referenece types, the implementation differs. In Java, `==` would always do reference equality comparison i.e., whether two objects are referring to same instance, whereas in Scala, `==` is defined as a method in `AnyRef` class (so all reference types inherit this method) and it invokes `equals` method on underlying type. If a type doesn't override `equals` method then default implementation from `AnyRef` would be invoked, which does reference equality comparison. For reference types other than Java’s boxed numeric types, == is treated as an alias of equals method inherited from Object, but is overridden by many subclasses to implement their natural notion of equality, for e.g. String class. For example:
 > Java
-```
+```scala
     import static java.lang.System.out;
 
     public class Playground {
