@@ -63,19 +63,19 @@
 
 ### Syntax, In Scala:
 * Semicolon are optional
-```
+```scala
     val five = 5
     println(five)
 ```
 * Depending on the context, the dot operator (.) is optional as well, and so are the parentheses. Thus, instead of writing s1.equals(s2);, we can write s1 equals s2, or:
-```
+```scala
     val result = "Hi" equals "hi"
     println(result)
 ```
 * You can drop both the dot and the parentheses if a method takes either zero or one parameter. If a method takes more than one parameter, you must use the parentheses, but the dot is still optional.
 * The convention is that you include parentheses if method has side effects, such as println(), but leave them off if method has no side effects, such as toLowerCase on a String 
 * There is no need for explicit return (it's optional), the last expression becomes return value
-```
+```scala
     def addOne(n1: Int) = {
         n1 + 1
     }
@@ -84,7 +84,7 @@
 ``` 
 * Scala does not require you to catch checked exceptions, or declare them in a throws clause. You can declare a throws clause if you wish with the @throws annotation, but it is not required.
 * Any method invocation, in which you are passing in exactly one argument, you can opt to use curly braces to surround the argument instead of parentheses (useful when using currying technique to pass function literal for one of the argument)
-```
+```scala
     def addOne(n1: Int) = {
         n1 + 1
     }
@@ -92,7 +92,7 @@
     println(addOne{4})
 ```
 * Imports in Scala can appear anywhere, not just at the beginning of a compilation unit. Also, they can refer to arbitrary values. For example, you can import all members of a parameter and subsequently refer to them directly without prefixing with parameter name (useful when we use objects as modules).
-```
+```scala
     def maxOfIntegers(n1: Int, n2: Int): Int = {
         import scala.math._     // you can use import here
         max (n1, n2)            // max works because of the earlier import
@@ -101,7 +101,7 @@
     println(maxOfIntegers(1, 2))
 ```
 * Unlike Java, no abstract modifier is necessary (or allowed) on method declarations. A method is abstract if it does not have an implementation (i.e. no equals sign or body)
-```
+```scala
     abstract class AbstractClass { 
         def abstractMethod
     }
@@ -109,11 +109,11 @@
 * Every member not labeled private or protected is public. There’s no explicit modifier for public.
 * Classes and constructors - In Java, classes have constructors, which can take parameters, whereas in Scala, classes can take parameters directly. The Scala notation is more concise- there’s no need to define fields and write assignments that copy constructor parameters into fields. For example, below code defines a new class named `Employee` with the constructor that takes employee name (string) as an argument and a property getter method for same. Following examples are similar:
 > Scala
-```
+```scala
     class Employee(val name: String)
 ```
 > Java
- ```
+ ```java
     class Employee {
         private String name;
         
@@ -168,7 +168,7 @@
 * Operators (methods) are ususally left associative i.e. o1 op o2 is same as o1.op(o2), unless they end with : in which case, they are right associative. For example: `val l = 1 :: Nil` the :: method (called "cons" operator) associates to the right. It is same as `val l = Nil.::(1)` (Nil is an instance of empty list).
 * Equality comparison using `==` works slightly different in Scala than Java. For value types, it would compare underlying values, as it does in Java. For referenece types, the implementation differs. In Java, `==` would always do reference equality comparison i.e., whether two objects are referring to same instance, whereas in Scala, `==` is defined as a method in `AnyRef` class (so all reference types inherit this method) and it invokes `equals` method on underlying type. If a type doesn't override `equals` method then default implementation from `AnyRef` would be invoked, which does reference equality comparison. For reference types other than Java’s boxed numeric types, == is treated as an alias of equals method inherited from Object, but is overridden by many subclasses to implement their natural notion of equality, for e.g. String class. For example:
 > Java
-```scala
+```java
     import static java.lang.System.out;
 
     public class Playground {
@@ -181,7 +181,7 @@
     }    
 ``` 
 > Scala
-```
+```scala
     new String("Hi") == new String("Hi")    // true (false in Java)
 ```
 * It means you can use `==` consistently with value and reference types and don't have to worry about handling special cases, as in Java.
@@ -235,7 +235,7 @@ sbt ~testOnly
 * A pattern match includes a sequence of alternatives, each starting with the keyword case. Syntax: `selector match { alternatives }` 
 * A successful match can also deconstruct a value into its constituent parts. Its a more powerful version of switch statements and can also be used to simplify a series of if else statements. 
 * Structure of Pattern Match 
-```
+```scala
     <objectToMatch> match { 
 
         case <pattern1> => // body to follow 
@@ -262,7 +262,7 @@ sbt ~testOnly
 
 ### Uniform access principle
 * Uniform access principle says that client code should not be affected by a decision to implement an attribute as a field or method. For example: 
-```
+```scala
 “A”.length() vs 
 
 Array.length 
