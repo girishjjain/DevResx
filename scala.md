@@ -50,7 +50,7 @@
 
 ### In Scala
 * primitives in Java are objects in Scala
-* arrays are zero based, and you access an element by specifying an index in parentheses. For example, arr(0) and not arr[0], as in Java. Scala doesn’t introduce new syntax for accessing Array elements, you use parentheses (which is simply invocation of apply method) to access elements, just like calling a method on object.
+* arrays are zero based, and you access an element by specifying an index in parentheses. For example, `arr(0)` and not `arr[0]`, as in Java. Scala doesn’t introduce new syntax for accessing Array elements, you use parentheses (which is simply invocation of apply method) to access elements, just like calling a method on object.
 * In Java, you “implement” interface, in Scala, you “extend” or “mixin” traits
 * classes can’t have static members, instead, Scala has Singleton objects
 * Scala implicitly imports members of packages `java.lang` and `scala`, as well as members of a singleton object named `Predef`, into every Scala source file
@@ -256,7 +256,7 @@ sbt ~testOnly
 ### Miscellaneous
 * Option type - Scala provides standard `Option` type for optional values. Compare it with get method of `HashMap` in Java where if a value is not found, it returns null but Scala returns Option[T]. It helps keep your code clean, more readable, and saves you from NullPointerException bugs. Scalia encourages use of Option to indicate optional value.
 * Apache Camel uses Scala for its DSL to create routing rules
-* Scalia treats arrays as nonvariant (rigid), so an Array[String] is not considered to conform to an Array[Any].
+* Scala treats arrays as nonvariant (rigid), so an Array[String] is not considered to conform to an Array[Any].
 * Scala supports four kinds of abstract members- vals, vars, methods, and types.
 * Use an abstract val when you don’t know the correct value in the class but you do know that the variable will have an unchangeable value in each instance of the class. 
 
