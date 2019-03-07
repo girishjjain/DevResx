@@ -22,8 +22,8 @@ git config --global alias.ql "log -9 --oneline --decorate"
 git config --global alias.dfh "difftool --no-prompt HEAD^"
 git config --global alias.br branch
 git config --global alias.pl "log --graph --pretty=format:'%C(dim green)%h%Creset %Cgreen(%cr) -%C(magenta)%d%Creset %C(cyan)%s%Creset %C(yellow)<%an>%Creset' --abbrev-commit -10"
-git config --global diff.tool p4merge
-git config --global diff.guitool p4merge
+git config --global diff.tool vscode
+git config --global diff.guitool vscode
 git config --global merge.tool p4merge
 git config --global merge.guitool p4merge
 git config --global difftool.p4merge.cmd '/Applications/p4merge.app/Contents/Resources/launchp4merge $LOCAL $REMOTE'
@@ -33,4 +33,5 @@ git config --global difftool.meld.cmd 'open -W -a Meld --args "$LOCAL" "$REMOTE"
 git config --global difftool.meld.trustExitCode true
 git config --global alias.ddft 'difftool --tool meld --dir-diff'
 git config --global difftool.intellij.cmd 'idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")'
+git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 ```
