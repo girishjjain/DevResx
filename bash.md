@@ -29,7 +29,7 @@ rm -rf <dir-name> // Delete directory and its contents without prompting for con
 
 ##### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
-* less -p <pattern> to search for a string pattern
+* `less -p <pattern>` to search for a string pattern
 * within less use n key to continue searching forward 
 * Refer [here](https://en.wikipedia.org/wiki/Less_(Unix)) for detailed less commands 
 
@@ -39,6 +39,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * `ssh user@remotesshserver.com`
 * `ssh -p 2222 user@remotesshserveripaddress`
 * `ssh fuzzle_dev@sftp-internal.rally-integration.werally.in -i ~/fuzzle_dev_id_rsa` - SSH to a host using given identity file containing privake key for user account specified
+* `ssh-keyscan -H jump-phi.werally.in >> ~/.ssh/known_hosts` - Add remote host fingerprint to known_hosts file (beaware this does not prevent man-in-the-middle attack)
 
 
 ##### find 
@@ -57,26 +58,21 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 
 
 ### Bash wildcards 
-
 * \* matches anything, including nothing at all 
 * ? matches exactly a single character 
 * [] matches one of the characters in the list, for e.g. [acd7_] would match either a, c, d, 7, or _ character and nothing else. You can negate the list of characters by starting the list with ^ character. Ranges work well too, for e.g. [a-z], [0-9], [A-C3-9]
-
   
 
 ### Brace Expansion 
 * Helps with generating strings, its syntax takes following form: pre{list,of,string}post 
 * Bash would expand each string within curly brace with pre and post string, for e.g. touch {a,b,c}.txt would be expanded to touch a.txt b.txt c.txt 
 * Brace expansion comes before wildcard expansion 
-
   
 
 ### Output Redirection 
 * \> You can redirect standard outout stream using greater than command > it saves output of command to file, for e.g. ls > listing.txt saves output of ls command to file listing.txt 
-
 * \>> Appends output to end of file 
 
-  
 
 ### Pipe  
 * Sends output of one program as input to another program 
@@ -84,7 +80,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 
 ### Command Substitution  
 * Replace a command with its output 
-* Put command between $() for e.g. echo "hello ${whoami)" would result in bash executing whoami command and replacing it in echo command 
+* Put command between $() for e.g. `echo "hello $(whoami)"` would result in bash executing whoami command and replacing it in echo command 
 
 
 ### Jobs and Processes  
@@ -103,3 +99,6 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 ```
 * Use jobs command to see list of all running jobs 
 * Use ps command to see list of all running processes under a terminal
+
+##### killall
+* You can kill a process by name, instead of process ID (PID), by using `killall` command. For e.g. `killall ZoomOpener`
