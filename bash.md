@@ -19,13 +19,13 @@
   * `echo "export MY_ENV_VAR=\"new value\"" >> ~/.bash_profile && source ~/.bash_profile`
 
 ### Commands
-```
-ls -R // Lists whole directory recursively
-cp -R // Copies everthing in the subdirectories recursively
-open . // Opens current working directory in Finder
-printenv // Prints all environment variables value
-rm -rf <dir-name> // Delete directory and its contents without prompting for confirmation
-```
+| Command | Description |
+|--|--|
+| `ls -R` | Lists whole directory recursively |
+| `cp -R` | Copies everthing in the subdirectories recursively |
+| `open .` | Opens current working directory in Finder |
+| `rm -rf <dir-name>` | Delete directory and its contents without prompting for confirmation |
+| `lsof -i:8090` | Lists open processes on given port number |
 
 ##### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
@@ -101,4 +101,4 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * Use ps command to see list of all running processes under a terminal
 
 ##### killall
-* You can kill a process by name, instead of process ID (PID), by using `killall` command. For e.g. `killall ZoomOpener`
+* You can kill a process by name by using `killall` command. For e.g. `killall ZoomOpener`
