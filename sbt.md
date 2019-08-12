@@ -101,8 +101,11 @@ project/
     lazy val root = (project in file(".")).settings(
       hello := { println("Hello!") }
     )
-
   ```
+  * Appending Values - Assignment with `:=` is the simplest but if the key's value type is a sequence, you can append to sequence rather than replacing it:
+    * `+=` will append a single element to sequence
+    * `++=` will concatenate another sequence
+
 * Types for tasks and settings
   * From a type-system perspective
     * `settingKey := 41` results in `SettingKey[T]`
@@ -226,11 +229,6 @@ project/
   * An advanced technique for factoring out common setttings across subprojects is to define settings scoped to `ThisBuild`
   * If a key scoped to a particular subproject is not found, sbt will look for it in `ThisBuild` as a fallback
   * Not recommended to use build-level settings beyond simple value assignments
-
-## Appending Values
-  * Assignment with `:=` is the simplest but if the key's value type is a sequence, you can append to sequence rather than replacing it:
-    * `+=` will append a single element to sequence
-    * `++=` will concatenate another sequence
 
 
 ## Multi-Project Builds
@@ -365,11 +363,9 @@ project/
 
 
 # References
+  * [SBT Documentation](https://www.scala-sbt.org/0.13/docs/index.html)
   * Use `@scala_sbt` for questions and discussions on Twitter
 
-
-## TODO
-* Create a task key that compiles entire source code, src/main, src/test, and src/it directory
 
 ### Questions/Doubts
 ```

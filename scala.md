@@ -23,12 +23,12 @@
 * Impure functions do not always evaluate to same output for given set of inputs 
 * Expressions yield a value and don't cause any side effects whereas statements don't return a value and may cause side effects 
 
-  
+
 ### Referential Transparency
 * Referential transparency applies to both expressions and functions 
 * An expression or function is called referentially transparent if it can be replaced with its value, without changing the algorithm, yielding same output as when they were called without their value replacement. 
 
-  
+
 ### Higher-Order Functions
 * Functions that take functions as parameters
 * Higher-order functions provide a way to abstract the parts that do not change and take the part that change as a function argument, they provide a way to maximize code reusability. 

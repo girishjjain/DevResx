@@ -174,3 +174,8 @@ lazy val config: Configuration = Configuration(ConfigFactory.load("application.c
 
 #### Slick
 * Slick is a Scala library for accessing relational database using an interface similar to Scala collections library.
+
+
+#### GitHub Search
+* [Searching Code in GitHub](https://help.github.com/en/articles/searching-code)
+* An example: `org:AudaxHealthInc "extends Table" in:file "json" in:file extension:scala`

@@ -6,7 +6,8 @@
 | `git log --full-history  -- myfile` | Full history of file, even if the file was deleted |
 | `git show sha1Hash -- path/to/file` | Show contents of a certain file in a commit |
 | `git show sha1Hash:path/to/file` | Show contents of a certain file at the time of given commit |
-| `git add -p path/to/file` | To partially stage a file, git would let you choose individual hunks |
+| `git add --patch path/to/file` | To partially stage a file, git would let you choose individual hunks |
+| `git add --edit path/to/file` | To manually pick and choose lines of the patch to apply |
 | `git tag` | List all tags |
 | `git tag -a tagName` | Create an annotated tag that store extra meta information such as tagger name, email, and date |
 | `git tag tagName` | Create a lightweight tag |
