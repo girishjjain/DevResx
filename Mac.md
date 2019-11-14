@@ -17,7 +17,7 @@ defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 * Cmd + Up Arrow - To move cursor to start of document/editor
 * Fn + F11 - To show desktop (pressed once will show desktop and repeating it will bring you back to the window that was active before desktop was displayed)
 * Shift + Cmd + 5 - To capture screenshot or record screen
-
+* `Cmd + Shift + .` - To show hidden files in Finder
 
 ### Commands
 * `brew list` - to get list of all installed Homebrew packages

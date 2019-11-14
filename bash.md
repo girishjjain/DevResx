@@ -17,23 +17,26 @@
 * To display value of a specific environment variable `echo $envvarname`
 * To set an environment variable 
   * `echo "export MY_ENV_VAR=\"new value\"" >> ~/.bash_profile && source ~/.bash_profile`
+* To update `PATH` environment variable
+  * `echo "export PATH=new_path:$PATH" >> ~/.bash_profile && source ~/.bash_profile`
 
 ### Commands
 | Command | Description |
 |--|--|
 | `ls -R` | Lists whole directory recursively |
+| `ls | grep <search_string>` | Search for file/directory matching given string |
 | `cp -R` | Copies everthing in the subdirectories recursively |
 | `open .` | Opens current working directory in Finder |
-| `rm -rf <dir-name>` | Delete directory and its contents without prompting for confirmation |
+| `rm -rf <dir-name>/` | Delete directory and its contents without prompting for confirmation |
 | `lsof -i:8090` | Lists open processes on given port number |
 
-##### less
+#### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
 * `less -p <pattern>` to search for a string pattern
 * within less use n key to continue searching forward 
 * Refer [here](https://en.wikipedia.org/wiki/Less_(Unix)) for detailed less commands 
 
-##### ssh
+#### ssh
 ssh command starts SSH client that establishes secure SSH connection to a remote SSH server. It provides secure encrypted connection between two hosts over an insecure network. Refer [here](https://www.ssh.com/ssh/command/) for more details. Usage:
 * `ssh remotesshserver.com`
 * `ssh user@remotesshserver.com`
@@ -42,7 +45,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * `ssh-keyscan -H jump-phi.werally.in >> ~/.ssh/known_hosts` - Add remote host fingerprint to known_hosts file (beaware this does not prevent man-in-the-middle attack)
 
 
-##### find 
+#### find 
 * find walks file hierarchy and prints each entry to terminal - you can use it to search for directories/files 
     * `find .` to recursively walk file hierarchy from current directory
     * `find /` to recursively walk file hierarchy from root directory
@@ -52,7 +55,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
      * `find . -type f -name *partFileName.ext` to recursively walk file hierarchy for *files* from current directory to match given file name pattern
      * `grep findStr $(find . -name *Parser.scala -type f)` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
      
-##### alias
+#### alias
 * alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
     * `alias ls='ls -lah'` to setup a new alias for ls command that would show long listing, hidden files, and descriptive size
 
@@ -70,7 +73,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
   
 
 ### Output Redirection 
-* \> You can redirect standard outout stream using greater than command > it saves output of command to file, for e.g. ls > listing.txt saves output of ls command to file listing.txt 
+* \> You can redirect standard output stream using greater than command > it saves output of command to file, for e.g. ls > listing.txt saves output of ls command to file listing.txt 
 * \>> Appends output to end of file 
 
 
@@ -83,7 +86,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * Put command between $() for e.g. `echo "hello $(whoami)"` would result in bash executing whoami command and replacing it in echo command 
 
 
-### Jobs and Processes  
+### Jobs and Processes
 * To run a command in background append & at the end and that would cause bash to run it in the background so that user can continue using terminal. 
 * To avoid getting any output from background command printed on screen, redirect its output to a file by using > command 
 * Background jobs can't read input from user, hence its best to only run those programs in background that don't need user input 

@@ -179,3 +179,60 @@ lazy val config: Configuration = Configuration(ConfigFactory.load("application.c
 #### GitHub Search
 * [Searching Code in GitHub](https://help.github.com/en/articles/searching-code)
 * An example: `org:AudaxHealthInc "extends Table" in:file "json" in:file extension:scala`
+
+
+## Play Framework Essentials (Book Notes)
+* The code called by controllers must be thread safe, hence the use of concurrent collections in action methods.
+* Though based on sbt, Play projects do not follow the standard sbt projects layout: source files are under the app/ directory, test files under the test/ directory, and resource files (for example, configuration files) are under the conf/ directory.
+* The conf/application.conf file contains the application configuration information as key-value pairs. It uses the Human Optimized Configuration Object Notation syntax (HOCON; it is a JSON superset, check out https://github.com/typesafehub/config/blob/master/HOCON.md for more information).
+
+### URL routing
+* The conf/routes file defines the mapping between the HTTP endpoints of the application (URLs) and their corresponding actions.
+* Apart from comments (starting with #), each line of the routes file defines a route associating an HTTP verb and a URL pattern to a controller action call.
+
+* In Play, the component responsible for interpreting the body of an HTTP request is named body parser.
+* HTTP layer tests
+```
+package controllers
+import play.api.test.{PlaySpecification, FakeRequest, WithApplication}
+import play.api.libs.json.Json
+
+class ItemsSpec extends PlaySpecification {
+  "Items controller" should {
+    "list items" in new WithApplication {
+      route(FakeRequest(controllers.routes.Items.list())) match {
+        case Some(response) => status(response) must equalTo (OK) contentAsJson(response) must equalTo (Json.arr())
+        case None => failure
+      }
+    }
+  }
+}
+```
+* The route method calls the Items.list action using a fake HTTP request and returns its response. Note that the fake request is built using the reverse router. Then, if the routing process succeeds, the status method extracts the response status code and the contentAsJson method reads the response content and parses it as a JSON value.
+* Refer to the API documentation of play.api.test.PlaySpecification (play.test.Helpers in Java) for an exhaustive list of supported features.
+* You can define application-level settings by implementing an object that extends the play.api.GlobalSettings class. This class provides hooks on the application's life cycle and allows you to define some common behavior for your HTTP layer (for example, what to do if routes don't match an incoming request, or things to do before or after each action invocation).
+
+
+## Emacs
+* `Ctrl+G` quits whatever emacs command you were trying to run, don't worry, you will not lose your work.
+* All editing happens in an Emacs buffer. When you first start Emacs, a buffer named *scratch* is open. Emacs will always show you the name of the current buffer at the bottom of the window
+* To create a fresh buffer, use `Ctrl+x,b`. When you create a new buffer this way, it exists only in memory until you save it as a file; buffers aren’t necessarily backed by files, and creating a buffer doesn’t necessarily create a file.
+* Kill current buffer `Ctrl+x,k`
+* Open a file `Ctrl+x+f`
+* An emacs mode is a collection of key bindings and functions that are packaged together to help you be productive when eiditing different types of files. 
+  * Modes come in two flavors: majir modes and minor modes. For example, Markdown mode and Cljure mode are major modes. Major modes are usually set by emacs when you open a file, but you can also set the mode explicitly by running the relvant emacs command, for example with `Opt+x clojure-mode`. Only one major mode is active at a time.
+  * Minor modes usually provide functionality that's useful across file types. For example, abbbrev mode "automatically exands text based on pre-defined abbreviation definitions". You can have multiple minor modes active at the same time. 
+### Installing packages
+* Many modes are districbuted as packages, which are just bundles of elist files stored in a package repository. Emacs makes it very easy to browse and install packages. `Opt+x package-list-packages` will show you almost every package available; just make sure you run `Opt+x package-redresh-contents` first so you get the latest list. You can install packages with `Opt+x package-install`
+### Point
+* The cursor appears to rest on top of a character, the `point` is actually located between the character and the previous one.
+* Common commands for movement
+  * `Ctrl+a` move to beginning of line
+  * `Opt+m` move to first non-whitespace character on the line
+  * `Ctrl+e` move to end of line
+  * `Opt+f` move forward one word
+  * `Opt+b` move backward one word
+  * `Opt+g,g` go to line
+### Selection with Regions
+* In emacs, we don't select text. We create regions, and we do so by setting the mark with `Ctrl+spacebar`. Then, when you move point, everythin gbetween mark and point is the regions. It's very similar to shift-selecting text for basic purposes.
+* One cool thing about using mark instead of Shift-selecting text is that you're free to use all of emacs's movement commands after you set the mark. 
