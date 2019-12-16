@@ -169,6 +169,7 @@ import com.typesafe.config.ConfigFactory
 lazy val config: Configuration = Configuration(ConfigFactory.load("application.conf"))
 ```
 * Amazon S3 provides object storage through web services interfaces
+* Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and the applications you run on AWS in real time. CloudWatch data is pushed to DataDog using the provided CloudWatch integrations.
 * PSQL - To enable expanded display, use \x command and then to turn it off again use same \x command. Expanded display prints result in vertical format
 
 
@@ -212,27 +213,10 @@ class ItemsSpec extends PlaySpecification {
 * Refer to the API documentation of play.api.test.PlaySpecification (play.test.Helpers in Java) for an exhaustive list of supported features.
 * You can define application-level settings by implementing an object that extends the play.api.GlobalSettings class. This class provides hooks on the application's life cycle and allows you to define some common behavior for your HTTP layer (for example, what to do if routes don't match an incoming request, or things to do before or after each action invocation).
 
-
-## Emacs
-* `Ctrl+G` quits whatever emacs command you were trying to run, don't worry, you will not lose your work.
-* All editing happens in an Emacs buffer. When you first start Emacs, a buffer named *scratch* is open. Emacs will always show you the name of the current buffer at the bottom of the window
-* To create a fresh buffer, use `Ctrl+x,b`. When you create a new buffer this way, it exists only in memory until you save it as a file; buffers aren’t necessarily backed by files, and creating a buffer doesn’t necessarily create a file.
-* Kill current buffer `Ctrl+x,k`
-* Open a file `Ctrl+x+f`
-* An emacs mode is a collection of key bindings and functions that are packaged together to help you be productive when eiditing different types of files. 
-  * Modes come in two flavors: majir modes and minor modes. For example, Markdown mode and Cljure mode are major modes. Major modes are usually set by emacs when you open a file, but you can also set the mode explicitly by running the relvant emacs command, for example with `Opt+x clojure-mode`. Only one major mode is active at a time.
-  * Minor modes usually provide functionality that's useful across file types. For example, abbbrev mode "automatically exands text based on pre-defined abbreviation definitions". You can have multiple minor modes active at the same time. 
-### Installing packages
-* Many modes are districbuted as packages, which are just bundles of elist files stored in a package repository. Emacs makes it very easy to browse and install packages. `Opt+x package-list-packages` will show you almost every package available; just make sure you run `Opt+x package-redresh-contents` first so you get the latest list. You can install packages with `Opt+x package-install`
-### Point
-* The cursor appears to rest on top of a character, the `point` is actually located between the character and the previous one.
-* Common commands for movement
-  * `Ctrl+a` move to beginning of line
-  * `Opt+m` move to first non-whitespace character on the line
-  * `Ctrl+e` move to end of line
-  * `Opt+f` move forward one word
-  * `Opt+b` move backward one word
-  * `Opt+g,g` go to line
-### Selection with Regions
-* In emacs, we don't select text. We create regions, and we do so by setting the mark with `Ctrl+spacebar`. Then, when you move point, everythin gbetween mark and point is the regions. It's very similar to shift-selecting text for basic purposes.
-* One cool thing about using mark instead of Shift-selecting text is that you're free to use all of emacs's movement commands after you set the mark. 
+## URI vs URL
+* URI - Uniform Resource Identifier
+  * Identifies a resource, could just be a name and don't need to have protocol 
+* URL - Uniform Resource Locator
+  * URL is what we come across on a day-to-day basis, for e.g. https://yahoo.com, the protocol and other parts are well defined
+* Theoretically URL is a subset of URI but in practice may not always be the case. For example, in Java a `java.net.URI` class would throw exception if the string contains '|' (pipe) character but `java.net.URL` class accepts it fine. URI class follows the RFC-2396 (and updates) to it strictly. 
+* For most of the cases, you want to use `URL` class instead of `URI` in your code

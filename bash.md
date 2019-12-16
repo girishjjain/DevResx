@@ -59,6 +59,11 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
     * `alias ls='ls -lah'` to setup a new alias for ls command that would show long listing, hidden files, and descriptive size
 
+#### base64
+* `base64 <<< abc` - encode string as base64 and print output on stdout
+* `base64 -D <<< YWJjCg==` - decode base64 string and print output on stdout
+* `base64 -in ifile -o ofile` - encode file as base64 and write it to output file
+* `base64 -D -in ifile -o ofile` - decode file as base64 and write it to output file
 
 ### Bash wildcards 
 * \* matches anything, including nothing at all 

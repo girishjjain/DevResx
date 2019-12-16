@@ -22,3 +22,6 @@ defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 ### Commands
 * `brew list` - to get list of all installed Homebrew packages
 * `brew update` - to update Homebrew itself
+* `brew upgrade <package-name>` - upgrade a package
+* `xcrun simctl list` - to list simulators available
+* `xcrun simctl boot <UUID>` - to start simulator identified by given UUID
