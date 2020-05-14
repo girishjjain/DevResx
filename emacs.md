@@ -4,22 +4,25 @@
 * To create a fresh buffer, use `Ctrl+x,b`. When you create a new buffer this way, it exists only in memory until you save it as a file; buffers aren’t necessarily backed by files, and creating a buffer doesn’t necessarily create a file.
 * Kill current buffer `Ctrl+x,k`
 * Open a file `Ctrl+x+f`
-* An emacs mode is a collection of key bindings and functions that are packaged together to help you be productive when eiditing different types of files. 
-  * Modes come in two flavors: majir modes and minor modes. For example, Markdown mode and Cljure mode are major modes. Major modes are usually set by emacs when you open a file, but you can also set the mode explicitly by running the relvant emacs command, for example with `Opt+x clojure-mode`. Only one major mode is active at a time.
-  * Minor modes usually provide functionality that's useful across file types. For example, abbbrev mode "automatically exands text based on pre-defined abbreviation definitions". You can have multiple minor modes active at the same time. 
+* An emacs mode is a collection of key bindings and functions that are packaged together to help you be productive when editing different types of files. 
+  * Modes come in two flavors: major modes and minor modes. For example, Markdown and Clojure are major modes. Major modes are usually set by emacs when you open a file, but you can also set the mode explicitly by running the relvant emacs command, for example with `Opt+x clojure-mode`. Only one major mode is active at a time.
+  * Minor modes usually provide functionality that's useful across file types. For example, `abbrev` mode "automatically expands text based on pre-defined abbreviation definitions". You can have multiple minor modes active at the same time. 
+
 ### Installing packages
-* Many modes are districbuted as packages, which are just bundles of elist files stored in a package repository. Emacs makes it very easy to browse and install packages. `Opt+x package-list-packages` will show you almost every package available; just make sure you run `Opt+x package-redresh-contents` first so you get the latest list. You can install packages with `Opt+x package-install`
+* Many modes are distributed as packages, which are just bundles of elist files stored in a package repository. Emacs makes it very easy to browse and install packages. `Opt+x package-list-packages` will show you almost every package available; just make sure you run `Opt+x package-refresh-contents` first so you get the latest list. You can install packages with `Opt+x package-install`
+
 ### Point
 * The cursor appears to rest on top of a character, the `point` is actually located between the character and the previous one.
 * Common commands for movement
   * `Ctrl+a` move to beginning of line
-  * `Opt+m` move to first non-whitespace character on the line
   * `Ctrl+e` move to end of line
+  * `Opt+m` move to first non-whitespace character on the line
   * `Opt+f` move forward one word
   * `Opt+b` move backward one word
   * `Opt+g,g` go to line
+
 ### Selection with Regions
-* In emacs, we don't select text. We create regions, and we do so by setting the mark with `Ctrl+spacebar`. Then, when you move point, everythin gbetween mark and point is the regions. It's very similar to shift-selecting text for basic purposes.
+* In emacs, we don't select text. We create regions, and we do so by setting the mark with `Ctrl+spacebar`. Then, when you move point, everythin between mark and point is the regions. It's very similar to shift-selecting text for basic purposes.
 * One cool thing about using mark instead of Shift-selecting text is that you're free to use all of emacs's movement commands after you set the mark. 
 
 | Command | Description |
@@ -64,3 +67,15 @@
 * Echo Area - If Emacs sees that you are typing multicharacter commands slowly, it shows them to you at the bottom of the screen in an area called "echo area".
 * The line immediately above echo area is called mode line (it shows name of current buffer)
   * The stars near the front of this line mean that you have made changes to the text
+
+
+### Clojure REPL in Emacs
+* Open clojure project/file 
+* CIDER allows you to start a REPL within Emacs and provides you with key bindings that allows you to interact with the REPL more efficiently. 
+* Start REPL using `Opt+x,cider-jack-in`
+* To execute a line, 
+  * Go to end of line - `Ctrl+e`
+  * To execute in REPL - `Ctrl+x+e`
+* To compile current file (this makes REPL aware of the changes in file)
+  * Use `Ctrl+c+k`
+* To set namespace listed at the top of current file - `Ctrl+c,Opt+n+n`

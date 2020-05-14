@@ -356,6 +356,7 @@ project/
 | `;compile ;test:compile ;it:compile` | Compile everything - code, (unit) tests, and integration tests (under it folder) |
 | `projects` | Lists all projects in build definition |
 | `project <project_name>` | When build definition has multiple subprojects, use this command to set a project in scope |
+| `inspect`| Examples: `inspect sbtVersion`, `inspect scalaVersion`, `inspect test:fullClasspath` |
 | `;coverage ;testOnly com.rallyhealth.authn.services.ArachneAndLegacyAuthServiceSpec ;coverageReport ;coverageAggregate` | Coverage with a single test |
 | `;clean ;update ;coverage ;test ;coverageReport ;coverageAggregate` | Get unit tests coverage |
 | `;clean ;update ;coverage ;test ;it:test ;coverageReport ;coverageAggregate` | Get coverage including integration tests |
