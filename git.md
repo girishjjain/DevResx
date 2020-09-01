@@ -3,6 +3,7 @@
 | Commands | Description |
 | --- | --- |
 | `git push -d <remote> <branch_name>` | Delete a remote branch. For example, `git push -d upstream featureBranch` |
+| `git log -L47,+1:path/to/file` | History of a all revisions to a range of lines |
 | `git log --full-history  -- myfile` | Full history of file, even if the file was deleted |
 | `git log --pretty=format:%s v6.29.1..v6.29.2` | Short log message of all commits between two tags/commits |
 | `git show sha1Hash -- path/to/file` | Show contents of a certain file in a commit |
@@ -18,6 +19,7 @@
 | `git stash save <name>` | Saves a named stash |
 | `git stash apply stash@{0}` | Apply changes from numbered stash to working directory |
 | `git format-patch -3` | Extract three topmost commits from current branch and create email-able patches |
+| `git format-patch -1 <commit>` | To create patch for given commit |
 | `git am file_name.patch` | Apply changes provided in patch file by creating a new commit |
 | `git fetch <remote> --tags` | Pull remote tags |
 | Add a remote - `git remote add vito git@github.com:vito-c/auth-token-heimdall.git` <br/> Fetch from remote - `git fetch vito` <br/> Checkout branch locally tracking remote branch - `git co -t vito/vito/play27` | To pull a PR branch from colleague locally and work on it |

@@ -20,6 +20,9 @@ defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 * `Cmd + Shift + .` - To show hidden files in Finder
 
 ### Commands
+* `brew tap` - lists the currently tapped repositories
+* `brew untap <user/repo>` - removes given taps, for e.g. `brew untap mongodb/brew` 
+* `brew install <package-name>` - to install a Homebrew package
 * `brew info <package-name>` - to get information about a package installed using brew
 * `brew list` - to get list of all installed Homebrew packages
 * `brew update` - to update Homebrew itself

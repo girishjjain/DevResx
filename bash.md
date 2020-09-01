@@ -29,6 +29,8 @@
 | `open .` | Opens current working directory in Finder |
 | `rm -rf <dir-name>/` | Delete directory and its contents without prompting for confirmation |
 | `lsof -i:8090` | Lists open processes on given port number |
+| `unzip file_name.zip` | Extract contents of a ZIP archive |
+| `readlink <app-name>` | To get actual path of a symlink, for example, `readlink rally-okta`|
 
 #### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.

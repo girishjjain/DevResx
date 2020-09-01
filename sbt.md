@@ -356,11 +356,13 @@ project/
 | `;compile ;test:compile ;it:compile` | Compile everything - code, (unit) tests, and integration tests (under it folder) |
 | `projects` | Lists all projects in build definition |
 | `project <project_name>` | When build definition has multiple subprojects, use this command to set a project in scope |
+| `compile:sourceDirectory` <br/> `test:sourceDirectory` | Retrieve value of certain setting keys. For example, to get path of compile sources, use `compile:sourceDirectory` |
 | `inspect`| Examples: `inspect sbtVersion`, `inspect scalaVersion`, `inspect test:fullClasspath` |
 | `;coverage ;testOnly com.rallyhealth.authn.services.ArachneAndLegacyAuthServiceSpec ;coverageReport ;coverageAggregate` | Coverage with a single test |
 | `;clean ;update ;coverage ;test ;coverageReport ;coverageAggregate` | Get unit tests coverage |
 | `;clean ;update ;coverage ;test ;it:test ;coverageReport ;coverageAggregate` | Get coverage including integration tests |
 | `it:testOnly com.rallyhealth.authn.api.oidc.AdvantageOIDCPickupV3Test -- -z "return 200 with authz_code_done when pickup for advantage is enabled for user with surrogateId"` ||
+| `eval scala.sys.env("ENV")` | To find value of an environment variable, for e.g., this would return value of `ENV` environment variable |
 
 
 # References
