@@ -3,6 +3,7 @@
 | Commands | Description |
 | --- | --- |
 | `git push -d <remote> <branch_name>` | Delete a remote branch. For example, `git push -d upstream featureBranch` |
+| `git log --since=1.month --grep="virtual"` | Search for commit logs since last 1 month that contain the word `virtual` |
 | `git log -L47,+1:path/to/file` | History of a all revisions to a range of lines |
 | `git log --full-history  -- myfile` | Full history of file, even if the file was deleted |
 | `git log --pretty=format:%s v6.29.1..v6.29.2` | Short log message of all commits between two tags/commits |

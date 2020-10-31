@@ -220,3 +220,8 @@ class ItemsSpec extends PlaySpecification {
   * URL is what we come across on a day-to-day basis, for e.g. https://yahoo.com, the protocol and other parts are well defined
 * Theoretically URL is a subset of URI but in practice may not always be the case. For example, in Java a `java.net.URI` class would throw exception if the string contains '|' (pipe) character but `java.net.URL` class accepts it fine. URI class follows the RFC-2396 (and updates) to it strictly. 
 * For most of the cases, you want to use `URL` class instead of `URI` in your code
+
+## React Native
+* React Lifecycle Methods Diagram 
+  - https://reactjs.org/docs/react-component.html
+  - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
