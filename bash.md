@@ -28,6 +28,7 @@
 | `cp -R` | Copies everthing in the subdirectories recursively |
 | `open .` | Opens current working directory in Finder |
 | `rm -rf <dir-name>/` | Delete directory and its contents without prompting for confirmation |
+| `rm -rf **/target` | Delete directory named `target` and its contents on any nested path from current directory |
 | `lsof -i:8090` | Lists open processes on given port number |
 | `unzip file_name.zip` | Extract contents of a ZIP archive |
 | `readlink <app-name>` | To get actual path of a symlink, for example, `readlink rally-okta`|

@@ -225,3 +225,52 @@ class ItemsSpec extends PlaySpecification {
 * React Lifecycle Methods Diagram 
   - https://reactjs.org/docs/react-component.html
   - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+## Kubernetes
+* Containers encapsulate microservices and their dependencies but do not run them directly. Containers run container images.
+* A container image bundles the application along with its runtime, libraries, and dependencies, and it represents the source of a container deployed to offer an isolated executable environment for the application.
+* Container orchestrators are tools which group systems together to form clusters where containers' deployment and management is automated at scale
+* Kubernetes is an open source container orchestration tool, originally started by Google, today part of the Cloud Native Computing Foundation (CCNF) project.
+* Kubernetes Featuers
+  * Automatic Bin Packing - Kubernetes automatically schedules containers based on resource needs and constraints, to maximize utilization without sacrificing availability.
+  * Self-healing - Kubernetes automatically replaces and reschedules containers from failed nodes. It kills and restarts unresponsive containers based on health check and rules/policy. It also prevents traffic from being routed to unresponsive containers.
+  * Horizontal Scaling - With Kubernetes applications can be scaled manually or automatically based on CPU or custom metrics utilization.
+  * Service discovery and Load balancing - Containers receive their own IP addresses from Kubernetes, while it assigns a single Domain Name System (DNS) name to a set of containers to aid in load-balancing.
+* Other fully supported Kubernetes features
+  * Automated Rollouts and Rollbacks
+  * Secret and Configuration Management
+  * Storage Orchestration
+  * Batch execution
+* Kubernetes Architecture
+  * At a very high level, Kubernetes has the following main components:
+    * One or more **master nodes**, part of the **control plane**
+    * One or more **worker nodes**
+  * Master Node Overview
+    * Master node provides running environment for the **control plane** responsible for managing the state of a Kubernetes cluster, and it is the brain behind all operations inside the cluster. The control plane components are agents with very distinct roles in the cluster's management. In order to communicate with the Kubernetes cluster, users send requests to the control plane via a CLI tool, a Web UI dashboard, or  API.
+    * To ensure the control plane's fault tolerance, master node replicas can be added to the cluster, configured in  High-Availability mode.
+    * To persist the Kubernetes cluster's state, all cluster configuration data is saved to etcd. etcd is a distrubuted key-value store which only holds cluster state related data, no client workload data. etcd may be configured on the master node (stacked topoligy), or on its dedicated host (external topology) to help reduce the chances of data store loss by decoupling it from other control plane agents. 
+    * A master node runs the following contorl plane components:
+      * API Server
+      * Scheduler
+      * Controller Managers
+      * Data Store
+    * In addition, the master node runs:
+      * Container Runtime
+      * Node Agent
+      * Proxy
+    * Master Node Components - API Server
+      * All the administrative tasks are coordinated by the **kube-apiserver**, a central control plane component running on the master node. 
+      * During processing the API server reads the Kubernetes cluster's current state from the etcd data store, and after a call's execution, the resulting state of the Kubernetes cluster is saved.
+      * The API Server is the only master plane component to talk to the etcd data store, both to read from and to save Kubernetes cluster state information.
+    * Master Node Components - Scheduler
+      * The role of the **kube-scheduler** is to assign new workload objects, such as pods, to nodes. 
+      * The scheduler obtains resource usage data from the etcd data store, via the API Server. Once all  the cluster data is available, the scheduling algorithm filters the nodes with predicates to isolate the possible node candidates which then are scored with priorities in order to select the one node that satisfies all the requirements for hosting the new workload. The outcome of the decision process is communicated back to the API server, which then delegates the workload deployment with other control plane agents.
+      * The scheduler is highly configurable and customizable through scheduling policies, plugins, and profiles.
+    * Master Node Components - Controller Managers
+      * The **controller managers** are control plane components on the master node running  controllers to regulate the state of the  Kubernetes cluster. Controllers are watch-loops continuously running and comparing the cluster's desired state (provided by object's configuration data) with its current state. In case of a mismatch, corrective action is taken in the cluster until its current state matches the desired state. 
+      * The **kube-controller-manager** runs controllers responsible to act when nodes become unavailable, to ensure pod counts are as expected, to create endpoints, service accounts, and API access tokens.
+      * The **cloud-controller-manager** runs controllers responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing. 
+    * Master Node Components - Data Store
+      * **etcd** is a strongly consistent, distrubuted key-value **data store** used to persist a Kubernetes cluster's state. New data is written to the data store only by appending to it, data is never replaced in the data store. Obsolete data is compacted periodically to minimize the size of the data store. 
+      * etcd's CLI management tool - **etcdctl**, provides backup, snapshot, and restore capabilities which come in handy especially for a single etcd instance Kubernetes cluster - common in development and learning environments.
+      
