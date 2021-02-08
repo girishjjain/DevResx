@@ -26,6 +26,7 @@
 | Add a remote - `git remote add vito git@github.com:vito-c/auth-token-heimdall.git` <br/> Fetch from remote - `git fetch vito` <br/> Checkout branch locally tracking remote branch - `git co -t vito/vito/play27` | To pull a PR branch from colleague locally and work on it |
 | `git log --pretty=format:'%cd %nAuthor:%an%nTitle:%s' --date='short'  v2.2.0..HEAD` | Generate short commit logs for all the commits that have been merged since last release |
 | `git branch --sort=-committerdate` | List branches ordered by most recent commit |
+| `git branch master --set-upstream-to origin/master` | Update remote tracking branch for a local branch |
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.

@@ -268,3 +268,38 @@ sbt ~testOnly
 Array.length 
 ```
 * Scala treats fields and methods more uniformly than Java. Although you can remove parentheses from a method invocation, remember convention is to use parentheses when invoking a method that causes side effects, for e.g. println method should always be invoked with parentheses as it doesn’t return a value but causes side effects - `println(“a”)`
+
+
+## Scala Functions and Methods, Feb 8, 2021
+* Functions are objects, methods are not
+* Method is defined using `def`, function is defined using function literal `(arg: T) => {}`
+* Function objects are first class entities on par with classes - methods are not
+* Functions - A complete standalone object which is an instance of a class, for e.g. `Function0`
+* Mehtod - Reusable code which is defined as a part of a class
+* A function class implements traits in Scala, method does not.
+* A function object has its own methods that can be invoked
+* Functions are value types and can be stored in `val` and `var` storage units. Methods are not value types but can be converted into one easily.
+* Invoking a function invokes the `apply()` method on a function. Invoking a method runs the code associated with the method.
+* Functions can be annonyous, methods always have a name
+* Functions have a slightly higher overhead (due to invoking apply method on function object), methods may be slightly faster and better performing.
+* Functions do not accept type parameters or parameter default values, methods work fine with both.
+* Empty-paren methdos can be invoked without parenthesis
+* A partial function only caters to a subset of possible data for which it has been defined
+  * Cab be implemented by creating an implmentation of `PartialFunction` train such as:
+  ```scala
+  val f = new PartialFunciton[Int, Int] {
+    def apply(x: Int): Int = ...
+
+    def isDefinedAt(x: Int): Boolean = ... 
+  }
+  ```
+  * An easier and more intuitive way to implement partial function is using pattern matching:
+  ```scala
+  val f: PartialFunction[Int, Int] = {
+    case x: Int if x != 0 => ...
+  }
+  ```
+* A method defined using just curly braces and no `=` sign is a procedure, a procedure does not return anything, its result type is always Unit
+* An empty-paren method is recommended when ther are no parameters and the method accessses but does not change mutable state i.e. by reading fields of the contained object
+* Tail recursion - A new stack frame will not be built for each recursive call - all calls will be executed in a **single stack frame** by simply updating the input arguments to the recursive call
+* In order to apply tail recursion, the recursive call has to be the **last call** in a method
