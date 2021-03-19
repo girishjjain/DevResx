@@ -131,7 +131,7 @@
 | `Fn + Cmd + Right Arrow` | Go to end of file |
 | `Fn + Cmd + Left Arrow` | Go to start of file |
 | `Cmd + Shift + V` | Shows clipboard history pop-up, from [SO post](https://stackoverflow.com/questions/1716793/copy-and-pasting-multiple-items-to-the-clipboard-in-intellij-idea) |
-
+| `Opt + Tab` | Navigate between "tab groups" |
 
 ### ScalaTest
 * Refer [Style Trait Descriptions and Examples](http://www.scalatest.org/user_guide/selecting_a_style) to understand which base class to use for your test class
@@ -248,7 +248,7 @@ class ItemsSpec extends PlaySpecification {
   * Master Node Overview
     * Master node provides running environment for the **control plane** responsible for managing the state of a Kubernetes cluster, and it is the brain behind all operations inside the cluster. The control plane components are agents with very distinct roles in the cluster's management. In order to communicate with the Kubernetes cluster, users send requests to the control plane via a CLI tool, a Web UI dashboard, or  API.
     * To ensure the control plane's fault tolerance, master node replicas can be added to the cluster, configured in  High-Availability mode.
-    * To persist the Kubernetes cluster's state, all cluster configuration data is saved to etcd. etcd is a distrubuted key-value store which only holds cluster state related data, no client workload data. etcd may be configured on the master node (stacked topoligy), or on its dedicated host (external topology) to help reduce the chances of data store loss by decoupling it from other control plane agents. 
+    * To persist the Kubernetes cluster's state, all cluster configuration data is saved to etcd. etcd is a distrubuted key-value store which only holds cluster state related data, no client workload data. etcd may be configured on the master node (stacked topology), or on its dedicated host (external topology) to help reduce the chances of data store loss by decoupling it from other control plane agents.
     * A master node runs the following contorl plane components:
       * API Server
       * Scheduler
@@ -262,15 +262,91 @@ class ItemsSpec extends PlaySpecification {
       * All the administrative tasks are coordinated by the **kube-apiserver**, a central control plane component running on the master node. 
       * During processing the API server reads the Kubernetes cluster's current state from the etcd data store, and after a call's execution, the resulting state of the Kubernetes cluster is saved.
       * The API Server is the only master plane component to talk to the etcd data store, both to read from and to save Kubernetes cluster state information.
+      * API Server is highly configurable and customizable and can scale horizontally.
     * Master Node Components - Scheduler
       * The role of the **kube-scheduler** is to assign new workload objects, such as pods, to nodes. 
       * The scheduler obtains resource usage data from the etcd data store, via the API Server. Once all  the cluster data is available, the scheduling algorithm filters the nodes with predicates to isolate the possible node candidates which then are scored with priorities in order to select the one node that satisfies all the requirements for hosting the new workload. The outcome of the decision process is communicated back to the API server, which then delegates the workload deployment with other control plane agents.
       * The scheduler is highly configurable and customizable through scheduling policies, plugins, and profiles.
     * Master Node Components - Controller Managers
-      * The **controller managers** are control plane components on the master node running  controllers to regulate the state of the  Kubernetes cluster. Controllers are watch-loops continuously running and comparing the cluster's desired state (provided by object's configuration data) with its current state. In case of a mismatch, corrective action is taken in the cluster until its current state matches the desired state. 
+      * The **controller managers** are control plane components on the master node running controllers to regulate the state of the Kubernetes cluster. Controllers are watch-loops continuously running and comparing the cluster's desired state (provided by object's configuration data) with its current state. In case of a mismatch, corrective action is taken in the cluster until its current state matches the desired state. 
       * The **kube-controller-manager** runs controllers responsible to act when nodes become unavailable, to ensure pod counts are as expected, to create endpoints, service accounts, and API access tokens.
       * The **cloud-controller-manager** runs controllers responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing. 
     * Master Node Components - Data Store
       * **etcd** is a strongly consistent, distrubuted key-value **data store** used to persist a Kubernetes cluster's state. New data is written to the data store only by appending to it, data is never replaced in the data store. Obsolete data is compacted periodically to minimize the size of the data store. 
       * etcd's CLI management tool - **etcdctl**, provides backup, snapshot, and restore capabilities which come in handy especially for a single etcd instance Kubernetes cluster - common in development and learning environments.
-      
+      * In Production environments, it is extremely important to replicate the data store in HA mode, for cluster configuration data resiliency.
+      ![Stacked etcd Topology](./k8s/kubeadm-ha-topology-stacked-etcd.svg) Stacked etcd Topology
+      * For data isolation from control plane components, the bootstrapping process can be configured for an external etcd topology, where the data store is provisioned on a dedicated separate host, thus reducing the chances of an etcd failure.
+      ![External etcd Topology](./k8s/kubeadm-ha-topology-external-etcd.svg) External etcd Topology
+      * Both stacked and external etcd configurations support HA configurations. 
+      * etcd is written in the Go programming language. Besides storing the cluster state, etcd is also used to store the configuration details such as subnest, Config Maps, Secrets, etc.
+    * Master Node Components - Worker Node
+      * A **worker node** provides running environment for client applciations, encapsulated in pods.
+      * A pod is the smallest scheduling unit in Kubernetes. It is a logical collection of containers scheduled together, and the collection can be started, stopped, or rescheduled as a single unit of work.
+      * A wokrer node has following components:
+        * Container Runtime
+        * Node Agent - kubelet
+        * Proxy - kube-proxy
+        * Addons for DNS, Dashboard UI, cluster-level monitoring and logging.
+    * Worker Node Components - Container Runtime
+      * Although Kubernetes is described as a "container orchestration engine", it does not have the capability to directly handle containers. In order to manage a container's lifecycle, Kubernetes requires a **container runtime** on the node. Kubernetes supports many container runtimes:
+        * Docker
+        * CRI-O
+        * containerd
+        * frakti
+    * Worker Node Components - Node Agent - kubelet
+      * The **kubelet** is an agent running on each node and communicates with the control plance components from the master node. It receives pod definitions, primarily from the API Server, and interacts with the container runtime on the node to run containers associated with the Pod.
+      * The kubelet connects to container runtimes through a plugin based interface the Container Runtime Interface (CRI), which provides a clear abstraction layer between the kubelet and the container runtime.
+      * Using `dockershim` (a CRI implementation), containers are created using Docker installed on the worker nodes. Internally, Docker uses `containerd` to create and manage containers.
+
+
+
+# Getting Started with Kubernetes Pluralsight Course
+* Kubernetes came out of Google
+* Donated to CNCF in 2014
+* Think of Data Center as a giant OS which has an array and compute and storage resources at its disposal and application developers provide a container image to run and scale to it. Application developer does not have to worry about how to use these large compute and storage resources, similar to how they did not have to worry about the same when running a program on a single computer.
+* K8s runs on linux and is an orchastrator for microservice apps that run on containers
+* Masters
+  * `kube-apiserver` front-end to the control plane
+    * Exposes the REST APIs and consumes JSON
+    * a.k.a master, brains of k8s
+  * Cluster Store
+    * Uses `etcd` (open source distributed key-value store i.e. noSQL database)
+    * It's the source of truth for the cluster
+  * `kube-controller-manager`
+    * Controller of controllers
+    * Watches for changes, helps maintain desired state
+  * `kube-scheduler`
+    * Watches apiserver for new pods
+    * Assigns work to nodes
+* Nodes
+  * Kubelet
+    * Main kubernetes agent on the node
+    * Watches apiserver for work assignments
+    * Instantiates pods
+    * Reports back to master - If a pod fails on a node, the kubelet is not responsible for restarting it or finding another node to run it on. It simply reports the state back to the master
+  * Container Engine
+    * Responsible for working with containers, pulling images, starting/stopping containers
+    * Mostly talks to container runtime and in case of Docker uses native Docker APIs
+  * kube-proxy
+    * Network brains of the node
+    * Every pod has a unique IP, all containers in a pod share a single IP
+    * load-balancing behind a service is managed by it
+* Declarative Model and Desired State
+  * Manifest file (YAML or JSON) that describes desired state
+  * We never interact with kubernetes imperatively (we shouldn't), we give it declarative manifest file that describes how we want the cluster to look
+* Pods
+  * One or more containers packaged together and deployed as a single unit 
+  * Kubernetes runs containers, but always inside a pod
+  * Pods can have multiple containers
+  * At a highest level, a pod is just a ring-fenced environment to run containers
+  * Unit of scaling in k8s is also pods, you add/remove pod replicas
+  * Pods exist on a single node, you can't have a single pod spread over multiple nodes
+  * Pods are mortal, once a pod dies, the replication controller starts a new pode
+  * Every new pod gets a new IP
+* Services
+  * A higer level stable abstraction point for multiple pods, and provides load-balancing
+  * A pod belongs to a serivce via labels i.e. service uses labels to decide over what pods to load-balance
+* Deployments
+  * First class REST objects, deployed via manifest files
+  * Simple rolling updates and rollbacks made possible
