@@ -143,3 +143,313 @@ Clojure has no assignment operator. You can't associate a new value with a name 
 
 Functions
 `type` returns type of given expression, for e.g. `(type 8.66667)
+
+
+### Questions
+* Is Clojure strongly-typed language?
+  * I guess it is because it's compiled but then what does the "dynamic" mean for Clojure?
+
+
+# Clojure Fundamentals - Pluralsight Course
+## Introduction
+* Clojure evaluation
+  * It differs from the traditional compilation process in the sense that source code is being read by a "Reader" that converts it into "data structures" which are compiled by Clojure compiler. 
+  * Reader could read code from a source file or REPL-prompt
+* Operation Forms
+  * `(op ...)`
+    * `op` can be one of:
+      * Special operator (built-in to Clojure) or macro
+      * Expression that yields a function
+      * Something invocable
+* Literals
+  ```clojure
+  42            ; Long
+  6.022e23      ; Double
+
+  42N           ; BigInt
+  1.0M          ; BigDecimal
+  22/7          ; Ratio
+
+  "hello"       ; String
+  \e            ; Character
+
+  true          ; Boolean
+  nil           ; null
+
+  + Fred *bob*  ; Symbols (symbols with asterisk on either side are mutable)
+
+  :alpha :beta  ; Keywords
+  ```
+* Data Structures
+  ```clojure
+  (4 :alpha 3.0)        ; List
+  [2 "hello" 99]        ; Vector
+  {:a 1 :b 2}           ; Map
+  #{ram shyam aam}      ; Set
+  ```
+  * Clojure collections are heterogeneously typed
+* Metadata
+  * Clojure supports metadata, which is ability to attach maps of data to any object. These maps do not affect the equality of the object.
+  * You attach metadata using `with-meta`
+  ```clojure
+  (with-meta [1 2 3] {:example true})
+  ;;=> [1 2 3]
+
+  (meta (with-meta [1 2 3] {:example true}))
+  ;;=> {:example true}
+  ```
+  * Clojure uses these to store function documentation strings
+* Clojure has several built-in reader macros, which are kind of syntactic shortcuts. A reader macro is a pattern of characters that the clojure reader understands and knows to expand to some usally larger piece of code.
+  | Reader Macro | Expansion| Comments|
+  |--|--|--|
+  |`'foo`| `(quote foo)` | quote is a special operator that returns its argument unevaluated  |
+  | `#'foo` | `(var foo)` |  |
+  | `@foo` | `(deref foo)` ||
+  | `#(+ % 5)` | `(fn [x] (+ x 5))` | Short annonymous function reader macro|
+  | `^{:key val} foo` | `(with-meta foo {:key val}` |
+  | `^:key foo` | `(with-meta foo {:key true}` |
+* Leiningen Directory Structure
+  |Path |Purpose|
+  |--|--|
+  |`project.clj`| Project/build config |
+  |`classes/`| Compiled bytecode |
+  |`lib/`| Dependent JARs |
+  |`public/`| HTML/CSS/JS files for web |
+  |`src/`| Clojure source |
+  |`test/`| Unit tests |
+* Maven Directory Structure
+  |Path |Purpose|
+  |--|--|
+  |`pom.xml`| Project/build config |
+  |`target/classes`| Compiled bytecode |
+  |`~/.m2/repository`| Dependent JARs |
+  |`src/main/clojure`| Clojure sourece |
+  |`src/test/clojure`| Unit tests |
+
+## Functions
+* Clojure is a functional programming language. Functions are first-class which means that a function object is treated like any other value and can be passed to other functions. Clojure also supports higher-order functions which means functions can take functions as arguments, that's simply an implication of functions being first-class.
+* Functions are first-class abstractions in Clojure
+  * Can be stored, passed as argument, invoked
+* `fn` creates a function with named parameters and body
+* `fn` create annonymous function
+* Clojure gives us a mechanism to store functions in a named Var for later use. A Var is a reference type in Clojure which is a mechanism for naming things.
+  ```clojure
+  (def messenger (fn [msg] (print msg)))
+  ;; is equivalent to this 
+  (defn messenger [msg] (print msg))
+  ```
+* Using `defn` macro to create a named function is the common approach
+* `let` binds symbols to immutable values
+  * Values may be literals or expressions
+  * Bound symbols are available in lexical scope
+* Functions in Clojure can have multiple arities, which is to say there can be multiple versions of the same function that are differentiated by the number of arguments that they take.
+  * Arity just means the number of arguments
+  ```clojure
+  (defn messenger
+    ;; no args, call self with default msg
+    ([] (messenger "Hello World!"))
+    ;; one arg, print it
+    ([msg] (print msg)))
+  ```
+* Variadic functions i.e. function of indefinite arity, which is to say that we can create arity for a function that can take any number of arguments. 
+  * Collected args represented as sequence
+  ```clojure
+  (defn messenger [greeting & who]
+    (print greeting who))
+
+  (messenger "Hello" "world" "class")
+  ;; Hello (world class)
+  ```
+* `apply` is a way to invoke a function on a collection of arguments. Given a function and some sequence, apply that sequence to the function as if they were the arguments.
+  ```clojure
+  ;; & puts rest of args into sequence
+  (defn messenger [greeting & who]
+    ;; apply gets args out of sequence
+    (apply print greeing who))
+  
+  (messenger "Hello" "world" "class")
+  ;; Hello world class
+  ```
+* Invoking Java code
+  |Task|Java|Clojure|
+  |--|--|--|
+  | Instantiation| `new Widget("foo")` | `(Widget. "foo")` |
+  | Instance method | `rnd.nextInt()` | `(.nextInt rnd)`|
+  | Instance field |`object.field`| `(.-field object)`|
+  | Static method | `Math.sqrt(25)`| `Math/sqrt 25`|
+  | Static field | `Math.PI`| `Math/PI`|
+* Chaining Access
+  |Language|Syntax|
+  |--|--|
+  |Java| `person.getAddress().getZipCode()` |
+  | Clojure | `(.getZipCode (.getAddress person))` |
+  | Clojure sugar | `(.. person getAddress getZipCode` |
+* Java Methods vs Functions
+  * Java methods are not Clojure functions
+  * Can't store them, pass as arguments
+  * Can wrap them in functions when necessary
+  ```clojure
+  ;; make a function to invoke .length on arg
+  (fn [obj] (.length obj))
+  ```
+* Clojure gives a terse reader macro `#()` for short fns defined inline
+  * Single argument: `%`
+  * Multiple args: `%1, %2, %3`
+  * Variadic: `%&` for remaining args
+  ```clojure
+  ;; a function to invoke .length on arg
+  #(.length %)
+  ```
+
+## Namespaces
+* Namespaces are a modularization tool in Clojure.
+* Namespace scopes give us the ability to modularize the naming of:  
+  * Vars
+  * Keywords
+  * Java type names.
+* Vars are the thing that is actually created when we use `def` or `defn` inside the namespace. They're an object that represents a named value, and they're stored in namespaces.
+  ```clojure
+  ;; In the namespace "foo.bar"
+  (defn hello [] (prinntln "Hello, world"))
+
+  ;; In another namespace
+  (foo.bar/hello)       ; namespace-qualified
+  ```
+* All the functions in Clojure for working with namespaces do  one of the four operations:
+  * Load - find source on classpath and evaluating it
+  * Alias - make shorter name for namespace-qualified symbols
+  * Refer - copy symbol bindings from another namespace into current namespace
+  * Import - make Java class names available in current namespace
+* `require`
+  * Loads the namespace if not already loaded, it finds source on classpath and evaluates it 
+    * [GJ]: What does evaluation here mean?
+  * It takes a symbol as an argument, that must be quoted
+  ```clojure
+  (require 'clojure.set)
+  ;;=> nil
+
+  (clojure.set/union #{1 2} #{2 3 4})
+  ;;=> #{1 2 3 4}
+  ```
+  * Optionally, you can provide an alias for the loaded namespace. You provide a vector as an argument, that must be quoted
+  ```clojure
+  (require ['clojure.set :as set])
+  ;;=> nil
+
+  (set/union #{1 2} #{2 3 4})
+  ;;=> #{1 2 3 4}
+  ```
+* `use`
+  * Does everything that `require` does and it also brings all of the symbols into current namespace so that we can use them without referring them in a fully-qualified way
+  * Clojure warns when symbol names clash 
+  * Not recommended except for REPL
+  * `use :only`
+    * Refers only specified symbols into current namespace. It provides a way to mitigate the problem of name collision.
+    ```clojure
+    (use `[clojure.string :only (join)])
+    ;;=> nil
+
+    (join "," [1 2 3])
+    ;;=> "1,2,3"
+    ```
+* Reloading namespace
+  * By default, when you do `require` or `use`, that namespace is loaded only once
+  * `use` and `require` take optional flag to force reload
+  ```clojure
+  ;; Reload just thr foo.bar namespace
+  (require 'foo.bar :reload)
+
+  ;; Reload foo.bar and everything required or used by foo.bar
+  ;; However, it will NOT reload tertiary dependencies
+  (require 'foo.bar :reload-all)
+  ```
+* `import` 
+  * Makes Java classes available w/o package prefix in current namespace
+  * Argument is a list, quoting is optional
+  * Does not support aliases/renaming
+  * Does not support Java's `import *`
+  ```clojure
+  (import (java.io FileReader File))
+  ;;=> nil
+
+  (FileReader. (File. "readme.txt"))
+  ;;=> #<FileReader ...>
+  ```
+* `ns`
+  * Macro to declare a namespace at top of file
+  * Automatically refers all of `clojure.core`, making functions in clojure.core available without qualification.
+  * Also imports all of `java.lang` so classes like `String` are available without qualification
+  * Using `ns :require` you can declare a namespace and also specify the namespaces required for the new namespace
+  ```clojure
+  (ns my.cool.project
+    (:require [some.ns.foo :as foo]))
+  
+  (foo/function-in-foo)
+  ```
+* Private Vars
+  * Namespaces contain named definitions and it's possible to add metadata to the definition to indicate that it should be private to that namespace
+  * Add `^:private` metadata to a definition
+    * `defn-` is shortcut for `defn ^:private`
+* `the-ns`
+  * Namespaces are first class objects but their *names* are not normal symbols.
+  ```clojure
+  clojure.core
+  ;;=> ClassNotFoundException: clojure.core
+
+  (the-ns 'clojure.core)
+  ;;=> #<Namespace clojure.core>
+  ```
+
+
+## Collections
+* Every Clojure collection is immutable
+* Clojure provides comparatively few number of data structures but they are incredibly general
+* Clojure also provides seq abstraction that is common across all data structures and allows us to take any data structure and view it as a sequence
+* Large library of functions that work with many of these data structures
+* Immutability
+  * In Clojure, values of compound data structures are immutable too, which is key to Clojure's concurrency model
+* Persistent data structures 
+  * It makes immutables collections efficient
+  * Persistent collections are built from their old values plus any modifications (instead of a full copy)
+  * All Clojure data structures are persistent 
+* Lists
+  * Clojure lists are singly-linked lists
+  ```clojure
+  ()              ;=> the empty list
+  (1 2 3)         ;=> error because 1 not function
+  (list 1 2 3)    ;=> (1 2 3)
+  '(1 2 3)        ;=> (1 2 3)
+  (conj '(2 3) 1) ;=> (1 2 3)
+  ```
+* Vectors
+  * Indexed, random-access, array-like
+  ```clojure
+  []                ;=> the empty vector
+  [1 2 3]           ;=> [1 2 3]
+  (vector 1 2 3)    ;=> [1 2 3]
+  (vec '(1 2 3))    ;=> [1 2 3]
+  (nth [1 2 3] 0)   ;=> 1
+  (conj [1 2] 3)    ;=> [1 2 3]
+  ```
+* Maps
+  * Key => value, hash table, dictionary
+  * Unordered
+  ```clojure
+  {}
+  {:a 1 :b 2}
+  {:a {:a 1 :b 2}}
+  ```
+## Miscellaneous
+|Clojure|Notes|
+|--|--|
+|`(ns-publics) 'clojure.java.io)`| Returns map of all symbols available in given quoted symbol. It will use the given symbol as a namespace. |
+| `(dir clojure.java.io)` | Returns named symbols listing for given namespace |
+| `(doc delete-fil)`| Returns documentation string for given function |
+* Clojure web "stack"
+  ```
+  My traditional backend has trended towards ring + jetty + polaris (routing) + java.jdbc (DB connectivity) + ragtime (migrations) + hugsql or honeysql (ORM alternatives)
+
+  ring + compojure is what i used for clojure at work. i think you can find/create ring middleware for everything you’re used to having in Play. i also know of Luminus but haven’t used it myself
+  ```
+
+

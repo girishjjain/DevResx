@@ -303,3 +303,47 @@ Array.length
 * An empty-paren method is recommended when ther are no parameters and the method accessses but does not change mutable state i.e. by reading fields of the contained object
 * Tail recursion - A new stack frame will not be built for each recursive call - all calls will be executed in a **single stack frame** by simply updating the input arguments to the recursive call
 * In order to apply tail recursion, the recursive call has to be the **last call** in a method
+
+
+## Scala Type Classes and Parameterization
+### Why?
+* Two approaches
+  * Parameterized Types
+  * Abstract Types
+* As part of Scala programming language there are many parameterized types available to us, such as `List[T]`, `Option[T]`, `Either[T, U]`, `Map[K, V]`, etc.
+* ??? What about type binding, is it compile time or runtime?
+* With parameterized types, the type is determined at compile time.
+
+### Implicits
+* Implicit parameter
+  * Compiler will replace parameter implicity
+* Implicit conversion
+  * Compiler will implicitly convert one type to another
+* Implicit class
+  * Compiler lets you enrich functionality of certain class
+
+### Type Classes
+* Ad hoc polymorphism i.e. polymorphism when needed
+* To write a type class we need simple interface with some functionality - think of trait with method
+* There are three steps to creating a type class:
+  * Declare typeclass
+  ```scala
+  trait Combiner[T] {
+    def combine(a: T, b: T): T
+  }
+  ```
+  * Crete typeclass instances
+  ```scala
+  object Combiner {
+    implicit val intCombiner: Combiner[Int] = (a: Int, b: Int) => a + b
+
+    implicit val stringCombiner: Combiner[String] = (a: String, b: String) => s"$a$b"
+  }
+  ```
+  * Provide interface methods
+  ```scala
+  object CombinerOps {
+    def combine[T](a: T, b: T)(implicit ev: Combiner[T]): T = ev.combine(a, b)
+  }
+  ```
+  
