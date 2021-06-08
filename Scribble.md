@@ -132,6 +132,7 @@
 | `Fn + Cmd + Left Arrow` | Go to start of file |
 | `Cmd + Shift + V` | Shows clipboard history pop-up, from [SO post](https://stackoverflow.com/questions/1716793/copy-and-pasting-multiple-items-to-the-clipboard-in-intellij-idea) |
 | `Opt + Tab` | Navigate between "tab groups" |
+| `Ctrl + Shift + [` or `Ctrl + Shift + ]` | Navigate between start and end of current block/braces |
 
 ### ScalaTest
 * Refer [Style Trait Descriptions and Examples](http://www.scalatest.org/user_guide/selecting_a_style) to understand which base class to use for your test class

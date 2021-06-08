@@ -14,6 +14,7 @@
 | `git tag` | List all tags |
 | `git tag -a tagName` | Create an annotated tag that store extra meta information such as tagger name, email, and date |
 | `git tag tagName` | Create a lightweight tag |
+| `git co tags/v7.15.3 -b temp2` | Checkout a speicific tag to branch |
 | `git push --follow-tags` | Push commits and tags that are both annotated and reachable from pushed commits |
 | `git checkout HEAD^ path/to/file` | Check-out previous version of file |
 | `git stash list` | Lists all previously stored stashes |
