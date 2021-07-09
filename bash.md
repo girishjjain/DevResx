@@ -32,6 +32,7 @@
 | `lsof -i:8090` | Lists open processes on given port number |
 | `unzip file_name.zip` | Extract contents of a ZIP archive |
 | `readlink <app-name>` | To get actual path of a symlink, for example, `readlink rally-okta`|
+| `ln -sfn /a/path/to linkName` | To update an existing link to a new path |
 
 #### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
