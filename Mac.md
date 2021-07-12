@@ -30,3 +30,14 @@ defaults write ~/./environment https_proxy "http://http-proxy.health.ge.com:88/"
 * `brew reinstall <package-name>` - reinstall a package
 * `xcrun simctl list` - to list simulators available
 * `xcrun simctl boot <UUID>` - to start simulator identified by given UUID
+
+
+### Configuration
+* Key-stroke repeat settings:
+```bash
+defaults read NSGlobalDomain KeyRepeat
+defaults read NSGlobalDomain InitialKeyRepeat
+
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 9
+```
