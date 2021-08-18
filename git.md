@@ -34,7 +34,7 @@
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.
 * To find commits between two releases using tags, use GitHub compare URL, for e.g. `https://github.com/AudaxHealthInc/rally-play-authentication/compare/v6.26.6...v6.26.8` where `v6.26.8` is a release tag.
-* To find all the commits after a certain release, use `https://github.com/AudaxHealthInc/rally-play-authentication/compare/v6.27.0...develop` where `v6.27.0` is release tag and `develop` is name of branch.
+* To find all the commits after a certain release, use `https://github.com/AudaxHealthInc/rally-play-authentication/compare/v6.27.0...mail` where `v6.27.0` is release tag and `main` is name of branch.
 
 ### Reference
 * [Git Reference](https://git-scm.com/docs)
