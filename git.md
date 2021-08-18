@@ -28,6 +28,8 @@
 | `git log --pretty=format:'%cd %nAuthor:%an%nTitle:%s' --date='short'  v2.2.0..HEAD` | Generate short commit logs for all the commits that have been merged since last release |
 | `git branch --sort=-committerdate` | List branches ordered by most recent commit |
 | `git branch master --set-upstream-to origin/master` | Update remote tracking branch for a local branch |
+| `git config --system credential.helper` | Check the value of the git credential manager |
+| `git config --system --unset credential.helper` | To unset git credential manager, which will prompt you for password going forward |
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.
