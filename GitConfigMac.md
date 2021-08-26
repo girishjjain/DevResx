@@ -39,5 +39,5 @@ git config --global merge.tool vscode
 git config --global mergetool.vscode.cmd "code --wait $MERGED"
 git config --global merge.conflictStyle diff3
 git config --global merge.verbosity 3
-git config --global alias.cam commit --amend --no-edit
+git config --global alias.cam "commit --amend --no-edit"
 ```
