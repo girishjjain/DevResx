@@ -363,6 +363,7 @@ project/
 | `;clean ;update ;coverage ;test ;it:test ;coverageReport ;coverageAggregate` | Get coverage including integration tests |
 | `it:testOnly com.rallyhealth.authn.api.oidc.AdvantageOIDCPickupV3Test -- -z "return 200 with authz_code_done when pickup for advantage is enabled for user with surrogateId"` ||
 | `eval scala.sys.env("ENV")` | To find value of an environment variable, for e.g., this would return value of `ENV` environment variable |
+| `show package` | `show` can be used to show output of setting/task |
 
 
 # References
