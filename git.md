@@ -31,6 +31,7 @@
 | `git config --system credential.helper` | Check the value of the git credential manager |
 | `git config --system --unset credential.helper` | To unset git credential manager, which will prompt you for password going forward |
 | `git diff master HEAD accounts/test/com/rallyhealth/authn/services/ArachneAndLegacyAuthServiceSpec.scala` | Compare a file between two branches |
+| `git co <branch_name> -- <paths>` | Check out files from another branch i.e. update working tree with files from another branch |
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.
