@@ -33,6 +33,7 @@
 | `unzip file_name.zip` | Extract contents of a ZIP archive |
 | `readlink <app-name>` | To get actual path of a symlink, for example, `readlink rally-okta`|
 | `ln -sfn /a/path/to linkName` | To update an existing link to a new path |
+| `rm <path-to-symlink>` | To remove symlink, just like any other file |
 
 #### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.

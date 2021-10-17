@@ -357,3 +357,34 @@ class ItemsSpec extends PlaySpecification {
 * Deployments
   * First class REST objects, deployed via manifest files
   * Simple rolling updates and rollbacks made possible
+
+
+
+## ReactNative Development
+### Setup
+* `pod install` command was failing, fixed it with below command
+  * `gem install --user-install ffi -- --enable-libffi-alloc`
+
+
+
+* If you get following error when building the project in XCode:
+```
+ld: warning: Could not find or use auto-linked library 'swiftCoreGraphics'
+ld: warning: Could not find or use auto-linked library 'swiftUIKit'
+ld: warning: Could not find or use auto-linked library 'swiftDarwin'
+ld: warning: Could not find or use auto-linked library 'swiftFoundation'
+ld: warning: Could not find or use auto-linked library 'swiftMetal'
+ld: warning: Could not find or use auto-linked library 'swiftObjectiveC'
+ld: warning: Could not find or use auto-linked library 'swiftCoreFoundation'
+ld: warning: Could not find or use auto-linked library 'swiftDispatch'
+ld: warning: Could not find or use auto-linked library 'swiftCoreImage'
+ld: warning: Could not find or use auto-linked library 'swiftQuartzCore'
+ld: warning: Could not find or use auto-linked library 'swiftCore'
+ld: warning: Could not find or use auto-linked library 'swiftSwiftOnoneSupport'
+Undefined symbols for architecture arm64:
+```
+  * then follow following steps:
+    * Remove file - `rm Podfile.lock` 
+    * Remove Pods directory - `rm -rf Pods/`
+    * Remove node_modules - `rm -rf node_modules/`
+    * Commend the line `use_flipper!()`, using `#use_flipper!()`
