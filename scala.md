@@ -347,3 +347,25 @@ Array.length
   }
   ```
   
+
+### Pluralsight Course Notes - Scala Fundamentals: The Type System
+* Self-type
+  * Self-types are a way to declare that a trait must be mixed into another trait, even though it doesn't directly extend it.
+  * A self-type is a way to narrow the type of `this` or another identifier that aliases `this`.
+* Algebraic Data Types (ADTs)
+  * Cardinality 
+    * Number of possible values that a type can have. For example, in case of `Boolean`, cardinality will be 2 as the possible values of `Boolean` are `true` or `false`. Another example, `TaskStatus`, which can have values as `Pending`, `InProgress`, or `Completed`, has cardinality of 3.
+  * Product Types
+    * It's a product of cardinality of composed types. For example, a tule of (`Boolean`, `TaskStatus`) can have 6 different possible values.
+    * Case classes actually create product types
+  * Sum Types
+    * Consider example of a type, `Boolean` or `TaskStatus`, the possible values are `true`, `false`, `Pending`, `InProgress`, or `Completed`. Cardinality of this type is 5. Since number of values that you can have for a type is a sum of the cardinality of composed types, it's called Sum Type.
+    * In Scala, it can be represented using `Either[Boolean, TaskStatus]`
+    * `TaskStatus` is another example of sum type because it's cardinality is based on the sum of its possible values. In Scala, you can represent such types using:
+    ```scala
+    sealed trait TaskStatus
+    case object Pending extends TaskStatus
+    case object InProgress extends TaskStatus
+    case object Completed extends TaskStatus
+    ```
+  
