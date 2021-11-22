@@ -388,3 +388,12 @@ Undefined symbols for architecture arm64:
     * Remove Pods directory - `rm -rf Pods/`
     * Remove node_modules - `rm -rf node_modules/`
     * Commend the line `use_flipper!()`, using `#use_flipper!()`
+
+
+# Profiling Java Applications
+* USE - Utilization, Saturation, and Errors Matrix for measuring performance
+* Run queue - A high run queue for a prolonged period of time is a sign of saturation
+* Memory Swapping - When main memory is low on capacity, OS would move some memory pages to to a special location on the disk called swap space, this process is called swapping and is an indicator of memory capacity saturation and possible performance degradation.
+* Latency - Is the amount of time required to complete a unit of work, typically reported in milliseconds or seconds.
+* Elapsed Time - Measures the time taken for a batch of operations to complete
+* Throughput - Is the amount of work that an application can accomplish per unit of time. The unit of time is typically seconds, such as requests per second, transactions per second, etc. Throughput and latency are related. Higher the latency of an application, the higher it's throughput is. To put it another way, if you can do things faster, you can do more of it. The effective throughput of an application is the subcomponent with the lowest throughput. The subcomponent with the lowest throughput presents a bottleneck that increases the latency of the entire system.
