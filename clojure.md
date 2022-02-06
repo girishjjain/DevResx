@@ -7,7 +7,7 @@
 * Clojure is a compiled language, so one might wonder when you have to run the compiler. You don’t. Anything you enter into the REPL or load using load-file is automatically compiled to JVM bytecode on the fly.
 * Clojure is a hosted language
 * Besides JVM, Clojure also targets JavaScript and the Microsoft Common Language Runtime (CLR)
-* clojure.jar - is Clojure compiler - responsible for producting bytecode
+* clojure.jar - is Clojure compiler - responsible for producing bytecode
 * When you install Leiningen, it automatically downloads the Clojure compiler, clojure.jar.
 
 ## Functional Programming

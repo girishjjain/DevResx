@@ -356,7 +356,7 @@ Array.length
   * Cardinality 
     * Number of possible values that a type can have. For example, in case of `Boolean`, cardinality will be 2 as the possible values of `Boolean` are `true` or `false`. Another example, `TaskStatus`, which can have values as `Pending`, `InProgress`, or `Completed`, has cardinality of 3.
   * Product Types
-    * It's a product of cardinality of composed types. For example, a tule of (`Boolean`, `TaskStatus`) can have 6 different possible values.
+    * It's a product of cardinality of composed types. For example, a tuple of (`Boolean`, `TaskStatus`) can have 6 different possible values.
     * Case classes actually create product types
   * Sum Types
     * Consider example of a type, `Boolean` or `TaskStatus`, the possible values are `true`, `false`, `Pending`, `InProgress`, or `Completed`. Cardinality of this type is 5. Since number of values that you can have for a type is a sum of the cardinality of composed types, it's called Sum Type.
@@ -368,4 +368,10 @@ Array.length
     case object InProgress extends TaskStatus
     case object Completed extends TaskStatus
     ```
-  
+* Variance
+  * Specify subtyping relationship between type parameters of a parameterized type
+  * Specified using annotations using `+`, `-`
+  * Three types of variance - Invariance, Covariance, and Contravariance
+  * Covariance - If a subtyping relationship for a type, and parameterized types containing the same type, is in the same direction, it is called covariance. It is denoted using `+T` for the parameterized type. For example, `List[+T]` is covariant in its type parameter:
+  ![Covariance](./images/covariance.png)
+  * In the above diagram, notice the direction of the relationship for parameterized type. `Apple` is a subtype of `Fruit` and similarly, `List[Apple]` is a subtype of `List[Fruit]`
