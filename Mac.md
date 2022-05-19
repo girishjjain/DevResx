@@ -41,3 +41,7 @@ defaults read NSGlobalDomain InitialKeyRepeat
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 9
 ```
+
+### Python Issue
+* Python error `env: python: No such file or directory` that is introduced after installing Homebrew or another brew package that installs a separate version of python on Mac, can be fixed by adding path to python 2 to PATH variable, as suggested here:
+  * https://discourse.brew.sh/t/what-happened-to-the-standard-python-package/935
