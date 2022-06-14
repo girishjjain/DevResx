@@ -50,7 +50,7 @@
     * Delegeated access to a **frontend** application
     * Access token directly obtained through the redirect
     * Not supposed to have access to refresh tokens
-* Token 
+* Token
   * Reference Token or self ontained token
 
 
@@ -58,22 +58,22 @@
 * Identity layer that sits on top of OAuth 2.0
 * Relying Party (RP) is an OAuth 2.0 client that relies on Identity Provider to authenticate user and request claims about that user
 * Identity Provider (IdP) is OAuth 2.0 authorization server which offers authentication as a service
-* Identity Token contains number of claims (or attributes) about identity of Resource Owner (end user). For example, 
+* Identity Token contains number of claims (or attributes) about identity of Resource Owner (end user). For example,
   * Subject - A unique identifier issued to user by IdP
   * Audience - Identifies relying party
-* Scopes are used to request specific sets of information, that's made available as claim values, OIDC defines standard scopes. For example, 
+* Scopes are used to request specific sets of information, that's made available as claim values, OIDC defines standard scopes. For example,
   * openid - mandatory scope, identifies request as OpenId Connect request
   * profile - requests access to end user's default profile claims
   * email
   * address
   * phone
 * OIDC Endpoints
-  * Authorization 
+  * Authorization
   * Token
   * User Info
 * Use cases
   * OAuth (for Authorization)
-    * Delegated Authorization (Granting access to your API - user's permission to external system to allow access through API) 
+    * Delegated Authorization (Granting access to your API - user's permission to external system to allow access through API)
   * OpenId Connect (for Authentication)
     * Logging the user in (Simple Login/SSO)
     * Making your accounts available in other systems
@@ -81,7 +81,7 @@
   * Access Token - Opaque to RP (client), to be understood by Resource Server
   * ID Token - Encodes user info, intended to be understood by RP (client)
   * OpenId Connect Grant Types
-    * Implicit 
+    * Implicit
       * Intended for **frontend** application only
       * Allows establishing user's identity
     * Authorization Code
@@ -98,12 +98,12 @@
   val xs = List(1, 2, 3)
   def times2(a: Int)= a * 2
   xs.map(times2).foreach(println)
-``` 
-* A method is not same as a function (which are instances of `FunctionX` traits that has `apply` method). 
+```
+* A method is not same as a function (which are instances of `FunctionX` traits that has `apply` method).
 * Transforming a method to a function is called as lifting (or more technical term ETA-Expansion), and it is performed by compiler
 * Functions and methods can be partially applied with underscores. For example,
 ```scala
-  // given below method 
+  // given below method
   def simpleAddMethod(x: Int, y: Int) = x + y
 
   // this returns a partially applied function Int => Int
@@ -152,7 +152,7 @@
   * flatMap (also called bind)
 * List, Option, Try, Future, Stream, Set are all monads.
 * Operations need to satisfy three monad laws:
-  * left-identity - if you build a monad out of an element and you flatMap it with a function, it should give you function applied to that element i.e. 
+  * left-identity - if you build a monad out of an element and you flatMap it with a function, it should give you function applied to that element i.e.
   ```scala
   unit(x).flatMap(f) == f(x)
   ```
@@ -222,14 +222,14 @@ class ItemsSpec extends PlaySpecification {
 
 ## URI vs URL
 * URI - Uniform Resource Identifier
-  * Identifies a resource, could just be a name and don't need to have protocol 
+  * Identifies a resource, could just be a name and don't need to have protocol
 * URL - Uniform Resource Locator
   * URL is what we come across on a day-to-day basis, for e.g. https://yahoo.com, the protocol and other parts are well defined
-* Theoretically URL is a subset of URI but in practice may not always be the case. For example, in Java a `java.net.URI` class would throw exception if the string contains '|' (pipe) character but `java.net.URL` class accepts it fine. URI class follows the RFC-2396 (and updates) to it strictly. 
+* Theoretically URL is a subset of URI but in practice may not always be the case. For example, in Java a `java.net.URI` class would throw exception if the string contains '|' (pipe) character but `java.net.URL` class accepts it fine. URI class follows the RFC-2396 (and updates) to it strictly.
 * For most of the cases, you want to use `URL` class instead of `URI` in your code
 
 ## React Native
-* React Lifecycle Methods Diagram 
+* React Lifecycle Methods Diagram
   - https://reactjs.org/docs/react-component.html
   - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 
@@ -266,26 +266,26 @@ class ItemsSpec extends PlaySpecification {
       * Node Agent
       * Proxy
     * Master Node Components - API Server
-      * All the administrative tasks are coordinated by the **kube-apiserver**, a central control plane component running on the master node. 
+      * All the administrative tasks are coordinated by the **kube-apiserver**, a central control plane component running on the master node.
       * During processing the API server reads the Kubernetes cluster's current state from the etcd data store, and after a call's execution, the resulting state of the Kubernetes cluster is saved.
       * The API Server is the only master plane component to talk to the etcd data store, both to read from and to save Kubernetes cluster state information.
       * API Server is highly configurable and customizable and can scale horizontally.
     * Master Node Components - Scheduler
-      * The role of the **kube-scheduler** is to assign new workload objects, such as pods, to nodes. 
+      * The role of the **kube-scheduler** is to assign new workload objects, such as pods, to nodes.
       * The scheduler obtains resource usage data from the etcd data store, via the API Server. Once all  the cluster data is available, the scheduling algorithm filters the nodes with predicates to isolate the possible node candidates which then are scored with priorities in order to select the one node that satisfies all the requirements for hosting the new workload. The outcome of the decision process is communicated back to the API server, which then delegates the workload deployment with other control plane agents.
       * The scheduler is highly configurable and customizable through scheduling policies, plugins, and profiles.
     * Master Node Components - Controller Managers
-      * The **controller managers** are control plane components on the master node running controllers to regulate the state of the Kubernetes cluster. Controllers are watch-loops continuously running and comparing the cluster's desired state (provided by object's configuration data) with its current state. In case of a mismatch, corrective action is taken in the cluster until its current state matches the desired state. 
+      * The **controller managers** are control plane components on the master node running controllers to regulate the state of the Kubernetes cluster. Controllers are watch-loops continuously running and comparing the cluster's desired state (provided by object's configuration data) with its current state. In case of a mismatch, corrective action is taken in the cluster until its current state matches the desired state.
       * The **kube-controller-manager** runs controllers responsible to act when nodes become unavailable, to ensure pod counts are as expected, to create endpoints, service accounts, and API access tokens.
-      * The **cloud-controller-manager** runs controllers responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing. 
+      * The **cloud-controller-manager** runs controllers responsible to interact with the underlying infrastructure of a cloud provider when nodes become unavailable, to manage storage volumes when provided by a cloud service, and to manage load balancing and routing.
     * Master Node Components - Data Store
-      * **etcd** is a strongly consistent, distrubuted key-value **data store** used to persist a Kubernetes cluster's state. New data is written to the data store only by appending to it, data is never replaced in the data store. Obsolete data is compacted periodically to minimize the size of the data store. 
+      * **etcd** is a strongly consistent, distrubuted key-value **data store** used to persist a Kubernetes cluster's state. New data is written to the data store only by appending to it, data is never replaced in the data store. Obsolete data is compacted periodically to minimize the size of the data store.
       * etcd's CLI management tool - **etcdctl**, provides backup, snapshot, and restore capabilities which come in handy especially for a single etcd instance Kubernetes cluster - common in development and learning environments.
       * In Production environments, it is extremely important to replicate the data store in HA mode, for cluster configuration data resiliency.
       ![Stacked etcd Topology](./k8s/kubeadm-ha-topology-stacked-etcd.svg) Stacked etcd Topology
       * For data isolation from control plane components, the bootstrapping process can be configured for an external etcd topology, where the data store is provisioned on a dedicated separate host, thus reducing the chances of an etcd failure.
       ![External etcd Topology](./k8s/kubeadm-ha-topology-external-etcd.svg) External etcd Topology
-      * Both stacked and external etcd configurations support HA configurations. 
+      * Both stacked and external etcd configurations support HA configurations.
       * etcd is written in the Go programming language. Besides storing the cluster state, etcd is also used to store the configuration details such as subnest, Config Maps, Secrets, etc.
     * Master Node Components - Worker Node
       * A **worker node** provides running environment for client applciations, encapsulated in pods.
@@ -343,7 +343,7 @@ class ItemsSpec extends PlaySpecification {
   * Manifest file (YAML or JSON) that describes desired state
   * We never interact with kubernetes imperatively (we shouldn't), we give it declarative manifest file that describes how we want the cluster to look
 * Pods
-  * One or more containers packaged together and deployed as a single unit 
+  * One or more containers packaged together and deployed as a single unit
   * Kubernetes runs containers, but always inside a pod
   * Pods can have multiple containers
   * At a highest level, a pod is just a ring-fenced environment to run containers
@@ -384,7 +384,7 @@ ld: warning: Could not find or use auto-linked library 'swiftSwiftOnoneSupport'
 Undefined symbols for architecture arm64:
 ```
   * then follow following steps:
-    * Remove file - `rm Podfile.lock` 
+    * Remove file - `rm Podfile.lock`
     * Remove Pods directory - `rm -rf Pods/`
     * Remove node_modules - `rm -rf node_modules/`
     * Commend the line `use_flipper!()`, using `#use_flipper!()`
@@ -397,3 +397,16 @@ Undefined symbols for architecture arm64:
 * Latency - Is the amount of time required to complete a unit of work, typically reported in milliseconds or seconds.
 * Elapsed Time - Measures the time taken for a batch of operations to complete
 * Throughput - Is the amount of work that an application can accomplish per unit of time. The unit of time is typically seconds, such as requests per second, transactions per second, etc. Throughput and latency are related. Higher the latency of an application, the higher it's throughput is. To put it another way, if you can do things faster, you can do more of it. The effective throughput of an application is the subcomponent with the lowest throughput. The subcomponent with the lowest throughput presents a bottleneck that increases the latency of the entire system.
+
+# HTTP Redirect Response Codes
+* 302 == Found
+* 303 == See Other
+* Both are used for redirect response from server but there are some key differences.
+* With 302, HTTP method (POST/PUT/etc) and the body are not altered when redirection to new `Location` is performed
+* If you want the method to be changed to `GET` when redirecting to new `Location`, 303 is to be used
+* 302 response code is a bit ambiguous and hence, 307 (Temporary Redirect) was introduced with HTTP 1.1, to make it clear to clients to not change the request method/body
+* To summarize:
+  * 302: temporary redirect. Only use for HTTP/1.0 clients
+  * 303: temporary redirect, changes the method to GET
+  * 307: temporary redirect, repeating the request identically
+  * 308: permanent redirect, repeating the request identically
