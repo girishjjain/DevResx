@@ -20,6 +20,7 @@
 | `git stash list` | Lists all previously stored stashes |
 | `git stash save <name>` | Saves a named stash |
 | `git stash apply stash@{0}` | Apply changes from numbered stash to working directory |
+| `git stash show -p stash@{1}` | Print changes of the named stash to console |
 | `git format-patch -3` | Extract three topmost commits from current branch and create email-able patches |
 | `git format-patch -1 <commit>` | To create patch for given commit |
 | `git am file_name.patch` | Apply changes provided in patch file by creating a new commit |
