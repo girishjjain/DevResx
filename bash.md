@@ -25,6 +25,7 @@
 |--|--|
 | `ls -R` | Lists whole directory recursively |
 | `ls | grep <search_string>` | Search for file/directory matching given string |
+| `ls -d dirPrefix*` | List directories that start with the given prefix in the current directory |
 | `cp -R` | Copies everthing in the subdirectories recursively |
 | `open .` | Opens current working directory in Finder |
 | `rm -rf <dir-name>/` | Delete directory and its contents without prompting for confirmation |
