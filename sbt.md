@@ -364,6 +364,7 @@ project/
 | `it:testOnly com.rallyhealth.authn.api.oidc.AdvantageOIDCPickupV3Test -- -z "return 200 with authz_code_done when pickup for advantage is enabled for user with surrogateId"` ||
 | `eval scala.sys.env("ENV")` | To find value of an environment variable, for e.g., this would return value of `ENV` environment variable |
 | `show package` | `show` can be used to show output of setting/task |
+|`show compile:fullClasspathAsJars`| Compile time internal and external dependencies, all as JARs |
 
 
 # References

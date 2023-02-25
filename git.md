@@ -20,6 +20,7 @@
 | `git stash list` | Lists all previously stored stashes |
 | `git stash save <name>` | Saves a named stash |
 | `git stash apply stash@{0}` | Apply changes from numbered stash to working directory |
+| `git stash show -p stash@{1}` | Print changes of the named stash to console |
 | `git format-patch -3` | Extract three topmost commits from current branch and create email-able patches |
 | `git format-patch -1 <commit>` | To create patch for given commit |
 | `git am file_name.patch` | Apply changes provided in patch file by creating a new commit |
@@ -33,6 +34,7 @@
 | `git diff master HEAD accounts/test/com/rallyhealth/authn/services/ArachneAndLegacyAuthServiceSpec.scala` | Compare a file between two branches |
 | `git co <branch_name> -- <paths>` | Check out files from another branch i.e. update working tree with files from another branch |
 | `git switch <branch_name>` | Switch branches, even remote branches |
+| `git config --global credential.useHttpPath true` | To configure Git to cache credentials for each local directory where you clone a repository. This becomes very useful when you are working with multiple Github.com accounts on the same machine. |
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.

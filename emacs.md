@@ -4,6 +4,16 @@
 * To create a fresh buffer, use `Ctrl+x,b`. When you create a new buffer this way, it exists only in memory until you save it as a file; buffers aren’t necessarily backed by files, and creating a buffer doesn’t necessarily create a file.
 * Kill current buffer `Ctrl+x,k`
 * Open a file `Ctrl+x+f`
+
+### Key Bindings
+* Emacs binds keystrokes to *commands*, which are just elisp functions. For example, `Ctrl+x,b` is bound to the function `switch-to-buffer`
+* From Emacs' point of view, all functions are created equal, and you can redefine all functions, even core functions like `save-file` (not that you'd want to but you can)
+* Conceptually, key bindings are just an entry in a look up table, associating keystrokes with functions, and that look up table is completely modifiable.
+
+### Meta
+* You can also run commands by name, without a specific key binding, using `M+x,function-name` (for example, `M+x,save-buffer`). M stands for meta, a key that modern keyboards don’t possess but which is mapped to alt on Windows and Linux and option on Macs. 
+
+### Modes
 * An emacs mode is a collection of key bindings and functions that are packaged together to help you be productive when editing different types of files. 
   * Modes come in two flavors: major modes and minor modes. For example, Markdown and Clojure are major modes. Major modes are usually set by emacs when you open a file, but you can also set the mode explicitly by running the relvant emacs command, for example with `Opt+x clojure-mode`. Only one major mode is active at a time.
   * Minor modes usually provide functionality that's useful across file types. For example, `abbrev` mode "automatically expands text based on pre-defined abbreviation definitions". You can have multiple minor modes active at the same time. 
@@ -23,7 +33,9 @@
 
 ### Selection with Regions
 * In emacs, we don't select text. We create regions, and we do so by setting the mark with `Ctrl+spacebar`. Then, when you move point, everythin between mark and point is the regions. It's very similar to shift-selecting text for basic purposes.
-* One cool thing about using mark instead of Shift-selecting text is that you're free to use all of emacs's movement commands after you set the mark. 
+* One cool thing about using mark instead of Shift-selecting text is that you're free to use all of emacs's movement commands after you set the mark. For example, you could set a mark and then use `Ctrl+s` to search for some bit of text hundreds of lines down in your buffer. Doing so would create a very large region, and you won't have to strain your pinky finger holding down Shift key.
+* Regions also let you confine an operation to a limited area of the buffer. For example, after selecting a region try `Opt+x,replace-string` to replace a word and notice that it replaces the string in the selection and not in entire buffer, which is the default.
+
 
 | Command | Description |
 |---|---|
@@ -45,7 +57,7 @@
 | `Opt+backspace` | Delete word immediately before cursor |
 | `Ctrl+d` | Delete next character after cursor |
 | `Opt+d` | Delete next word after cursor |
-| `Ctrl+k` | Delete from cursor position to end of line |
+| `Ctrl+k` | Delete from cursor position to end of line, runs the command `kill-line` |
 | `Opt+k` | Delete from cursor position to end of current sentence |
 | `Ctrl+w` | Cut selected region to clipboard ring |
 | `Ctrl+y` | Paste text that was last pushed to clipboard ring (does not remove it from clipboard ring) |
