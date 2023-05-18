@@ -72,6 +72,21 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
 * `base64 -in ifile -o ofile` - encode file as base64 and write it to output file
 * `base64 -D -in ifile -o ofile` - decode file as base64 and write it to output file
 
+#### chmod
+* Refer [documentation](https://www.linode.com/docs/guides/modify-file-permissions-with-chmod/)
+* To change file permissions use `chmod <permission> <directory or filename>`
+* Using symbolic notations `chmod [who][+,-,=][permissions] filename`
+* Reading current permissions
+```
+drwxr-xr-x 2 owner group       4.0K 2009-08-13 10:16 docs
+-rw-r--r-- 1 owner group       8.1K 2009-07-09 16:23 roster.py
+lrwxrwxrwx 2 owner group       4.0K 2009-08-13 10:16 team.docs
+```
+  * `d` is for directory
+  * `-` is for regular file
+  * `l` is for symbolic link
+  * The first character represents the type of file. The remaining nine bits in groups of three represent the permissions for the user, group, and global respectively. 
+
 ### Bash wildcards 
 * \* matches anything, including nothing at all 
 * ? matches exactly a single character 
