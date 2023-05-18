@@ -132,3 +132,14 @@ lrwxrwxrwx 2 owner group       4.0K 2009-08-13 10:16 team.docs
 
 ##### killall
 * You can kill a process by name by using `killall` command. For e.g. `killall ZoomOpener`
+
+
+### Shell Script
+* Refer below example for using associative arrays (think of key/value pair dictionary) in shell script. Also, below script uses zsh shell (which supports associative arrays)
+  * Also notice how `jq` is used to extract elements from JSON resposne:
+  ```sh
+  #!/usr/bin/zsh
+  declare -A env_tenant=( [dev]=cozy-tuna.rally-dev.com [int]=accounts-int-1.rally-dev.com [bs]=accounts-uat-1.rally-prod.com [prod]=accounts-prod-2.rally-prod.com )
+
+  curl --silent --header 'Cache-Control: no-cache' https://ops-proxy.${env_tenant[$1]}/deployment/versions | jq 'with_entries(select(.key | contains("'$2'"))) | select(. != {})'
+  ```
