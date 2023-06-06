@@ -86,6 +86,8 @@ lrwxrwxrwx 2 owner group       4.0K 2009-08-13 10:16 team.docs
   * `-` is for regular file
   * `l` is for symbolic link
   * The first character represents the type of file. The remaining nine bits in groups of three represent the permissions for the user, group, and global respectively. 
+* To grant execute permission to the current user on a file, you can use following command:
+  * `chmod u+x ./<file_name>`
 
 ### Bash wildcards 
 * \* matches anything, including nothing at all 

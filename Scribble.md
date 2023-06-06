@@ -410,3 +410,28 @@ Undefined symbols for architecture arm64:
   * 303: temporary redirect, changes the method to GET
   * 307: temporary redirect, repeating the request identically
   * 308: permanent redirect, repeating the request identically
+
+
+# VS Code Snippet for Custom Task
+* Below command invokes a zsh script and passes the currently selected text as the argument to it.
+```json
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Convert to Neptune configuration path",
+      "type": "process",
+      "command": "/Users/gjain17/convert-to-neptune-config.zsh",
+      "args": [
+        "${selectedText}"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+  ]
+}
+```
