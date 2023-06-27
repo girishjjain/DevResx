@@ -134,6 +134,13 @@
 | `Opt + Tab` | Navigate between "tab groups" |
 | `Ctrl + Shift + [` or `Ctrl + Shift + ]` | Navigate between start and end of current block/braces |
 | `Ctrl + G` | Find next occurrence of selected word |
+| `Ctrl + T` | Brings up refactoring menu and then start typing first letter of the menu option to select it, for example, to select "Introduct Parameter", type ip |
+| `F1` | To see documentation for the symbol at the caret |
+| `Opt + Space` | To see definition popup for the symbol at the caret |
+| `F2` | To go to next highlighted error in file |
+| `Cmd + Shift + F7` | To highlight usages |
+| `Ctrl + Cmd + G` | Select all occurrences of the selection. Extremely useful for editing multiple instances of selection |
+
 
 ### ScalaTest
 * Refer [Style Trait Descriptions and Examples](http://www.scalatest.org/user_guide/selecting_a_style) to understand which base class to use for your test class
