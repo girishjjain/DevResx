@@ -133,7 +133,14 @@
 | `Cmd + Shift + V` | Shows clipboard history pop-up, from [SO post](https://stackoverflow.com/questions/1716793/copy-and-pasting-multiple-items-to-the-clipboard-in-intellij-idea) |
 | `Opt + Tab` | Navigate between "tab groups" |
 | `Ctrl + Shift + [` or `Ctrl + Shift + ]` | Navigate between start and end of current block/braces |
-| `Ctrl + G` | Find next occurrence of selected word |
+| `Ctrl + G` | Select next occurrence of current selection |
+| `Ctrl + T` | Brings up refactoring menu and then start typing first letter of the menu option to select it, for example, to select "Introduct Parameter", type ip |
+| `F1` | To see documentation for the symbol at the caret |
+| `Opt + Space` | To see definition popup for the symbol at the caret |
+| `F2` | To go to next highlighted error in file |
+| `Cmd + Shift + F7` | To highlight usages |
+| `Ctrl + Cmd + G` | Select all occurrences of the selection. Extremely useful for editing multiple instances of selection |
+
 
 ### ScalaTest
 * Refer [Style Trait Descriptions and Examples](http://www.scalatest.org/user_guide/selecting_a_style) to understand which base class to use for your test class
@@ -410,3 +417,28 @@ Undefined symbols for architecture arm64:
   * 303: temporary redirect, changes the method to GET
   * 307: temporary redirect, repeating the request identically
   * 308: permanent redirect, repeating the request identically
+
+
+# VS Code Snippet for Custom Task
+* Below command invokes a zsh script and passes the currently selected text as the argument to it.
+```json
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Convert to Neptune configuration path",
+      "type": "process",
+      "command": "/Users/gjain17/convert-to-neptune-config.zsh",
+      "args": [
+        "${selectedText}"
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      }
+    },
+  ]
+}
+```

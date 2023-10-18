@@ -58,7 +58,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
      * `find ~` to recursively walk file hierarchy from user home directory
      * `find . -type d` to recursively walk file hierarchy for *directories* from current directory
      * `find . -type f` to recursively walk file hierarchy for *files* from current directory
-     * `find . -type f -name *partFileName.ext` to recursively walk file hierarchy for *files* from current directory to match files that have their name ending with given pattern
+     * `find . -type f -name \*partFileName.ext` to recursively walk file hierarchy for *files* from current directory to match files that have their name ending with given pattern
      * `find . -type f -name \*Annual\*.pdf` to recursively walk file hierarchy for *files* from current directory to match files that contain the given word
      * `grep findStr $(find . -name \*.scala -type f)` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
      
@@ -86,6 +86,8 @@ lrwxrwxrwx 2 owner group       4.0K 2009-08-13 10:16 team.docs
   * `-` is for regular file
   * `l` is for symbolic link
   * The first character represents the type of file. The remaining nine bits in groups of three represent the permissions for the user, group, and global respectively. 
+* To grant execute permission to the current user on a file, you can use following command:
+  * `chmod u+x ./<file_name>`
 
 ### Bash wildcards 
 * \* matches anything, including nothing at all 
