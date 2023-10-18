@@ -11,7 +11,7 @@
 * Absolute paths start with / (which is root)
 * Relative paths don't start with / and are resolved relative to current directory
 
-### Environment Variables`
+### Environment Variables
 * To list all environment variables use `printenv` 
 * To list all environment variables that contain given string `printenv | grep partString`
 * To display value of a specific environment variable `echo $envvarname`
@@ -24,7 +24,7 @@
 | Command | Description |
 |--|--|
 | `ls -R` | Lists whole directory recursively |
-| `ls | grep <search_string>` | Search for file/directory matching given string |
+| `ls grep <search_string>` | Search for file/directory matching given string |
 | `ls -d dirPrefix*` | List directories that start with the given prefix in the current directory |
 | `cp -R` | Copies everthing in the subdirectories recursively |
 | `open .` | Opens current working directory in Finder |
