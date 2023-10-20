@@ -140,7 +140,7 @@
 | `F2` | To go to next highlighted error in file |
 | `Cmd + Shift + F7` | To highlight usages |
 | `Ctrl + Cmd + G` | Select all occurrences of the selection. Extremely useful for editing multiple instances of selection |
-
+| `Shift + Esc` | To hide active tool window |
 
 ### ScalaTest
 * Refer [Style Trait Descriptions and Examples](http://www.scalatest.org/user_guide/selecting_a_style) to understand which base class to use for your test class
