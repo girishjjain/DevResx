@@ -38,4 +38,5 @@ git config --global merge.conflictStyle diff3
 git config --global merge.verbosity 3
 git config --global alias.cam "commit --amend --no-edit"
 git config --global pull.rebase false
+git config --global init.defaultBranch main
 ```
