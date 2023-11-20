@@ -24,7 +24,8 @@
 | Command | Description |
 |--|--|
 | `ls -R` | Lists whole directory recursively |
-| `ls grep <search_string>` | Search for file/directory matching given string |
+| `ls \| grep <search_string>` | Search for directory names containing given string (refer rendered version to copy this command) |
+| `ls grep <search_string>` | Search for file/directory names containing given string |
 | `ls -d dirPrefix*` | List directories that start with the given prefix in the current directory |
 | `cp -R` | Copies everthing in the subdirectories recursively |
 | `open .` | Opens current working directory in Finder |
