@@ -1,5 +1,8 @@
 ## Scribble
 
+### SDKMAN
+* To set default version of java - `sdk default java 17.0.6-zulu`
+
 ### Docker
 | Command | Description |
 | --- | --- |
