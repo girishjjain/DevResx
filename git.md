@@ -4,7 +4,7 @@
 | --- | --- |
 | `git push -d <remote> <branch_name>` | Delete a remote branch. For example, `git push -d upstream featureBranch` |
 | `git log --since=1.month --grep="virtual"` | Search for commit logs since last 1 month that contain the word `virtual` |
-| `git log -L47,+1:path/to/file` | History of a all revisions to a range of lines |
+| `git log -L47,+1:path/to/file` | History of all revisions to a range of lines |
 | `git log --full-history  -- myfile` | Full history of file, even if the file was deleted |
 | `git log --pretty=format:%s v6.29.1..v6.29.2` | Short log message of all commits between two tags/commits |
 | `git show sha1Hash -- path/to/file` | Show contents of a certain file in a commit |
@@ -32,6 +32,7 @@
 | `git config --system credential.helper OR git config --global credential.helper` | Check the value of the git credential manager |
 | `git config --system --unset credential.helper` | To unset git credential manager, which will prompt you for password going forward |
 | `git diff master HEAD accounts/test/com/rallyhealth/authn/services/ArachneAndLegacyAuthServiceSpec.scala` | Compare a file between two branches |
+| `git diff main...HEAD` | To list changes that occurred on current branch since when the current branch was started off of main. You can use the branch names as well - `git diff topic...master` |
 | `git co <branch_name> -- <paths>` | Check out files from another branch i.e. update working tree with files from another branch |
 | `git switch <branch_name>` | Switch branches, even remote branches |
 | `git config --global credential.useHttpPath true` | To configure Git to cache credentials for each local directory where you clone a repository. This becomes very useful when you are working with multiple Github.com accounts on the same machine. |
