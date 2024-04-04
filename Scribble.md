@@ -316,7 +316,9 @@ class ItemsSpec extends PlaySpecification {
       * The kubelet connects to container runtimes through a plugin based interface the Container Runtime Interface (CRI), which provides a clear abstraction layer between the kubelet and the container runtime.
       * Using `dockershim` (a CRI implementation), containers are created using Docker installed on the worker nodes. Internally, Docker uses `containerd` to create and manage containers.
 
-
+### Kubernetes Commands
+* `kubectl -n oid logs notification-service-green-567d56b8f5-8b2kf` - Get logs for the given pod from oid namespace
+* `kubectl -n oid get pods` - Get pods list from oid namespace
 
 # Getting Started with Kubernetes Pluralsight Course
 * Kubernetes came out of Google
