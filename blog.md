@@ -29,7 +29,12 @@
   * `https://github.com/coreybutler/nvm-windows/releases`
 * Install Node LTS version
   * `nvm install lts`
+  * `nvm use lts`
+
+### Playwright Setup
 * Install playwright
   * `npm init playwright@latest`
-  * `npx playwright test`
-
+* Install Chromium browser for playwright
+  * `npx playwright install chromium`
+* Execute playwright tests using Chromium browser
+  * `npx playwright test --project=chromium --headed`
