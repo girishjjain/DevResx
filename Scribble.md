@@ -319,6 +319,9 @@ class ItemsSpec extends PlaySpecification {
 ### Kubernetes Commands
 * `kubectl -n oid logs notification-service-green-567d56b8f5-8b2kf` - Get logs for the given pod from oid namespace
 * `kubectl -n oid get pods` - Get pods list from oid namespace
+* `kubectl -n oid get deployment` - Get deployments for given namespace
+* `kubectl -n oid get service` - Get services for given namespace
+* `kubectl -n oid port-forward service-gateway-green-769988bddf-mjcgn 9988:8080` - Use Port Forwarding to access applications in a cluster. Here the local 9988 port is setup to forward requests to `service-gateway-green-769988bddf-mjcgn` pod in cluster.
 
 # Getting Started with Kubernetes Pluralsight Course
 * Kubernetes came out of Google

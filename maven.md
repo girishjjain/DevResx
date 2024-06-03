@@ -29,3 +29,7 @@
   ```
   mvn -U clean install
   ```
+* To run tests from a particular test class
+  ```
+  mvn test -Dtest=classname
+  ```
