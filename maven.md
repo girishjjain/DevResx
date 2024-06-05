@@ -33,3 +33,8 @@
   ```
   mvn test -Dtest=classname
   ```
+* To list dependencies available on compile/test classpath
+  ```
+  mvn dependency:build-classpath -DincludeScope=compile
+  mvn dependency:build-classpath -DincludeScope=test
+  ```
