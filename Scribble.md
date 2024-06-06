@@ -450,3 +450,14 @@ Undefined symbols for architecture arm64:
   ]
 }
 ```
+
+## Colima docker for Mac
+* Refer `https://github.com/abiosoft/colima` for installation instructions and starting Colima
+* Link Colima socket to default socket (this may break other docker servers)
+  * `sudo ln -s $HOME/.colima/docker.sock /var/run/docker.sock`
+* Get the Colima profile name using
+  * `colima list`
+* Update docker context to use the "default" profile (match with the Colima profile output command above)
+  * `docker context use default`
+  * `docker context ls`
+
