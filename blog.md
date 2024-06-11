@@ -38,3 +38,9 @@
   * `npx playwright install chromium`
 * Execute playwright tests using Chromium browser
   * `npx playwright test --project=chromium --headed`
+
+
+### Jun 11, 2024
+* cURL alternative for Windows is to use PowerShell and use
+  * `Invoke-WebRequest -Uri https://google.com`
+  * Refer for detailed documentation `https://www.pdq.com/powershell/invoke-webrequest/#`
