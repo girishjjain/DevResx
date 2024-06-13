@@ -35,6 +35,23 @@
 * To connect to Postgres DB using terminal - `psql -h <host_name> -U <user_name> -d <db_name> -W`, for e.g. `psql -h localhost -U heimdalluser -d heimdall -W`
 
 
+## Queries
+* `\l` - List databases
+* `\c <db_name>` - Change database
+* `\x` - Turn extended display on/off
+* `\dt` - List tables
+* `\d <table_name>` - Table schema including indexes
+* `explain select * from accounts where id='e8999468-79e8-4a34-abf9-c284a059e9af';`
+* `select * from device_credentials where created_at > now() - interval '1 week' limit 10;`
+* List partition bounds
+  ```sql
+  SELECT t.oid::regclass AS partition,
+        pg_get_expr(t.relpartbound, t.oid) AS bounds
+  FROM pg_inherits AS i
+    JOIN pg_class AS t ON t.oid = i.inhrelid
+  WHERE i.inhparent = 'rp_session_2'::regclass;
+  ```
+
 ### Python
 * Statement grouping is done by indentation instead of beginning and ending brackets
 * No variable or argument declarations are necessary
