@@ -43,26 +43,6 @@ byValue parameters (Not sure if this needs to be detailed out)
    - value is evaluated before function is invoked
    - what happens when a "function value is passed"
 
-http://www.plantuml.com/plantuml
-
-@startuml
-package authn.services {
-  class IdentityService {
-    identitySearch
-  }
-}
-
-package authn.adapters {
-  class IdentityAdapter {
-    identitySearch
-  }
-
-  AdminUserAdapter o-- IdentityService
-  CommonAdapter o-- IdentityService
-  BaseUserAdapter o-- IdentityService
-  IdentityService o-- IdentityAdapter
-}
-@enduml
 
 git show develop:accounts/app/com/rallyhealth/authn/services/delegate/SSOAttributeFormatHelper.scala > /Users/girish.jain/Documents/Rally/notes/rally/diff/a.scala | code --diff /Users/girish.jain/code/rally-play-authentication/accounts/app/com/rallyhealth/authn/services/delegate/SSOAttributeFormatHelper.scala
 

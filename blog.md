@@ -44,3 +44,27 @@
 * cURL alternative for Windows is to use PowerShell and use
   * `Invoke-WebRequest -Uri https://google.com`
   * Refer for detailed documentation `https://www.pdq.com/powershell/invoke-webrequest/#`
+
+### Jun 16, 2024
+* You can create UML diagrams using [PlantUML](http://www.plantuml.com/plantuml)
+* Basic example diagram definition:
+  ```
+  @startuml
+  package authn.services {
+    class IdentityService {
+      identitySearch
+    }
+  }
+
+  package authn.adapters {
+    class IdentityAdapter {
+      identitySearch
+    }
+
+    AdminUserAdapter o-- IdentityService
+    CommonAdapter o-- IdentityService
+    BaseUserAdapter o-- IdentityService
+    IdentityService o-- IdentityAdapter
+  }
+  @enduml
+  ```
