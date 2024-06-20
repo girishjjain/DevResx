@@ -39,4 +39,6 @@ git config --global merge.verbosity 3
 git config --global alias.cam "commit --amend --no-edit"
 git config --global pull.rebase false
 git config --global init.defaultBranch main
+git config --system core.longpaths true
+git config --global core.longpaths true 
 ```
