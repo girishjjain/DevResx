@@ -478,3 +478,9 @@ Undefined symbols for architecture arm64:
   * `docker context use default`
   * `docker context ls`
 
+
+## Windows Keyboard Shortcuts
+|Shortcut|Description|
+|--|--|
+|`Shift + Win + /` | Launch PowerToys Guide Utility |
+|`Shift + Win + S` | Take Screenshot |
