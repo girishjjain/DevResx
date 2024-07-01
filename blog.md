@@ -68,3 +68,7 @@
   }
   @enduml
   ```
+
+### Jun 28, 2024
+* To search for files containing certain string using PowerShell:
+  * `Get-ChildItem -Recurse | Select-String "dummy" -List | Select Path`
