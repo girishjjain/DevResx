@@ -71,4 +71,11 @@
 
 ### Jun 28, 2024
 * To search for files containing certain string using PowerShell:
-  * `Get-ChildItem -Recurse | Select-String "dummy" -List | Select Path`
+  * `Get-ChildItem -Recurse | Select-String "dummy" -List | Select Path, LineNumber`
+
+### Jul 8, 2024
+#### Oracle DB
+* List all tables
+  * `select * from all_tables;`
+* List all table columns
+  * `select * from user_tab_cols;`

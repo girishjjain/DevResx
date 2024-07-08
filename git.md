@@ -2,6 +2,7 @@
 
 | Commands | Description |
 | --- | --- |
+| `git config --list --show-origin` | Shows git configuration and the config file origin for it |
 | `git push -d <remote> <branch_name>` | Delete a remote branch. For example, `git push -d upstream featureBranch` |
 | `git log --since=1.month --grep="virtual"` | Search for commit logs since last 1 month that contain the word `virtual` |
 | `git log -L47,+1:path/to/file` | History of all revisions to a range of lines |

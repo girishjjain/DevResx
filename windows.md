@@ -11,7 +11,9 @@
 * WSL
     * To see currently installed distributions
         * `wsl -l -v`
-    * To install 
-        * `wsl --install Ubuntu`
+    * To list available distributions
+        * `wsl --list --online`
+    * To install default distribution
+        * `wsl --install`
     * To shutdown
         * `wsl --shutdown`
