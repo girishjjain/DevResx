@@ -17,3 +17,5 @@
         * `wsl --install`
     * To shutdown
         * `wsl --shutdown`
+* Powershell
+    * `winget search Microsoft.PowerShell`

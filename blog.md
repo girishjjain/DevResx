@@ -10,17 +10,13 @@
 ### Steps to install browser on Amazon Linux 2023 MATE Cloud VM
 * Apply latest updates to OS
   * `sudo yum update -y`
-
 * Set password for the root user
   * `sudo passwd root`
-
 * Download firefox
   * `wget -O- "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US" | tar -jx -C /usr/local/`
-
 * Install node using nvm
   * `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
   * `nvm install lts/gallium` - This is node v16, couldn't install higher version due to dependencies issue
-
 * Launch firefox browser
   * `/usr/local/firefox/firefox`
 
