@@ -25,3 +25,5 @@
     * `wsl --shutdown`
 * Powershell
   * `winget install --id Microsoft.Powershell --source winget`
+  * Configuration
+    * To enable menu option to complete current command - `Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete`
