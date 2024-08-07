@@ -484,3 +484,9 @@ Undefined symbols for architecture arm64:
 |--|--|
 |`Shift + Win + /` | Launch PowerToys Guide Utility |
 |`Shift + Win + S` | Take Screenshot |
+
+
+## Visual Studio Keyboard Shortcuts
+|Shortcut|Description|
+|--|--|
+|`Alt + Shift + =` | Expand selection (repeat the keystrokes to keep expanding selection) |
