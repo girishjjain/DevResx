@@ -77,3 +77,16 @@
   * `select * from all_tables;`
 * List all table columns
   * `select * from user_tab_cols;`
+
+### Aug 15, 2024
+#### dotnet CLI
+* Create a new solution and a class library and unit test project to it using: `dotnet` CLI:
+```bash
+dotnet new sln -o poker
+cd .\poker\
+dotnet new classlib -o solution
+dotnet new xunit -o tests
+dotnet sln add .\solution\solution.csproj
+dotnet sln add .\tests\tests.csproj
+dotnet add .\tests\tests.csproj reference .\solution\solution.csproj
+```
