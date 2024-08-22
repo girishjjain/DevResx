@@ -10,3 +10,7 @@
   ```sql
   select table_name, count(table_name) from user_tab_cols where column_name = 'CLAIM_ID' OR column_name='MEMBER_DOB' group by table_name having count(table_name) > 1;
   ```
+* List all tables
+  ```sql
+  select * from user_tables
+  ```
