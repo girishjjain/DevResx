@@ -38,8 +38,10 @@
 | `git switch <branch_name>` | Switch branches, even remote branches |
 | `git config --global credential.useHttpPath true` | To configure Git to cache credentials for each local directory where you clone a repository. This becomes very useful when you are working with multiple Github.com accounts on the same machine. |
 | `git branch -m <old_name> <new_name>` | Rename branch |
-| `git grep -n search_text_or_regex` | Search through committed tree, working directory, or index for given string or regular expression |
+| `git grep -n 'search_text_or_regex'` | Search through committed tree, working directory, or index for given string or regular expression |
+| ` git grep -l 'search_text_or_regex'` | Search for given regular expression and list the matching files. It is helpful when the given regex is found multiple times within same file and you'd like to just get the list of all the files that contain matching regex |
 | ` git grep -e Fake --and -e dao -- '*.cs'` | Search for two regular expressions, 'Fake' and 'dao' together on the same line and print line number, using `-n` flag |
+
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.
