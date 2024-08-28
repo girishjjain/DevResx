@@ -490,3 +490,9 @@ Undefined symbols for architecture arm64:
 |Shortcut|Description|
 |--|--|
 |`Alt + Shift + =` | Expand selection (repeat the keystrokes to keep expanding selection) |
+
+## VS Code Keyboard Shortcuts
+|Shortcut|Description|
+|--|--|
+|`Alt + Shift + Right Arrow` | Expand selection |
+|`Alt + Shift + Left Arrow` | Shrink selection |
