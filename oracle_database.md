@@ -14,3 +14,9 @@
   ```sql
   select * from user_tables
   ```
+* Get current date 
+  ```sql
+  select SYSDATE from dual;
+  ```
+  * `SYSDATE` function takes no parameter and returns current date and time
+  * `DUAL` - In Oracle Database, DUAL is a special, single-row, single-column table that is part of the Oracle data dictionary. It is often used as a dummy table to select or compute values that do not actually come from a table or to call functions or expressions that do not require data from a table. 
