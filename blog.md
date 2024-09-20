@@ -90,3 +90,7 @@ dotnet sln add .\solution\solution.csproj
 dotnet sln add .\tests\tests.csproj
 dotnet add .\tests\tests.csproj reference .\solution\solution.csproj
 ```
+* Add FluentAssertions package dependency:
+```bash
+dotnet add package FluentAssertions
+```
