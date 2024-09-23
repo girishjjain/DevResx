@@ -94,3 +94,7 @@ dotnet add .\tests\tests.csproj reference .\solution\solution.csproj
 ```bash
 dotnet add package FluentAssertions
 ```
+* Detailed logging for tests
+```bash
+dotnet watch test --logger:"console;verbosity=detailed"
+```
