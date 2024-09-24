@@ -33,6 +33,7 @@
 | `git config --system credential.helper OR git config --global credential.helper` | Check the value of the git credential manager |
 | `git config --system --unset credential.helper` | To unset git credential manager, which will prompt you for password going forward |
 | `git diff master HEAD accounts/test/com/rallyhealth/authn/services/ArachneAndLegacyAuthServiceSpec.scala` | Compare a file between two branches |
+| `git diff main HEAD` | To list changes between the tip of two branches |
 | `git diff main...HEAD` | To list changes that occurred on current branch since when the current branch was started off of main. You can use the branch names as well - `git diff topic...master` |
 | `git co <branch_name> -- <paths>` | Check out files from another branch i.e. update working tree with files from another branch |
 | `git switch <branch_name>` | Switch branches, even remote branches |
