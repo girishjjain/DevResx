@@ -490,6 +490,9 @@ Undefined symbols for architecture arm64:
 |Shortcut|Description|
 |--|--|
 |`Alt + Shift + =` | Expand selection (repeat the keystrokes to keep expanding selection) |
+|`Ctrl + M, Ctrl + O` | Collapse to definitions |
+|`F3` | Find next |
+|`Ctrl + F3` | Select next occurrence of selected word |
 
 ## VS Code Keyboard Shortcuts
 |Shortcut|Description|
