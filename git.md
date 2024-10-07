@@ -9,6 +9,7 @@
 | `git log -- path/to/folder` | To view history of given folder |
 | `git log --full-history  -- path/to/file` | Full history of file, even if the file was deleted |
 | `git log --pretty=format:%s v6.29.1..v6.29.2` | Short log message of all commits between two tags/commits |
+| `git log main..feature` | List commits that were added on the given (feature) branch (after it was branched off of the main branch OR using the merge-base i.e. common ancesotr, of the two branches)  |
 | `git show sha1Hash -- path/to/file` | Show contents of a certain file in a commit |
 | `git show sha1Hash:path/to/file` | Show contents of a certain file at the time of given commit, or from a branch, `git show branch:path/to/file` |
 | `git add --patch path/to/file` | To partially stage a file, git would let you choose individual hunks |
@@ -43,7 +44,7 @@
 | `git grep -n 'search_text_or_regex'` | Search through committed tree, working directory, or index for given string or regular expression |
 | ` git grep -l 'search_text_or_regex'` | Search for given regular expression and list the matching files. It is helpful when the given regex is found multiple times within same file and you'd like to just get the list of all the files that contain matching regex |
 | ` git grep -e Fake --and -e dao -- '*.cs'` | Search for two regular expressions, 'Fake' and 'dao' together on the same line and print line number, using `-n` flag |
-
+| `git merge-base branc1 branch2` | Shows the common ancestor (merge-base) commit of the two branches |
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.
