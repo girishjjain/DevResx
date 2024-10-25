@@ -23,6 +23,8 @@
 ### Commands
 | Command | Description |
 |--|--|
+| `mkdir new_directory` | To create a new directory in the current working directory |
+| `mkdir /path/to/new_directory` | To create a new directory at specific path |
 | `ls -R` | Lists whole directory recursively |
 | `ls \| grep <search_string>` | Search for directory names containing given string (refer rendered version to copy this command) |
 | `ls grep <search_string>` | Search for file/directory names containing given string |
@@ -36,6 +38,7 @@
 | `readlink <app-name>` | To get actual path of a symlink, for example, `readlink rally-okta`|
 | `ln -sfn /a/path/to linkName` | To update an existing link to a new path |
 | `rm <path-to-symlink>` | To remove symlink, just like any other file |
+| `mv source_dir target_dir` | Move a directory |
 
 #### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
@@ -146,4 +149,13 @@ lrwxrwxrwx 2 owner group       4.0K 2009-08-13 10:16 team.docs
   declare -A env_tenant=( [dev]=cozy-tuna.rally-dev.com [int]=accounts-int-1.rally-dev.com [bs]=accounts-uat-1.rally-prod.com [prod]=accounts-prod-2.rally-prod.com )
 
   curl --silent --header 'Cache-Control: no-cache' https://ops-proxy.${env_tenant[$1]}/deployment/versions | jq 'with_entries(select(.key | contains("'$2'"))) | select(. != {})'
+  ```
+* Optional Parameters - Refer below example for using default values for optional parameters to shell script 
+  ```bash
+  # Default remote branch name
+  DEFAULT_REMOTE="main"
+
+  # Use provided branch name or default to 'main'
+  # Here 2 is the position of the argument i.e. second parameter to the script
+  REMOTE_BRANCH=${2:-$DEFAULT_REMOTE}
   ```
