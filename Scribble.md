@@ -4,6 +4,9 @@
 * To set default version of java - `sdk default java 17.0.6-zulu`
 
 ### Docker
+* Refer [here](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce) for how to install Docker on Windows
+  * NOTE: This can be used to run ONLY Windows containers
+
 | Command | Description |
 | --- | --- |
 | `docker images` | List available images |
@@ -493,6 +496,7 @@ Undefined symbols for architecture arm64:
 |`Ctrl + M, Ctrl + O` | Collapse to definitions |
 |`F3` | Find next |
 |`Ctrl + F3` | Select next occurrence of selected word |
+|`Alt + Shift + .`| Insert caret at next occurrence of selected word |
 
 ## VS Code Keyboard Shortcuts
 |Shortcut|Description|
