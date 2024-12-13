@@ -497,6 +497,8 @@ Undefined symbols for architecture arm64:
 |`F3` | Find next |
 |`Ctrl + F3` | Select next occurrence of selected word |
 |`Alt + Shift + .`| Insert caret at next occurrence of selected word |
+|`Alt + Shift + Up/Down Arrow`| Multi-caret editing, insert caret at the line above/below the current caret |
+|`Alt + Shift + ;`| Insert caret at all matching locations |
 
 ## VS Code Keyboard Shortcuts
 |Shortcut|Description|
