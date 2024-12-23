@@ -63,10 +63,11 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
      * `find . -type d` to recursively walk file hierarchy for *directories* from current directory
      * `find . -type f` to recursively walk file hierarchy for *files* from current directory
      * `find . -type f -name \*partFileName.ext` to recursively walk file hierarchy for *files* from current directory to match files that have their name ending with given pattern
+     * `find . -type f -iname \*partFileName.ext` to recursively walk file hierarchy for *files* from current directory to match files that have their name ending with given pattern but ignoring the case i.e. case insensitive match
      * `find . -type f -name \*Annual\*.pdf` to recursively walk file hierarchy for *files* from current directory to match files that contain the given word
      * `grep findStr $(find . -name \*.scala -type f)` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
      * `grep findStr $(find . -name \*.java -type f -path \*src/main/java\*)` to recursively walk file hierarchy for *files* from current directory that have path matching given pattern and then using grep to filter output to match files that contain (or match) given findStr pattern
-     
+
 #### alias
 * alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
     * `alias ls='ls -lah'` to setup a new alias for ls command that would show long listing, hidden files, and descriptive size
