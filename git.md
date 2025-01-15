@@ -46,6 +46,7 @@
 | ` git grep -e Fake --and -e dao -- '*.cs'` | Search for two regular expressions, 'Fake' and 'dao' together on the same line and print line number, using `-n` flag |
 | `git merge-base branc1 branch2` | Shows the common ancestor (merge-base) commit of the two branches |
 | `git ls-files` | List all the files that Git is currently tracking in a repository |
+| `git clean -fdx` | Force clean everything that's not part of repository. -f for force clean, -d for removing untracked directories, and -x for removing ignored files |
 
 ## GitHub Tips
 * To open a commit on github web with it's SHA hash, you can append `/commit/sha_hash` to repo URL, for example, `https://github.com/org/repo/commit/d84e64`. You can navigate to the pull request that created the commit and follow all the discussions out there.
