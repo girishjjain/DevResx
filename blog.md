@@ -29,7 +29,10 @@
 
 ### Playwright Setup
 * Install playwright
-  * `npm init playwright@latest`
+  * To create a new project:
+    * `npm init playwright@latest`
+  * For existing project:
+    * `npm install`
 * Install Chromium browser for playwright
   * `npx playwright install chromium`
 * Execute playwright tests using Chromium browser
