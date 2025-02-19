@@ -499,6 +499,8 @@ Undefined symbols for architecture arm64:
 |`Alt + Shift + .`| Insert caret at next occurrence of selected word |
 |`Alt + Shift + Up/Down Arrow`| Multi-caret editing, insert caret at the line above/below the current caret |
 |`Alt + Shift + ;`| Insert caret at all matching locations |
+|`Ctrl + Alt + Down Arrow` | Show open file list |
+|`Alt + Pg Down` | Go to next issue in file |
 
 ## VS Code Keyboard Shortcuts
 |Shortcut|Description|
