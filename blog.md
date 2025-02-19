@@ -101,3 +101,12 @@ dotnet add package FluentAssertions
 ```bash
 dotnet watch test --logger:"console;verbosity=detailed"
 ```
+* Check for code-coverage
+```bash
+.\build.ps1 UnitTestCoverage`
+```
+* Generate code-coverage report
+```bash
+dotnet $Env:UserProfile\.nuget\packages\reportgenerator\5.4.3\tools\net8.0\ReportGenerator.dll -reports:C:\repos\platform\sitar\code-coverage\Lyric.Platform.Sitar.Tests.xml -targetdir:coveragereport
+```
+  * The above command is for PowerShell and uses `$Env:UserProfile` to get current user profile directory, you can replace it with the actual path if you're using some other terminal
