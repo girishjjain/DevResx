@@ -68,6 +68,13 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
      * `grep findStr $(find . -name \*.scala -type f)` to recursively walk file hierarchy for *files* from current directory and then using grep to filter output to match files that contain (or match) given findStr pattern
      * `grep findStr $(find . -name \*.java -type f -path \*src/main/java\*)` to recursively walk file hierarchy for *files* from current directory that have path matching given pattern and then using grep to filter output to match files that contain (or match) given findStr pattern
 
+#### grep
+* grep tool is used to search text patterns within files
+  * `grep "pattern" <file_name>` - Searches for given "pattern" in the specified file
+  * `grep -r "pattern" .` - Recursive search in the current directory
+  * `grep -n "pattern" <file_name>` - Displays line numbers along with matching lines
+  * `grep -r -n -o "pattern" ."` - Displays only part of the line matching given "pattern", very useful when the matching line is very long (which makes it difficult to make any sense of output in the terminal and you're just looking for file name/line number) 
+
 #### alias
 * alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
     * `alias ls='ls -lah'` to setup a new alias for ls command that would show long listing, hidden files, and descriptive size
