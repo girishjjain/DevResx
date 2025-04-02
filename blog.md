@@ -110,3 +110,7 @@ dotnet watch test --logger:"console;verbosity=detailed"
 dotnet $Env:UserProfile\.nuget\packages\reportgenerator\5.4.3\tools\net8.0\ReportGenerator.dll -reports:C:\repos\platform\sitar\code-coverage\Lyric.Platform.Sitar.Tests.xml -targetdir:coveragereport
 ```
   * The above command is for PowerShell and uses `$Env:UserProfile` to get current user profile directory, you can replace it with the actual path if you're using some other terminal
+* dotnet isntallation info
+```bash
+  dotnet --info
+```
