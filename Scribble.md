@@ -507,3 +507,5 @@ Undefined symbols for architecture arm64:
 |--|--|
 |`Alt + Shift + Right Arrow` | Expand selection |
 |`Alt + Shift + Left Arrow` | Shrink selection |
+|`Ctrl + D`| Select next occurrence of the current selection |
+|`Ctrl + Shift + L`| Select all instances of the current selection |
