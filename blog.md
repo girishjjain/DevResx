@@ -114,3 +114,37 @@ dotnet $Env:UserProfile\.nuget\packages\reportgenerator\5.4.3\tools\net8.0\Repor
 ```bash
   dotnet --info
 ```
+
+### May 5, 2025
+* Invoking Orcale stored procedure with `OUT` parameter values and printing the return values 
+```sql
+SET SERVEROUTPUT ON;
+DECLARE
+    v_out_value varchar2(50);
+    v_out_inquiry varchar2(5000);
+    v_out_response varchar2(5000);
+    v_out_therefore varchar2(5000);
+    v_out_source varchar2(5000);
+    v_out_type varchar2(5000);
+BEGIN
+    CODEDESCRIPTION.GetClarificationProperties(
+        in_client_name  => 'YOURCUSTOMERACRONYM',
+        in_value => 'JUSTIFICATION_ID',
+        out_value => v_out_value,
+        out_inquiry => v_out_inquiry,
+        out_response => v_out_response,
+        out_therefore => v_out_therefore,
+        out_source => v_out_source,
+        out_type => v_out_type
+    );
+
+    DBMS_OUTPUT.PUT_LINE('OUT value is: ' || v_out_value);
+    DBMS_OUTPUT.PUT_LINE('OUT inquiry is: ' || v_out_inquiry);
+    DBMS_OUTPUT.PUT_LINE('OUT response is: ' || v_out_response);
+    DBMS_OUTPUT.PUT_LINE('OUT therefore is: ' || v_out_therefore);
+    DBMS_OUTPUT.PUT_LINE('OUT source is: ' || v_out_source);
+    DBMS_OUTPUT.PUT_LINE('OUT type is: ' || v_out_type);
+END;
+/
+```
+
