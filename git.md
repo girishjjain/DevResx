@@ -46,6 +46,7 @@
 | ` git grep -e Fake --and -e dao -- '*.cs'` | Search for two regular expressions, 'Fake' and 'dao' together on the same line and print line number, using `-n` flag |
 | `git merge-base branc1 branch2` | Shows the common ancestor (merge-base) commit of the two branches |
 | `git ls-files` | List all the files that Git is currently tracking in a repository |
+| `git ls-files \| grep -viE '\.cs$'` | List files tracked by git that do not end with .cs extension. Here `-v` inverts the match, i.e. shows lines that do not match the pattern, `-i` ignores case, `-E` uses extended regular expressions |
 | `git clean -fdx` | Force clean everything that's not part of repository. -f for force clean, -d for removing untracked directories, and -x for removing ignored files |
 
 ## GitHub Tips
