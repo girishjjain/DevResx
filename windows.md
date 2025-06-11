@@ -21,8 +21,10 @@
     * `wsl --list --online`
   * To install default distribution
     * `wsl --install`
-  * To shutdown
+  * To shutdown all running instances
     * `wsl --shutdown`
+  * To stop a specific WSL instance
+    * `wsl --terminate <distribution_name>`, for example, `wsl --terminate Ubuntu`
 * Powershell
   * `winget install --id Microsoft.Powershell --source winget`
   * Configuration
