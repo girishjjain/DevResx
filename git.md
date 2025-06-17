@@ -10,6 +10,7 @@
 | `git log --full-history  -- path/to/file` | Full history of file, even if the file was deleted |
 | `git log --pretty=format:%s v6.29.1..v6.29.2` | Short log message of all commits between two tags/commits |
 | `git log main..feature` | List commits that were added on the given (feature) branch (after it was branched off of the main branch OR using the merge-base i.e. common ancesotr, of the two branches)  |
+| `git log --all --grep="search_string"` | Searches commit logs across all branches |
 | `git show sha1Hash -- path/to/file` | Show contents of a certain file in a commit |
 | `git show sha1Hash:path/to/file` | Show contents of a certain file at the time of given commit, or from a branch, `git show branch:path/to/file` |
 | `git add --patch path/to/file` | To partially stage a file, git would let you choose individual hunks |
