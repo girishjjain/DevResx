@@ -74,6 +74,7 @@ ssh command starts SSH client that establishes secure SSH connection to a remote
   * `grep -r "pattern" .` - Recursive search in the current directory
   * `grep -n "pattern" <file_name>` - Displays line numbers along with matching lines
   * `grep -r -n -o "pattern" ."` - Displays only part of the line matching given "pattern", very useful when the matching line is very long (which makes it difficult to make any sense of output in the terminal and you're just looking for file name/line number) 
+  * `grep -i "pattern" <file_name>` - Performs case-insensitive search for given "pattern" in the specified file
 
 #### alias
 * alias is essentially a keyboard shortcut, an abbreviation, a means of avoiding typing a long command sequence
