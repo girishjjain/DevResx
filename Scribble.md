@@ -509,5 +509,5 @@ Undefined symbols for architecture arm64:
 | `Alt + Shift + Left Arrow` | Shrink selection |
 | `Ctrl + D`| Select next occurrence of the current selection |
 | `Ctrl + Shift + L`| Select all instances of the current selection |
-| `Ctrl + K + 0` | Collapse/Fold whole file |
+| `Ctrl + K, Ctrl + 0` | Collapse/Fold whole file |
 | `Ctrl + Shift + [` | Collapse/Fold individual block |
