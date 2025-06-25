@@ -492,20 +492,22 @@ Undefined symbols for architecture arm64:
 ## Visual Studio Keyboard Shortcuts
 |Shortcut|Description|
 |--|--|
-|`Alt + Shift + =` | Expand selection (repeat the keystrokes to keep expanding selection) |
-|`Ctrl + M, Ctrl + O` | Collapse to definitions |
-|`F3` | Find next |
-|`Ctrl + F3` | Select next occurrence of selected word |
-|`Alt + Shift + .`| Insert caret at next occurrence of selected word |
-|`Alt + Shift + Up/Down Arrow`| Multi-caret editing, insert caret at the line above/below the current caret |
-|`Alt + Shift + ;`| Insert caret at all matching locations |
-|`Ctrl + Alt + Down Arrow` | Show open file list |
-|`Alt + Pg Down` | Go to next issue in file |
+| `Alt + Shift + =` | Expand selection (repeat the keystrokes to keep expanding selection) |
+| `Ctrl + M, Ctrl + O` | Collapse to definitions |
+| `F3` | Find next |
+| `Ctrl + F3` | Select next occurrence of selected word |
+| `Alt + Shift + .`| Insert caret at next occurrence of selected word |
+| `Alt + Shift + Up/Down Arrow`| Multi-caret editing, insert caret at the line above/below the current caret |
+| `Alt + Shift + ;`| Insert caret at all matching locations |
+| `Ctrl + Alt + Down Arrow` | Show open file list |
+| `Alt + Pg Down` | Go to next issue in file |
 
 ## VS Code Keyboard Shortcuts
 |Shortcut|Description|
 |--|--|
-|`Alt + Shift + Right Arrow` | Expand selection |
-|`Alt + Shift + Left Arrow` | Shrink selection |
-|`Ctrl + D`| Select next occurrence of the current selection |
-|`Ctrl + Shift + L`| Select all instances of the current selection |
+| `Alt + Shift + Right Arrow` | Expand selection |
+| `Alt + Shift + Left Arrow` | Shrink selection |
+| `Ctrl + D`| Select next occurrence of the current selection |
+| `Ctrl + Shift + L`| Select all instances of the current selection |
+| `Ctrl + K + 0` | Collapse/Fold whole file |
+| `Ctrl + Shift + [` | Collapse/Fold individual block |
