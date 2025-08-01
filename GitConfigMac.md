@@ -6,11 +6,12 @@
 * Install meld for directory diff from: https://yousseb.github.io/meld/
 
 ### Execute below commands to setup git environment
-
 ```
 git config --global user.name "Girish Jayantilal Jain"
 git config --global user.email girish.jain@domain.com
+git config --global credential.usehttppath true
 git config --global core.editor "code --wait"
+git config --global core.autocrlf false
 git config --global alias.gl "pull origin master --rebase"
 git config --global alias.co checkout
 git config --global alias.qs status
@@ -27,13 +28,13 @@ git config --global diff.tool vscode
 git config --global diff.guitool vscode
 git config --global merge.tool vscode
 git config --global merge.guitool vscode
-git config --global mergetool.keepBackup false
+git config --global mergetool.keepbackup false
 git config --global alias.ddft 'difftool --tool meld --dir-diff'
 git config --global difftool.intellij.cmd 'idea diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")'
 git config --global difftool.vscode.cmd 'code --wait --diff $LOCAL $REMOTE'
 git config --global alias.cam "commit --amend --no-edit"
 git config --global merge.tool vscode
-git config --global mergetool.vscode.cmd "code --wait $MERGED"
+git config --global mergetool.vscode.cmd 'code --wait $MERGED'
 git config --global merge.conflictStyle diff3
 git config --global merge.verbosity 3
 git config --global alias.cam "commit --amend --no-edit"
@@ -41,4 +42,7 @@ git config --global pull.rebase false
 git config --global init.defaultBranch main
 git config --system core.longpaths true
 git config --global core.longpaths true 
+git config --global gpg.format ssh
+git config --global commit.gpgsign=true
+git config --global user.signingkey 'C:/Users/GirishJayantilalJain/.ssh/id_ed25519.pub'
 ```
