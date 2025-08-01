@@ -46,3 +46,23 @@ git config --global gpg.format ssh
 git config --global commit.gpgsign=true
 git config --global user.signingkey 'C:/Users/GirishJayantilalJain/.ssh/id_ed25519.pub'
 ```
+
+## Pull Request Review Config
+* Use following bash script to pull PR/MR branch to local:
+```sh
+#! /bin/bash
+
+# Default remote branch name
+DEFAULT_REMOTE="main"
+
+# Use provided branch name or default to 'main'
+REMOTE_BRANCH=${2:-$DEFAULT_REMOTE}
+
+git co $REMOTE_BRANCH
+git br -D pr$1
+git pull
+git fetch origin merge-requests/$1/head:pr$1
+git co pr$1
+git dft $REMOTE_BRANCH...HEAD --name-only
+git dft $REMOTE_BRANCH...HEAD
+```
