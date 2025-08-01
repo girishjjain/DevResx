@@ -43,7 +43,7 @@ git config --global init.defaultBranch main
 git config --system core.longpaths true
 git config --global core.longpaths true 
 git config --global gpg.format ssh
-git config --global commit.gpgsign=true
+git config --global commit.gpgsign true
 git config --global user.signingkey 'C:/Users/GirishJayantilalJain/.ssh/id_ed25519.pub'
 ```
 
