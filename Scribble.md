@@ -337,11 +337,18 @@ class ItemsSpec extends PlaySpecification {
       * Using `dockershim` (a CRI implementation), containers are created using Docker installed on the worker nodes. Internally, Docker uses `containerd` to create and manage containers.
 
 ### Kubernetes Commands
+* `kubectl get namespace` - Get list of namespaces
+* `kubectl -n ns get pods` - Get pods in the given namespace
+* `kubectl -n ns describe pod harmonium-85ff99dc4c-kjwkv` - Get detailed information for specific pod
+* `kubectl -n ns get deployment` - Get deployments in the given namespace
+* `kubectl -n ns get service` - Get services in the given namespace
+* `kubectl -n ns port-forward service-gateway-green-769988bddf-mjcgn 9988:8080` - Use Port Forwarding to access applications in a cluster. Here the local 9988 port is setup to forward requests to `service-gateway-green-769988bddf-mjcgn` pod in cluster
+* `kubectl -n ns get deployment harmonium -o wide` - Get information about the specific deployment
+* `kubectl -n ns rollout status deploy/harmonium` - Get rollout status for the sepcific deployment
+* `kubectl -n ns describe deploy/harmonium` - Get detailed information about the specific deployment
 * `kubectl -n oid logs notification-service-green-567d56b8f5-8b2kf` - Get logs for the given pod from oid namespace
-* `kubectl -n oid get pods` - Get pods list from oid namespace
-* `kubectl -n oid get deployment` - Get deployments for given namespace
-* `kubectl -n oid get service` - Get services for given namespace
-* `kubectl -n oid port-forward service-gateway-green-769988bddf-mjcgn 9988:8080` - Use Port Forwarding to access applications in a cluster. Here the local 9988 port is setup to forward requests to `service-gateway-green-769988bddf-mjcgn` pod in cluster.
+* `kubectl config current-context` - Get current kubectl context, tells you which cluster kubectl is currently using
+* `kubectl config use-context arn:aws:eks:us-east-1:891377049447:cluster/platform` - Configure the context to be used
 
 # Getting Started with Kubernetes Pluralsight Course
 * Kubernetes came out of Google
