@@ -520,3 +520,8 @@ Undefined symbols for architecture arm64:
 | `Ctrl + Shift + L`| Select all instances of the current selection |
 | `Ctrl + K, Ctrl + 0` | Collapse/Fold whole file |
 | `Ctrl + Shift + [` | Collapse/Fold individual block |
+
+
+## Nov 14, 2025
+* Trigram
+  * A trigram is a sequence of three consecutive characters taken from a string. It’s a basic unit used in text similarity and fuzzy matching — especially in PostgreSQL’s `pg_trgm` extension.
