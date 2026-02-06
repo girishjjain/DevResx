@@ -525,3 +525,51 @@ Undefined symbols for architecture arm64:
 ## Nov 14, 2025
 * Trigram
   * A trigram is a sequence of three consecutive characters taken from a string. It’s a basic unit used in text similarity and fuzzy matching — especially in PostgreSQL’s `pg_trgm` extension.
+
+
+# Istio
+
+## What Istio is
+- **Istio** is an **open-source service mesh** that manages **service-to-service communication** in microservices architectures (commonly on Kubernetes).
+- It moves cross-cutting networking concerns **out of application code** and into the mesh.
+
+## What Istio does (key benefits)
+### Security
+- Enables **mTLS** for encrypted service-to-service traffic.
+- Supports **authentication/identity** for workloads and **authorization policies** (who can talk to whom).
+
+### Traffic management
+- Centralized control over routing and reliability behaviors:
+  - **Traffic splitting** (canary, blue/green, A/B)
+  - **Retries, timeouts, circuit breaking**
+  - **Fault injection** for resilience testing
+  - (Often via integrations) **rate limiting**
+
+### Observability
+- Provides consistent **telemetry** without app changes:
+  - **Metrics** (latency, errors, request volume)
+  - **Logs**
+  - **Tracing hooks** for distributed tracing
+  - Visibility into “who calls whom”
+
+## How Istio works (visual mental model)
+### Data plane vs control plane
+- **Data plane**: Envoy **sidecar proxies** (and gateways) that handle the actual traffic.
+- **Control plane**: **istiod** pushes config/policies/certs to the proxies.
+
+### Sidecar proxy pattern
+- Each service pod gets a **sidecar proxy**.
+- The proxy intercepts **all inbound/outbound** traffic for that pod.
+
+## TLS vs mTLS
+### TLS
+- Encrypts traffic and typically authenticates **server → client** (one-way).
+- Common for browsers/websites (HTTPS).
+
+### mTLS (mutual TLS)
+- TLS where **both client and server authenticate each other** using certificates.
+- Provides:
+  - **Encryption in transit**
+  - **Server identity verification**
+  - **Client identity verification**
+- Especially useful in microservices for strong service identity and “who can call whom” enforcement (often automated by Istio).
