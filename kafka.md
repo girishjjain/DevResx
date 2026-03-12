@@ -8,7 +8,7 @@
 ### Partitions and offsets
 * Topics are split in partitions
   * Messages within each partition are ordered, order is guaranteed only within a partition (not across partitions)
-  * Each message within a partition gets an incremental if, called offset. Note that offsets are scoped to a partition i.e. offsets only have meaning for a partition. Two different partitions under a topic with the same offset do not represent the same data.
+  * Each message within a partition gets an incremental id, called offset. Note that offsets are scoped to a partition i.e. offsets only have meaning for a partition. Two different partitions under a topic with the same offset do not represent the same data.
 * Kakfa topics are immutable i.e. once data is written to a partition, it cannot be changed. You cannot delete or update.
 * Data is kept in Kafka for a limited time, default is a week - configurable
 * Data is assigned randomly to a partition, unless a key is provided
