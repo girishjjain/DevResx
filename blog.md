@@ -148,3 +148,57 @@ END;
 /
 ```
 
+### Apr 28, 2026
+# Database Sharding in PostgreSQL
+
+## What is sharding
+
+* **Sharding** means splitting a large database into smaller pieces called **shards**.
+* Each shard stores **only a subset of the total data**.
+* This is a form of **horizontal partitioning**.
+
+## Why sharding is used
+
+* Improve scalability
+* Reduce load on a single database server
+* Support larger datasets and higher traffic
+* Potentially improve read/write performance
+
+## Common sharding strategies
+
+* **Range-based sharding**
+  Split data by ranges, such as user ID ranges
+* **Hash-based sharding**
+  Use a hash of a key to decide which shard stores a row
+* **Geographic sharding**
+  Split data by region, such as US vs EU customers
+
+## Shard vs database instance
+
+* Conceptually, a **shard is a portion of the dataset**
+* Physically, a shard is **often** its own database instance or server
+* But the core idea is the **data split**, not necessarily the exact infrastructure layout
+
+
+## Does the DB consumer need to know which shard to use?
+
+### In vanilla PostgreSQL
+
+* **Yes, usually**
+* PostgreSQL by itself does **not automatically route queries across multiple independent Postgres instances**
+
+### Two common models
+
+#### 1. Application-managed sharding
+
+* The application decides which shard to use
+* Example:
+
+  * Compute shard from `user_id`
+  * Send both reads and writes for that user to the same shard
+
+#### 2. Middleware / extension-managed sharding
+
+* A sharding layer routes queries on behalf of the application
+* The app may connect to a single endpoint
+* The router/coordinator decides which shard to access
