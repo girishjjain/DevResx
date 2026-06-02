@@ -340,14 +340,15 @@ class ItemsSpec extends PlaySpecification {
 | Command | Description |
 |----------|--------------|
 | `kubectl get namespace` | Get list of namespaces |
-| `kubectl -n ns get pods` | Get pods in the given namespace |
-| `kubectl -n ns describe pod harmonium-85ff99dc4c-kjwkv` | Get detailed information for a specific pod |
-| `kubectl -n ns get deployment` | Get deployments in the given namespace |
-| `kubectl -n ns get service` | Get services in the given namespace |
-| `kubectl -n ns port-forward service-gateway-green-769988bddf-mjcgn 9988:8080` | Use Port Forwarding to access applications in a cluster. The local port `9988` forwards requests to `service-gateway-green-769988bddf-mjcgn` pod in the cluster |
-| `kubectl -n ns get deployment harmonium -o wide` | Get information about a specific deployment |
-| `kubectl -n ns rollout status deploy/harmonium` | Get rollout status for the specific deployment |
-| `kubectl -n ns describe deploy/harmonium` | Get detailed information about the specific deployment |
+| `kubectl -n <ns> get pods` | Get pods in the given namespace |
+| `kubectl -n <ns> describe pod harmonium-85ff99dc4c-kjwkv` | Get detailed information for a specific pod |
+| `kubectl -n <ns> get deployment` | Get deployments in the given namespace |
+| `kubectl -n <ns> get service` | Get services in the given namespace |
+| `kubectl -n <ns> port-forward service-gateway-green-769988bddf-mjcgn 9988:8080` | Use Port Forwarding to access applications in a cluster. The local port `9988` forwards requests to `service-gateway-green-769988bddf-mjcgn` pod in the cluster |
+| `kubectl -n <ns> get deployment harmonium -o wide` | Get information about a specific (app) deployment |
+| `kubectl -n <ns> scale deployment harmonium --replicas=0` | Scale the deployments for the given app to zero |
+| `kubectl -n <ns> rollout status deploy/harmonium` | Get rollout status for the specific deployment |
+| `kubectl -n <ns> describe deploy/harmonium` | Get detailed information about the specific deployment |
 | `kubectl -n oid logs notification-service-green-567d56b8f5-8b2kf` | Get logs for the given pod from the `oid` namespace |
 | `kubectl config current-context` | Get current kubectl context (which cluster kubectl is currently using) |
 | `kubectl config use-context arn:aws:eks:us-east-1:891377049447:cluster/platform` | Configure the context to be used |
