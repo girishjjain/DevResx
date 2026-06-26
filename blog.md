@@ -99,7 +99,7 @@ dotnet add package FluentAssertions
 ```
 * Detailed logging for tests
 ```bash
-dotnet watch test --logger:"console;verbosity=detailed"
+dotnet watch test --logger:"console;verbosity=detailed" --filter "FullyQualifiedNameOfTestClass"
 ```
 * Check for code-coverage
 ```bash
