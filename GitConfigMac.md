@@ -38,6 +38,7 @@ git config --global mergetool.vscode.cmd 'code --wait $MERGED'
 git config --global merge.conflictStyle diff3
 git config --global merge.verbosity 3
 git config --global alias.cam "commit --amend --no-edit"
+git config --global alias.dfn '!b=$(git symbolic-ref --short refs/remotes/origin/HEAD | sed "s|origin/||"); git diff $(git merge-base "$b" HEAD) HEAD --name-only'
 git config --global pull.rebase false
 git config --global init.defaultBranch main
 git config --system core.longpaths true
