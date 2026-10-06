@@ -39,6 +39,7 @@
 | `ln -sfn /a/path/to linkName` | To update an existing link to a new path |
 | `rm <path-to-symlink>` | To remove symlink, just like any other file |
 | `mv source_dir target_dir` | Move a directory |
+| `pwd | pbcopy` | It takes whatever comes from standard input (stdin) and places it on the system clipboard, stdin → pbcopy → macOS clipboard |
 
 #### less
 less is a terminal pager command, lets you read content as pages instead of terminal spitting it all out at once and scrolling to the end.
